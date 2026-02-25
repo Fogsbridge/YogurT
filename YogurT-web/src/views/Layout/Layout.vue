@@ -9,9 +9,7 @@
 
     <LayoutHeader />
 
-    <main class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-6 min-h-3/5">
-      <RouterView />
-    </main>
+    <LayoutMain />
 
     <LayoutFooter />
   </div>
@@ -20,6 +18,7 @@
 <script setup>
 import LayoutNav from '@/views/Layout/LayoutNav.vue'
 import LayoutHeader from '@/views/Layout/LayoutHeader.vue'
+import LayoutMain from '@/views/Layout/LayoutMain.vue'
 import LayoutFooter from '@/views/Layout/LayoutFooter.vue'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'

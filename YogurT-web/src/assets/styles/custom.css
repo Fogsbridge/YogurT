@@ -23,3 +23,7 @@ html {
     @apply bg-primary/80 text-white;
   }
 }
+
+@utility panel{
+  @apply bg-base-100 rounded-2xl border border-base-content/10 shadow-lg shadow-base-content/2;
+}
