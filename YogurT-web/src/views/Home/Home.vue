@@ -1,5 +1,5 @@
 <template>
-  <div class="h-1/2">
+  <div class="panel">
     <h1 class="text-center text-5xl">Home</h1>
   </div>
 </template>

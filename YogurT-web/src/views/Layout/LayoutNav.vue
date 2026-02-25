@@ -32,29 +32,29 @@
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal py-0 gap-3">
           <li>
-            <a :class="navBtnClass">
+            <RouterLink to="/archives" :class="navBtnClass">
               <svg data-slot="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z"></path>
                 <path clip-rule="evenodd" fill-rule="evenodd" d="m3.087 9 .54 9.176A3 3 0 0 0 6.62 21h10.757a3 3 0 0 0 2.995-2.824L20.913 9H3.087Zm6.163 3.75A.75.75 0 0 1 10 12h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75Z"></path>
               </svg>
               <span>归档</span>
-            </a>
+            </RouterLink>
           </li>
           <li>
-            <a :class="navBtnClass">
+            <RouterLink to="/categories" :class="navBtnClass">
               <svg data-slot="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M5.566 4.657A4.505 4.505 0 0 1 6.75 4.5h10.5c.41 0 .806.055 1.183.157A3 3 0 0 0 15.75 3h-7.5a3 3 0 0 0-2.684 1.657ZM2.25 12a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3v-6ZM5.25 7.5c-.41 0-.806.055-1.184.157A3 3 0 0 1 6.75 6h10.5a3 3 0 0 1 2.683 1.657A4.505 4.505 0 0 0 18.75 7.5H5.25Z"></path>
               </svg>
               <span>分类</span>
-            </a>
+            </RouterLink>
           </li>
           <li>
-            <a :class="navBtnClass">
+            <RouterLink to="/tags" :class="navBtnClass">
               <svg data-slot="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path clip-rule="evenodd" fill-rule="evenodd" d="M5.25 2.25a3 3 0 0 0-3 3v4.318a3 3 0 0 0 .879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 0 0 5.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 0 0-2.122-.879H5.25ZM6.375 7.5a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"></path>
               </svg>
               <span>标签</span>
-            </a>
+            </RouterLink>
           </li>
           <li>
             <a :class="navBtnClass">
@@ -135,7 +135,7 @@
 <script setup>
 import { computed, onMounted, ref, toRefs, watch } from 'vue'
 import { useEventListener, usePreferredColorScheme } from '@vueuse/core'
-import Typewriter from '@/components/base/Typewriter.vue'
+import Typewriter from '@/components/Base/Typewriter.vue'
 
 // 主题切换逻辑
 const themes = ['system', 'light', 'dark']

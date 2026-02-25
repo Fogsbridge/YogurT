@@ -9,9 +9,29 @@ const routes = [
         path: '',
         components: {
           default: () => import('@/views/Home/Home.vue'),
-          banner: () => import('@/views/Home/HomeBanner.vue')
+          banner: () => import('@/views/Home/HomeBanner.vue'),
+          sidebar: () => import('@/components/Sidebar/Sidebar.vue')
         },
         meta: { title: '首页'}
+      },
+      {
+        path: '/archives',
+        components: {
+          default: () => import('@/views/Archive/Archive.vue'),
+          banner: () => import('@/views/Archive/ArchiveBanner.vue'),
+          sidebar: () => import('@/components/Sidebar/Sidebar.vue')
+        },
+        meta: { title: '归档'}
+      },
+      {
+        path: '/categories',
+        component: () => import('@/views/Category/Category.vue'),
+        meta: { title: '分类'}
+      },
+      {
+        path: '/tags',
+        component: () => import('@/views/Tag/Tag.vue'),
+        meta: { title: '标签'}
       },
       {
         path: '/about',
