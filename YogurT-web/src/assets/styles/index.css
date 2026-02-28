@@ -3,4 +3,12 @@
 /* 字体配置 */
 @import "./fonts.css";
 
-@import "./custom.css";
+@import "./themes/index.css";
+
+@import "./theme.css";
+
+@import "./variants.css";
+
+@import "./utilities.css";
+
+@import "./global.css";

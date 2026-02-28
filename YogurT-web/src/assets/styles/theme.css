@@ -1,0 +1,7 @@
+@theme {
+  --font-sans-MaoKenZhuYuanTi: "MaoKenZhuYuanTi", sans-serif;
+  --font-sans-AlimamaFangYuanTiVF-Thin: "AlimamaFangYuanTiVF-Thin", sans-serif;
+  /*--default-font-family: var(--font-sans-MaoKenZhuYuanTi);*/
+  --default-font-family: var(--font-sans-AlimamaFangYuanTiVF-Thin);
+  --container-8xl: 88rem;
+}

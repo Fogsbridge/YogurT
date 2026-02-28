@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-base-100 border-t border-base-content/20 shadow-2xl">
+  <footer class="bg-base-100 border-t border-base-content/20 shadow-2xl transition duration-500">
 
     <div class="max-w-8xl mx-auto flex flex-col lg:flex-row justify-around gap-6 px-8 lg:px-18 py-8 lg:py-16 transition">
       <div class="hidden lg:block lg:max-w-1/7">

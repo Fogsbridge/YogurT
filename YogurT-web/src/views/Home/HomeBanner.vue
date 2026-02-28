@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-[url('/images/banner/home-full-screen-2.jpg')] bg-center bg-cover">
+  <div class="min-h-screen bg-[url('/images/banner/banner-2.jpg')] bg-center bg-cover">
     <!-- 点阵遮罩 -->
     <div class="absolute inset-0 dot-mask backdrop-brightness-80 dark:backdrop-brightness-70 transition duration-500" ></div>
 
@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import Typewriter from '@/components/base/Typewriter.vue'
+import Typewriter from '@/components/Base/Typewriter.vue'
 import { onMounted, ref } from 'vue'
 
 // 滚动到 main
@@ -43,7 +43,7 @@ const titleArr = ref([
 ])
 </script>
 
-<style >
+<style scoped>
 /* 点阵遮罩 */
 .dot-mask {
   background-image: radial-gradient(

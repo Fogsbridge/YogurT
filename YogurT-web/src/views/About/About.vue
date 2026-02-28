@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-8xl mx-auto py-2 md:py-6">
+  <div class="max-w-8xl mx-auto">
     <div class="mx-auto grid md:grid-cols-6 gap-2 md:gap-4">
 
       <div class="md:col-span-2">
@@ -252,14 +252,14 @@
 </template>
 
 <script setup>
-import FlipCard from '@/components/base/FlipCard.vue'
+import FlipCard from '@/components/Base/FlipCard.vue'
 </script>
 
 <style scoped>
 @reference "@/assets/styles/index.css";
 
 .card {
-  @apply bg-base-100 rounded-2xl border border-base-content/10 wrap-anywhere py-4 px-8 shadow-lg shadow-base-content/3;
+  @apply bg-base-100 rounded-2xl border border-base-content/10 shadow-lg shadow-base-content/2 py-4 px-8 wrap-anywhere;
 }
 
 /*
