@@ -12,7 +12,7 @@
 
 <script setup>
 const props = defineProps({
-  imgSrc: { type: String, default: '/images/banner/home-full-screen-5.jpg' }
+  imgSrc: { type: String, default: '/images/banner/banner-5.jpg' }
 })
 </script>
 

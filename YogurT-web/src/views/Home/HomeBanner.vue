@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-[url('/images/banner/home-full-screen-2.jpg')] bg-center bg-cover">
+  <div class="min-h-screen bg-[url('/images/banner/banner-2.jpg')] bg-center bg-cover">
     <!-- 点阵遮罩 -->
     <div class="absolute inset-0 dot-mask backdrop-brightness-80 dark:backdrop-brightness-70 transition duration-500" ></div>
 
