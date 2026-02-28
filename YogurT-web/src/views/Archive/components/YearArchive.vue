@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-2 lg:pt-6 pb-4 lg:pb-12 transition duration-600">
+  <div class="pt-2 lg:pt-6 pb-4 lg:pb-12 transition duration-500">
     <div v-for="archive in archiveList" :key="archive.year">
       <div class="flex flex-row items-center gap-2">
         <h2 class="text-3xl lg:text-4xl font-bold my-2 lg:my-4">

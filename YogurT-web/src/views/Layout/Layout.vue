@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-base-200">
+  <div class="min-h-screen bg-base-200 transition duration-500">
 
 <!--
   如果有 banner (设想中的绝大部分情况下 banner 都应该是一个含有背景图的组件)，路由记录包含 banner 组件则将导航栏设置 fixed 定位 否则使用 sticky 定位
