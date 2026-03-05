@@ -10,7 +10,7 @@
       </div>
 
       <ul class="mr-5 lg:mx-7">
-        <li v-for="posts in archive.posts" :key="posts.id"
+        <li v-for="post in archive.posts" :key="posts.id"
             class="grid grid-cols-[28px_1fr] grid-rows-[20px_1fr] items-center ">
 
           <div class="size-7 justify-self-center">
@@ -21,7 +21,7 @@
 
           <div>
             <div class="text-base lg:text-lg text-base-content/60 pt-2.5 ml-1 lg:ml-3 mb-2">
-              {{ posts.publishDate.slice(-5) }}
+              {{ post.publishDate.slice(-5) }}
             </div>
           </div>
 
@@ -30,29 +30,24 @@
           </div>
 
           <div class="ml-1 lg:ml-3 mb-4 lg:mb-8">
-            <div class="w-fit group hover:text-primary hover:cursor-pointer text-shadow-primary/40 hover:text-shadow-xs"
-            @click="router.push(`/posts/${posts.id}`)">
-              <div class="text-lg lg:text-xl py-0.5 inline
-              bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat bg-size-[0_2px] bg-bottom-left
-              group-hover:bg-size-[100%_2px] transition-[background-size] duration-300 ease-in-out">
-                {{ posts.title }}
+            <div
+              class="w-fit group hover:text-primary hover:cursor-pointer text-shadow-primary/40 hover:text-shadow-xs"
+              @click="router.push(`/posts/${post.id}`)"
+            >
+              <div
+                class="text-lg lg:text-xl py-0.5 inline
+                  bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat bg-size-[0_2px] bg-bottom-left
+                  group-hover:bg-size-[100%_2px] transition-[background-size] duration-300 ease-in-out"
+              >
+                {{ post.title }}
               </div>
             </div>
 
             <div class="flex flex-row items-center text-sm mt-1">
-              <span class="rounded-full shrink-0 px-2 bg-slate-400/20 hover:bg-slate-400/70 text-base-content/60 hover:text-white duration-300 cursor-pointer mr-1 lg:mr-3"
-              @click="router.push(`/categories/${posts.category}`)">
-                {{ posts.category }}
-              </span>
+              <CategoryButton class="flex-none px-2 mr-1 lg:mr-3" :categoryName="post.category" />
 
               <div>
-                <span class="lg:mr-1 inline-block rounded-full text-base-content/50 px-2 duration-300 cursor-pointer dynamic-color" v-for="tag in posts.tags" :key="tag"
-                :style="{
-                '--color-tag': tag.color,
-                }"
-                @click="router.push(`/tags/${tag.name}`)">
-                  #{{ tag.name }}
-                </span>
+                <TagButton class="lg:mr-1 inline-block px-2" v-for="tag in post.tags" :tag="tag" :key="tag.name" />
               </div>
             </div>
           </div>
@@ -66,6 +61,8 @@
 <script setup>
 import { computed, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
+import CategoryButton from '@/components/Base/CategoryButton.vue'
+import TagButton from '@/components/Base/TagButton.vue'
 
 const props = defineProps({
   posts: { type: Array, default: [] }
@@ -92,12 +89,5 @@ const archiveList = computed(() => {
 </script>
 
 <style scoped>
-:root {
-  --color-tag: initial;
-}
 
-.dynamic-color:hover {
-  background-color: var(--color-tag);
-  color: white;
-}
 </style>
