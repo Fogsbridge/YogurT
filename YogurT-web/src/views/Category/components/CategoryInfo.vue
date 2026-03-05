@@ -1,16 +1,18 @@
 <template>
   <div class="panel px-6 py-4 flex flex-row items-center">
     <template v-if="isLoading">
-      <div class="skeleton w-1/2 py-1 text-base-content/60">
-        <span class="skeleton skeleton-text px-4">加载中...</span>
-      </div>
+        <span class="skeleton w-12 h-8 rounded-lg"></span>
+        <span class="text-2xl mx-3">·</span>
+        <span class="skeleton w-35 h-6 rounded-lg"></span>
     </template>
+
     <!-- 如果是空对象则表示此分类不存在 -->
     <template v-else-if="!Object.keys(category).length">
       <span class="text-2xl font-bold text-base-content">未知分类</span>
       <span class="text-2xl mx-3">·</span>
       <span class="text-base-content/80">此分类不存在</span>
     </template>
+
     <template v-else>
       <div class="text-2xl font-bold text-base-content">{{ category.name }}</div>
       <div class="text-2xl mx-3">·</div>

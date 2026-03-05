@@ -21,7 +21,7 @@
 
       <!-- 封面骨架屏 -->
       <div v-else class="skeleton h-full w-full rounded-none">
-        <div class="skeleton skeleton-text text-xl h-full flex justify-center items-center">加载中</div>
+        <div class="skeleton skeleton-text text-base-content/20 text-xl h-full flex justify-center items-center">加载中</div>
       </div>
     </div>
 
@@ -109,11 +109,11 @@
 
       <!-- 文章信息骨架屏 -->
       <div v-else class="w-full h-full rounded-none py-4 px-6 flex flex-col justify-between">
-        <div class="skeleton h-6 w-3/4"></div>
-        <div class="skeleton h-6 w-full"></div>
-        <div class="flex flex-row gap-8">
-          <div class="skeleton h-6 w-full"></div>
-          <div class="skeleton h-6 w-full"></div>
+        <div class="skeleton rounded-xl h-1/4 w-3/4"></div>
+        <div class="skeleton rounded-xl h-1/4 w-full"></div>
+        <div class="flex flex-row gap-8 h-1/4">
+          <div class="skeleton rounded-xl w-full"></div>
+          <div class="skeleton rounded-xl w-full"></div>
         </div>
       </div>
     </div>

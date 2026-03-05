@@ -4,17 +4,17 @@
       分类
     </h2>
 
-    <div v-if="isLoading" class="flex xl:flex-col gap-2 px-2 xl:px-0">
-      <div v-for="i in 3" class="skeleton w-full text-center py-2 text-base-content/60">
-        <span class="skeleton skeleton-text px-2">加载中...</span>
-      </div>
-    </div>
+    <ul v-if="isLoading" class="flex xl:flex-col gap-x-1 xl:gap-x-0 gap-y-1 text-lg">
+      <li class="skeleton inline-block rounded-lg xl:rounded-xl w-15 xl:w-full h-9 xl:h-13"></li>
+      <li class="skeleton inline-block rounded-lg xl:rounded-xl w-15 xl:w-full h-9 xl:h-13 bg-base-300/60"></li>
+      <li class="skeleton inline-block rounded-lg xl:rounded-xl w-15 xl:w-full h-9 xl:h-13 bg-base-300/60"></li>
+    </ul>
 
     <ul v-else-if="categories.length" class="flex flex-wrap xl:flex-col gap-x-1 xl:gap-x-0 gap-y-1">
       <li
         class="
           inline-block text-base-content/80 hover:bg-base-content/3 px-3 py-1 rounded-lg cursor-pointer transition-colors duration-300
-          xl:flex xl:items-center xl:justify-between xl:px-4 xl:py-3
+          xl:flex xl:items-center xl:justify-between xl:rounded-xl xl:px-4 xl:py-3
         "
         v-for="category in categories"
         :key="category.id"
@@ -28,8 +28,8 @@
       </li>
     </ul>
 
-    <div v-else class="xl:h-50 py-2">
-      <p class="text-center text-xl text-base-content/70 xl:pt-15">
+    <div v-else class="flex items-center py-2 h-9 xl:h-50">
+      <p class="w-full text-center text-lg text-base-content/70">
         暂无分类
       </p>
     </div>
