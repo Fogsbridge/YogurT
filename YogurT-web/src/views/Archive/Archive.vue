@@ -1,10 +1,7 @@
 <template>
-  <div class="mx-auto">
-    <div class="panel pl-4 lg:px-12">
-      <YearArchive :posts="posts" />
-    </div>
+  <div class="panel px-4 lg:px-12">
+    <YearArchive :posts="posts" />
   </div>
-
 </template>
 
 <script setup>
