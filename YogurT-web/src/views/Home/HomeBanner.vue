@@ -23,17 +23,10 @@
 
 <script setup>
 import Typewriter from '@/components/Base/Typewriter.vue'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
+import { useLayoutScroll } from '@/composables/useLayoutScroll.js'
 
-// 滚动到 main
-const navHeight = ref(0)
-onMounted(() => navHeight.value = document.getElementsByTagName('nav')[0].offsetHeight)
-const scrollToMain = () => {
-  window.scrollTo({
-    top: window.innerHeight - navHeight.value, // 要滚动到 main 元素顶部的话，需要减去导航栏高度
-    behavior: 'smooth'
-  })
-}
+const { scrollToMain } = useLayoutScroll()
 
 const titleArr = ref([
   'title标题1',

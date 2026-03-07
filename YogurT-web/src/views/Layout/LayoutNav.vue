@@ -1,5 +1,5 @@
 <template>
-  <nav :class="{'pt-15': !hasBanner}">
+  <nav data-role="layout-nav" :class="{'pt-15': !hasBanner}">
     <div :class="navClass">
       <div class="max-w-8xl inline-flex grow mx-auto px-6">
 
