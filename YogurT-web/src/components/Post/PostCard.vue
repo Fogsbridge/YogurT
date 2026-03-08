@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex w-full h-full panel overflow-clip group hover:ring-1 hover:ring-primary hover:cursor-pointer transition duration-300"
+    class="flex w-full h-full panel overflow-clip group hover:border-primary hover:ring-1 hover:ring-primary/60 hover:cursor-pointer transition duration-300"
     :class="[
       layout === 'horizontal'
         ? enableReverse ? 'flex-row-reverse' : 'flex-row'

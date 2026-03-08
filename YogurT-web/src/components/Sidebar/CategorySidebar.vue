@@ -1,13 +1,13 @@
 <template>
-  <div class="flex-none panel w-full px-2 py-2 xl:w-70 xl:h-fit xl:px-6 xl:py-4 xl:sticky xl:top-19">
+  <div class="flex-none panel w-70 h-fit px-6 py-4 sticky top-19">
     <h2 class="text-2xl font-bold text-base-content mb-4 hidden xl:block">
       分类
     </h2>
 
-    <ul v-if="isLoading" class="flex xl:flex-col gap-x-1 xl:gap-x-0 gap-y-1 text-lg">
-      <li class="skeleton inline-block rounded-lg xl:rounded-xl w-15 xl:w-full h-9 xl:h-13"></li>
-      <li class="skeleton inline-block rounded-lg xl:rounded-xl w-15 xl:w-full h-9 xl:h-13 bg-base-300/60"></li>
-      <li class="skeleton inline-block rounded-lg xl:rounded-xl w-15 xl:w-full h-9 xl:h-13 bg-base-300/60"></li>
+    <ul v-if="isLoading" class="flex flex-col gap-y-1 text-lg">
+      <li class="skeleton inline-block rounded-xl w-full h-13"></li>
+      <li class="skeleton inline-block rounded-xl w-full h-13 bg-base-300/60"></li>
+      <li class="skeleton inline-block rounded-xl w-full h-13 bg-base-300/60"></li>
     </ul>
 
     <ul v-else-if="categories.length" class="flex flex-wrap xl:flex-col gap-x-1 xl:gap-x-0 gap-y-1">
@@ -19,7 +19,7 @@
         v-for="category in categories"
         :key="category.id"
         :class="{ 'active': isActive(category) }"
-        @click="router.push({ name: 'categories', params: { categoryName: category.name } })"
+        @click="router.push({ name: 'CategoryDetail', params: { categoryName: category.name } })"
       >
         <span class="text-lg">{{ category.name }}</span>
         <span class="hidden bg-base-content/7 dark:bg-base-content/17 text-sm size-6 rounded-full text-center leading-6.5 shrink-0 xl:block">

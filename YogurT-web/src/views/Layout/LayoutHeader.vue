@@ -1,7 +1,7 @@
 <template>
   <header>
     <LayoutNav />
-    <RouterView name="banner" />
+    <div data-role="banner"></div>
   </header>
 </template>
 

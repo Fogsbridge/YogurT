@@ -1,12 +1,16 @@
 <template>
-  <div class="panel px-4 lg:px-12">
-    <YearArchive :posts="posts" />
+  <div>
+    <ArchivesBanner />
+    <div class="panel px-4 lg:px-12">
+      <YearArchive :posts="posts" />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import YearArchive from '@/views/Archive/components/YearArchive.vue'
+import YearArchive from '@/views/Archives/components/YearArchive.vue'
+import ArchivesBanner from '@/views/Archives/ArchivesBanner.vue'
 
 const posts = ref([
   {

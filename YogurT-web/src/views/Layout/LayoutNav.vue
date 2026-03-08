@@ -1,5 +1,5 @@
 <template>
-  <nav data-role="layout-nav" :class="{'pt-15': !hasBanner}">
+  <nav data-role="layout-nav" :class="{'pt-15': !isNavbarFloat}">
     <div :class="navClass">
       <div class="max-w-8xl inline-flex grow mx-auto px-6">
 
@@ -138,7 +138,7 @@
 import Typewriter from '@/components/Base/Typewriter.vue'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useEventListener, usePreferredColorScheme } from '@vueuse/core'
-import { useRoute } from 'vue-router'
+import { useNavbarFloat } from '@/composables/useNavbarFloat.js'
 
 // 主题切换逻辑
 const themes = ['system', 'light', 'dark']
@@ -171,33 +171,30 @@ const toggleTheme = (theme) => {
   })
 }
 
-const route = useRoute()
-const hasBanner = computed(() => route.matched.some(record => record.components.banner))
 const isScrolled = ref(false)
 
 useEventListener(window, 'scroll', () => {
   isScrolled.value = window.scrollY > 0
 })
 
+const { isNavbarFloat } = useNavbarFloat()
+
 // 计算导航栏样式
 // 通过 scrolled 判断是否产生了滚动，在有 banner 且没有产生滚动时的情况下背景应该是透明的，否则是是毛玻璃背景
 const navClass = computed(() => {
   const classList = ['fixed', 'navbar', 'top-0', 'h-15', 'border-b', 'z-100', 'p-0', 'transition-colors', 'duration-400']
 
-  if (hasBanner.value) {
+  if (isNavbarFloat.value) {
     if (isScrolled.value) {
-      // 有banner + 已滚动
       classList.push('bg-base-100/95', 'shadow-2xs', 'border-b-base-content/20', 'navbar--backdrop-blur')
     } else {
-      // 有banner + 未滚动
       classList.push('bg-transparent', 'border-b-transparent')
     }
   } else {
-    // 无banner + 未滚动
-    classList.push('bg-base-100/95', 'shadow-2xs', 'border-b-base-content/20')
     if (isScrolled.value) {
-      // 无banner + 滚动
-      classList.push('navbar--backdrop-blur')
+      classList.push('bg-base-100/95', 'border-b-base-content/20', 'shadow-2xs', 'navbar--backdrop-blur')
+    } else {
+      classList.push('bg-base-200', 'border-b-transparent')
     }
   }
 
@@ -211,11 +208,9 @@ const navBtnClass = computed(() => {
     'hover:shadow-none', 'hover:scale-110'
   ]
 
-  if (hasBanner.value && !isScrolled.value) {
-    // 有banner + 未滚动
+  if (isNavbarFloat.value && !isScrolled.value) {
     classList.push('text-white/95', 'dark:text-white/90', 'hover:bg-black/20')
   } else {
-    // 无banner + 已滚动/未滚动
     classList.push('text-base-content', 'hover:bg-base-content', 'hover:text-base-100')
   }
 

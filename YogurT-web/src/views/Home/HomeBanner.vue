@@ -1,7 +1,8 @@
 <template>
-  <div class="min-h-screen bg-[url('/images/banner/banner-2.jpg')] bg-center bg-cover">
+  <PageBanner imgUrl="/images/banner/banner-2.jpg">
     <!-- 点阵遮罩 -->
     <div class="absolute inset-0 dot-mask backdrop-brightness-80 dark:backdrop-brightness-70 transition duration-500" ></div>
+    <div class="absolute inset-0 dot-mask transition duration-500" ></div>
 
     <div class="min-h-screen h-full flex flex-col items-center">
       <div class="h-full flex flex-col justify-center items-center select-none text-white/95 dark:text-white/85 text-shadow-black/50 text-shadow-lg transition-all duration-500">
@@ -18,10 +19,11 @@
         </svg>
       </div>
     </div>
-  </div>
+  </PageBanner>
 </template>
 
 <script setup>
+import PageBanner from '@/components/Page/PageBanner.vue'
 import Typewriter from '@/components/Base/Typewriter.vue'
 import { ref } from 'vue'
 import { useLayoutScroll } from '@/composables/useLayoutScroll.js'

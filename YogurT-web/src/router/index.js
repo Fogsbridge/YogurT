@@ -3,48 +3,65 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
+    name: 'Layout',
     component: () => import('@/views/Layout/Layout.vue'),
     children: [
       {
         path: '',
+        name: 'Home',
+        meta: { title: '首页' },
         components: {
           default: () => import('@/views/Home/Home.vue'),
-          banner: () => import('@/views/Home/HomeBanner.vue'),
           sidebar: () => import('@/components/Sidebar/Sidebar.vue')
-        },
-        meta: { title: '首页'}
+        }
       },
       {
         path: '/archives',
+        name: 'Archives',
+        meta: { title: '归档' },
         components: {
-          default: () => import('@/views/Archive/Archive.vue'),
-          banner: () => import('@/views/Archive/ArchiveBanner.vue'),
+          default: () => import('@/views/Archives/Archives.vue'),
           sidebar: () => import('@/components/Sidebar/Sidebar.vue')
-        },
-        meta: { title: '归档'}
+        }
       },
       {
         path: '/categories',
-        component: () => import('@/views/Category/Category.vue'),
-        meta: { title: '分类'}
+        name: 'Categories',
+        meta: { title: '分类' },
+        components: {
+          default: () => import('@/views/Categories/Categories.vue'),
+          // sidebar: () => import('@/components/Sidebar/Sidebar.vue')
+        }
+      },
+      {
+        path: '/categories/:categoryName',
+        name: 'CategoryDetail',
+        meta: {},
+        props: { default: true, sidebar: true },
+        components: {
+          default: () => import('@/views/Categories/CategoryDetail.vue'),
+          sidebar: () => import('@/views/Categories/Sidebar.vue')
+        }
       },
       {
         path: '/tags',
-        component: () => import('@/views/Tag/Tag.vue'),
-        meta: { title: '标签'}
+        name: 'Tags',
+        meta: { title: '标签' },
+        component: () => import('@/views/Tags/Tags.vue')
       },
       {
         path: '/about',
+        name: 'About',
+        meta: { title: '关于我' },
         components: {
           default: () => import('@/views/About/About.vue'),
-          banner: () => import('@/views/About/AboutBanner.vue')
-        },
-        meta: { title: '关于我'}
+        }
       },
       {
         path: ':pathMatch(.*)*',
-        component: () => import('@/views/Errors/NotFound.vue'),
-        meta: { title: '页面迷路了'}
+        name: 'NotFound',
+        meta: { title: '页面未找到' },
+        component: () => import('@/views/Errors/NotFound.vue')
       }
     ]
   }
@@ -52,11 +69,18 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: routes
+  routes: routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    return { top: 0, behavior: 'smooth' }
+  }
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | 云桥雾的Blog`
+  document.title = to.meta.title ? `${to.meta.title} | 云桥雾的Blog` : '云桥雾的Blog'
   next()
 })
 
