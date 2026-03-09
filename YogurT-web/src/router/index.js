@@ -10,38 +10,26 @@ const routes = [
         path: '',
         name: 'Home',
         meta: { title: '首页' },
-        components: {
-          default: () => import('@/views/Home/Home.vue'),
-          sidebar: () => import('@/components/Sidebar/Sidebar.vue')
-        }
+        component: () => import('@/views/Home/Home.vue')
       },
       {
         path: '/archives',
         name: 'Archives',
         meta: { title: '归档' },
-        components: {
-          default: () => import('@/views/Archives/Archives.vue'),
-          sidebar: () => import('@/components/Sidebar/Sidebar.vue')
-        }
+        component: () => import('@/views/Archives/Archives.vue')
       },
       {
         path: '/categories',
         name: 'Categories',
         meta: { title: '分类' },
-        components: {
-          default: () => import('@/views/Categories/Categories.vue'),
-          // sidebar: () => import('@/components/Sidebar/Sidebar.vue')
-        }
+        component: () => import('@/views/Categories/Categories.vue')
       },
       {
         path: '/categories/:categoryName',
         name: 'CategoryDetail',
         meta: {},
         props: { default: true, sidebar: true },
-        components: {
-          default: () => import('@/views/Categories/CategoryDetail.vue'),
-          sidebar: () => import('@/views/Categories/Sidebar.vue')
-        }
+        component: () => import('@/views/Categories/CategoryDetail.vue')
       },
       {
         path: '/tags',
@@ -53,9 +41,7 @@ const routes = [
         path: '/about',
         name: 'About',
         meta: { title: '关于我' },
-        components: {
-          default: () => import('@/views/About/About.vue'),
-        }
+        component: () => import('@/views/About/About.vue')
       },
       {
         path: ':pathMatch(.*)*',

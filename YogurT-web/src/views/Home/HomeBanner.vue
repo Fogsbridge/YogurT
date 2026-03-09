@@ -1,5 +1,5 @@
 <template>
-  <PageBanner imgUrl="/images/banner/banner-2.jpg">
+  <BannerContainer imgUrl="/images/banner/banner-2.jpg">
     <!-- 点阵遮罩 -->
     <div class="absolute inset-0 dot-mask backdrop-brightness-80 dark:backdrop-brightness-70 transition duration-500" ></div>
     <div class="absolute inset-0 dot-mask transition duration-500" ></div>
@@ -19,11 +19,11 @@
         </svg>
       </div>
     </div>
-  </PageBanner>
+  </BannerContainer>
 </template>
 
 <script setup>
-import PageBanner from '@/components/Page/PageBanner.vue'
+import BannerContainer from '@/components/Page/BannerContainer.vue'
 import Typewriter from '@/components/Base/Typewriter.vue'
 import { ref } from 'vue'
 import { useLayoutScroll } from '@/composables/useLayoutScroll.js'

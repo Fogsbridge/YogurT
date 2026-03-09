@@ -1,5 +1,7 @@
 <template>
-  <div class="panel h-100"></div>
+  <aside data-role="layout-right-sidebar">
+
+  </aside>
 </template>
 
 <script setup>

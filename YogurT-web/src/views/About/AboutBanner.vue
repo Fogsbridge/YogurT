@@ -1,5 +1,5 @@
 <template>
-  <PageBanner>
+  <BannerContainer>
 
     <div class="w-full h-110 md:h-100 bg-primary border-b border-base-100/50">
       <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-6 pt-18 md:pt-30">
@@ -35,12 +35,12 @@
         </div>
       </div>
     </div>
-  </PageBanner>
+  </BannerContainer>
 </template>
 
 <script setup>
 
-import PageBanner from '@/components/Page/PageBanner.vue'
+import BannerContainer from '@/components/Page/BannerContainer.vue'
 </script>
 
 <style scoped>
