@@ -1,8 +1,7 @@
 <template>
-  <div
-    ref="card"
-    class="relative transform-3d cursor-pointer transition"
-    @click="toggle"
+  <div ref="card"
+       class="relative transform-3d cursor-pointer transition"
+       @click="toggle"
   >
     <div class="absolute backface-hidden w-full h-full">
       <slot name="front" />

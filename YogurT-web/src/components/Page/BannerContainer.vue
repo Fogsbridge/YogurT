@@ -1,6 +1,8 @@
 <template>
   <Teleport defer to="[data-role='banner']">
-    <div v-bind="$attrs" class="relative  bg-cover bg-center" :style="{ 'background-image': `url(${imgUrl})` }">
+    <div v-bind="$attrs" class="relative  bg-cover bg-center bg-(image:--banner-url)"
+         v-tw:--banner-url="`url(${imgUrl})`"
+    >
 <!--      <div class="absolute inset-0 bg-black/15 dark:bg-black/30 transition duration-500"></div>-->
 <!--      <div class="absolute inset-0 bg-linear-to-b from-transparent from-90% to-base-200 transition duration-500"></div>-->
 <!--      <div class="relative">-->

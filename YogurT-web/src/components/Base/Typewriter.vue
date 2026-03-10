@@ -1,7 +1,7 @@
 <template>
   <span>
     {{ displayText }}
-    <span class="animate-blink" :class="cursorClass"></span>
+    <span class="animate-blink" :class="cursorTwClass"></span>
   </span>
 </template>
 
@@ -15,7 +15,7 @@ const props = defineProps({
   deletingDelay: { type: String, default: '60' }, // 删除下一个字的延迟时间
   preDeleteDelay: { type: String, default: '2500' }, // 输入完成后，准备删除前的停顿时间
   preNextTextDelay: { type: String, default: '1000' }, // 开始执行下一段文本前的停顿时间
-  cursorClass: { type: String, default: 'pl-0.5 ml-0 bg-current' }, // 光标样式
+  cursorTwClass: { type: String, default: 'pl-0.5 ml-0 bg-current' }, // 光标样式
   blinkTime: { type: String, default: '1300ms' } // 光标闪烁时间
 })
 

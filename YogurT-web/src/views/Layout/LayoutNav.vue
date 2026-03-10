@@ -24,7 +24,7 @@
           </div>
           <RouterLink to="/" :class="[navBtnClass, 'text-xl!']">
             <div>
-              云桥雾的<Typewriter :text="['Blog', '博客']" cursorClass="bg-current pl-0.5 ml-0.5" typingDelay="300" preDeleteDelay="5000" preNextTextDelay="200" />
+              云桥雾的<Typewriter :text="['Blog', '博客']" cursorTwClass="bg-current pl-0.5 ml-0.5" typingDelay="300" preDeleteDelay="5000" preNextTextDelay="200" />
             </div>
           </RouterLink>
         </div>

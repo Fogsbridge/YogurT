@@ -39,7 +39,6 @@
 </template>
 
 <script setup>
-
 import BannerContainer from '@/components/Page/BannerContainer.vue'
 </script>
 

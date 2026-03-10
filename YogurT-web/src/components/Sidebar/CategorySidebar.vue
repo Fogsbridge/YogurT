@@ -11,15 +11,12 @@
     </ul>
 
     <ul v-else-if="categories.length" class="flex flex-wrap xl:flex-col gap-x-1 xl:gap-x-0 gap-y-1">
-      <li
-        class="
-          inline-block text-base-content/80 hover:bg-base-content/3 px-3 py-1 rounded-lg cursor-pointer transition-colors duration-300
-          xl:flex xl:items-center xl:justify-between xl:rounded-xl xl:px-4 xl:py-3
-        "
-        v-for="category in categories"
-        :key="category.id"
-        :class="{ 'active': isActive(category) }"
-        @click="router.push({ name: 'CategoryDetail', params: { categoryName: category.name } })"
+      <li class="inline-block text-base-content/80 hover:bg-base-content/3 px-3 py-1 rounded-lg cursor-pointer transition-colors duration-300
+            xl:flex xl:items-center xl:justify-between xl:rounded-xl xl:px-4 xl:py-3"
+          v-for="category in categories"
+          :key="category.id"
+          :class="{ 'active': isActive(category) }"
+          @click="$router.push({ name: 'CategoryDetail', params: { categoryName: category.name } })"
       >
         <span class="text-lg">{{ category.name }}</span>
         <span class="hidden bg-base-content/7 dark:bg-base-content/17 text-sm size-6 rounded-full text-center leading-6.5 shrink-0 xl:block">
@@ -38,7 +35,6 @@
 
 <script setup>
 import { computed, toRefs } from 'vue'
-import { useRouter } from 'vue-router'
 
 const props = defineProps({
   categories: { type: Array },
@@ -46,7 +42,6 @@ const props = defineProps({
 })
 
 const { categories, currentCategory } = toRefs(props)
-const router = useRouter()
 const isLoading = computed(() => categories.value === null)
 
 const isActive = (category) => currentCategory.value?.name === category.name
@@ -54,6 +49,7 @@ const isActive = (category) => currentCategory.value?.name === category.name
 
 <style scoped>
 @reference "@/assets/styles/index.css";
+
 .active {
   @apply bg-primary text-primary-content font-bold;
   & > span:last-child {

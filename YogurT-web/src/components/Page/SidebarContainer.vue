@@ -1,6 +1,6 @@
 <template>
   <Teleport defer :to="`[data-role='layout-${side}-sidebar']`">
-    <div v-bind="$attrs" :style="{'width': width}">
+    <div v-bind="$attrs" class="w-(--sidebar-width)" v-tw:--sidebar-width.spacing="width">
       <slot />
     </div>
   </Teleport>
@@ -13,7 +13,7 @@ defineOptions({
 
 const props = defineProps({
   side: { type: String, default: 'right', validator: v => ['left', 'right'].includes(v) },
-  width: { type: String, default: '280px' }
+  width: { type: Number, default: 70 }
 })
 </script>
 

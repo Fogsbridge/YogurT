@@ -9,7 +9,7 @@
         <img src="/images/avatar-1.jpg" alt="avatar" class="z-10 size-28 mb-8 rounded-full ring-base-100/20 ring-6 opacity-90 shadow-black/80 shadow-2xl" />
         <span class="z-10 text-3xl md:text-4xl lg:text-5xl mb-6 font-bold">云桥雾的Blog</span>
         <div class="z-10 h-5 md:h-6 lg:h-7.5 text-xl md:text-2xl lg:text-3xl mb-10">
-          <Typewriter :text="titleArr" cursorClass="bg-blue-400 pl-0.5 ml-0.5" deletingDelay="40" preDeleteDelay="4000" preNextTextDelay="500" />
+          <Typewriter :text="titleArr" cursorTwClass="bg-blue-400 pl-0.5 ml-0.5" deletingDelay="40" preDeleteDelay="4000" preNextTextDelay="500" />
         </div>
       </div>
 
