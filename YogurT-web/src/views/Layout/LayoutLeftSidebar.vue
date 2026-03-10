@@ -1,5 +1,5 @@
 <template>
-  <aside data-role="layout-left-sidebar">
+  <aside data-role="layout-left-sidebar" class="hidden has-[*]:lg:block">
 
   </aside>
 </template>
