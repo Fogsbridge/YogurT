@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import BannerContainer from '@/components/Page/BannerContainer.vue'
+import BannerContainer from '@/components/Section/BannerContainer.vue'
 </script>
 
 <style scoped>

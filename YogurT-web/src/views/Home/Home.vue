@@ -10,7 +10,7 @@
 
 <script setup>
 import HomeBanner from '@/views/Home/HomeBanner.vue'
-import SidebarContainer from '@/components/Page/SidebarContainer.vue'
+import SidebarContainer from '@/components/Section/SidebarContainer.vue'
 import Sidebar from '@/components/Sidebar/Sidebar.vue'
 </script>
 
