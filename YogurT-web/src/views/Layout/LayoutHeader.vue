@@ -1,7 +1,7 @@
 <template>
   <header>
     <LayoutNav />
-    <div data-role="banner"></div>
+    <div data-role="immersive-banner"></div>
   </header>
 </template>
 

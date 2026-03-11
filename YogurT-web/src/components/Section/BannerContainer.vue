@@ -1,33 +1,41 @@
 <template>
-  <Teleport defer to="[data-role='banner']">
-    <div v-bind="$attrs" class="relative  bg-cover bg-center bg-(image:--banner-url)"
-         v-tw:--banner-url="`url(${imgUrl})`"
+  <Teleport defer :to="teleportTarget">
+    <div class="relative" :class="mode === 'content' ? 'panel overflow-clip' : ''"
+         v-bind="$attrs"
     >
-<!--      <div class="absolute inset-0 bg-black/15 dark:bg-black/30 transition duration-500"></div>-->
-<!--      <div class="absolute inset-0 bg-linear-to-b from-transparent from-90% to-base-200 transition duration-500"></div>-->
-<!--      <div class="relative">-->
-        <slot />
-<!--      </div>-->
+      <slot />
     </div>
   </Teleport>
 </template>
 
 <script setup>
 import { useNavbarFloat } from '@/composables/useNavbarFloat.js'
-import { onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted, toRefs } from 'vue'
 
 defineOptions({
   inheritAttrs: false
 })
 
 const props = defineProps({
-  imgUrl: { type: String, default: '/images/banner/banner-5.jpg' }
+  mode: { type: String, required: true, validator: v => ['immersive', 'content'].includes(v) }
+})
+
+const { mode } = toRefs(props)
+
+const teleportTarget = computed(() => {
+  switch (mode.value) {
+    case 'immersive': return '[data-role="immersive-banner"]'
+    case 'content': return '[data-role="content-banner"]'
+    default: return
+  }
 })
 
 const { setNavbarFloat } = useNavbarFloat()
 
 onMounted(() => {
-  setNavbarFloat(true)
+  if (mode.value === 'immersive') {
+    setNavbarFloat(true)
+  }
 })
 
 onUnmounted(() => {

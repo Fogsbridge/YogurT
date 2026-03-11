@@ -1,6 +1,6 @@
 <template>
   <Teleport defer :to="`[data-role='layout-${side}-sidebar']`">
-    <div v-bind="$attrs" class="w-(--sidebar-width)" v-tw:--sidebar-width.spacing="width">
+    <div v-bind="$attrs" class="w-(--sidebar-width) space-y-4" v-tw:--sidebar-width.spacing="width">
       <slot />
     </div>
   </Teleport>
