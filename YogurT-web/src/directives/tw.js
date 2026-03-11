@@ -1,5 +1,6 @@
 /**
- * tailwind 默认定义了一些 css 变量，为了统一单位，定义了此指令
+ * tailwind 默认定义了一些 css 变量,如 --spacing 等等
+ * 由于 tw 无法动态拼接类名，同时为了统一单位与 tw 保持一致，定义了此指令
  */
 export const vTw = {
   mounted(el, binding) {
@@ -35,6 +36,10 @@ const dispatcher = (el, binding) => {
       applySpacing(el, arg, value)
       break
 
+    case 'grid-cols':
+      applyGridCols(el, arg, value)
+      break
+
     default:
       break
   }
@@ -61,4 +66,16 @@ const applySpacing = (el, prop, val) => {
   if (isNaN(Number(val))) return
 
   el.style.setProperty(prop, `calc(${val} * var(--spacing))`)
+}
+
+/**
+ * 为元素应用 repeat(值, minmax(0, 1fr)) 样式
+ * @param el  - 元素对象
+ * @param prop - CSS 属性名
+ * @param val - CSS 属性值
+ */
+const applyGridCols = (el, prop, val) => {
+  if (isNaN(Number(val))) return
+
+  el.style.setProperty(prop, `repeat(${val}, minmax(0, 1fr))`)
 }
