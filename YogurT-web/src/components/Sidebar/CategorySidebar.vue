@@ -1,31 +1,41 @@
 <template>
-  <div class="flex-none panel w-70 h-fit px-6 py-4 sticky top-19">
-    <h2 class="text-2xl font-bold text-base-content mb-4 hidden xl:block">
+  <div class="panel h-fit px-6 py-4 min-h-50 w-full">
+    <h2 class="text-xl font-bold text-base-content mb-4">
       分类
     </h2>
 
     <ul v-if="isLoading" class="flex flex-col gap-y-1 text-lg">
-      <li class="skeleton inline-block rounded-xl w-full h-13"></li>
-      <li class="skeleton inline-block rounded-xl w-full h-13 bg-base-300/60"></li>
-      <li class="skeleton inline-block rounded-xl w-full h-13 bg-base-300/60"></li>
+      <li v-for="i in 3" class="skeleton inline-block rounded-xl w-full h-13 bg-base-300/60"></li>
     </ul>
 
-    <ul v-else-if="categories.length" class="flex flex-wrap xl:flex-col gap-x-1 xl:gap-x-0 gap-y-1">
-      <li class="inline-block text-base-content/80 hover:bg-base-content/3 px-3 py-1 rounded-lg cursor-pointer transition-colors duration-300
-            xl:flex xl:items-center xl:justify-between xl:rounded-xl xl:px-4 xl:py-3"
-          v-for="category in categories"
-          :key="category.id"
-          :class="{ 'active': isActive(category) }"
-          @click="$router.push({ name: 'CategoryDetail', params: { categoryName: category.name } })"
+    <div v-else-if="categories.length" class="relative bg-linear-to-t from-base-100 to-transparent ">
+      <ul class="flex flex-wrap flex-col gap-y-1"
+          :class="pinnedCategories.length > maxItems ? 'after:absolute after:bottom-14 after:h-40 after:bg-linear-to-t after:from-base-100 after:to-transparent after:w-full after:pointer-events-none' : ''"
       >
-        <span class="text-lg">{{ category.name }}</span>
-        <span class="hidden bg-base-content/7 dark:bg-base-content/17 text-sm size-6 rounded-full text-center leading-6.5 shrink-0 xl:block">
-          {{ category.postsCount }}
-        </span>
-      </li>
-    </ul>
+        <li class="w-full flex items-center justify-between rounded-xl text-base-content/85 hover:bg-base-content/7 px-4 py-3 cursor-pointer transition-colors duration-300"
+            v-for="category in pinnedCategories.slice(0, maxItems)"
+            :key="category.id"
+            :class="{ 'active': isActive(category) }"
+            @click="$router.push({ name: 'CategoryDetail', params: { categoryName: category.name } })"
+        >
+          <span class="flex-1 text-lg truncate">{{ category.name }}</span>
+          <span class="flex-none bg-base-content/7 dark:bg-base-content/17 text-sm size-6 rounded-full text-center leading-6.5 shrink-0">
+            {{ category.postsCount }}
+          </span>
+        </li>
+      </ul>
 
-    <div v-else class="flex items-center py-2 h-9 xl:h-50">
+      <div>
+        <div class="mt-2 text-center font-bold py-3 rounded-xl border-2 border-base-content/20 text-base-content/60 hover:border-primary hover:text-primary duration-300 cursor-pointer"
+             :class="pinnedCategories.length <= maxItems ? 'hidden' : ''"
+             @click.stop="$router.push({ name:'Categories' })"
+        >
+          更多分类
+        </div>
+      </div>
+    </div>
+
+    <div v-else class="mt-12">
       <p class="w-full text-center text-lg text-base-content/70">
         暂无分类
       </p>
@@ -34,17 +44,49 @@
 </template>
 
 <script setup>
-import { computed, toRefs } from 'vue'
+import { computed, onMounted, ref, toRefs } from 'vue'
 
 const props = defineProps({
-  categories: { type: Array },
-  currentCategory: { type: Object }
+  currentCategory: { type: Object },
+  maxItems: { type: Number, default: 6 }
 })
 
-const { categories, currentCategory } = toRefs(props)
+const { currentCategory, maxItems } = toRefs(props)
+const categories = ref(null)
+
+// 当前分类置顶后的数组
+const pinnedCategories = computed(() => {
+  const index = categories.value?.findIndex(item => item.id === currentCategory.value?.id);
+  if (index <= 0) {
+    return categories.value.slice();
+  }
+
+  return [
+    currentCategory.value,
+    ...categories.value.slice(0, index),
+    ...categories.value.slice(index + 1)
+  ]
+})
+
+onMounted(() => {
+  setTimeout(() => {
+    categories.value = [
+      { id: '1001', name: '技术', postsCount: 2, coverUrl: '/images/category-cover/cover-1.jpg'},
+      { id: '1002', name: '日常', postsCount: 0, coverUrl: ''},
+      { id: '1003', name: '胡说八道', postsCount: 1, coverUrl: '/images/category-cover/cover-4.jpg'},
+      { id: '1004', name: '开发', postsCount: 3, coverUrl: ''},
+      { id: '1005', name: '日常日常日常日常日常日常日常日常', postsCount: 0},
+      { id: '1006', name: '日常', postsCount: 0, coverUrl: '/images/category-cover/cover-1.jpg'},
+      { id: '1007', name: '日常', postsCount: 0, coverUrl: '/images/category-cover/cover-1.jpg'},
+      { id: '1008', name: '日常', postsCount: 0, coverUrl: '/images/category-cover/cover-1.jpg'},
+      { id: '1009', name: '日常', postsCount: 0, coverUrl: '/images/category-cover/cover-3.png'}
+    ]
+  }, 500)
+})
+
 const isLoading = computed(() => categories.value === null)
 
-const isActive = (category) => currentCategory.value?.name === category.name
+const isActive = (category) => currentCategory.value?.id === category.id
 </script>
 
 <style scoped>

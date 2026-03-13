@@ -1,8 +1,8 @@
 <template>
   <div class="panel">
     <HomeBanner />
-    <SidebarContainer side="left">
-      <Sidebar />
+    <SidebarContainer>
+      <CategorySidebar />
     </SidebarContainer>
     <h1 class="text-center text-5xl">Home</h1>
   </div>
@@ -11,7 +11,7 @@
 <script setup>
 import HomeBanner from '@/views/Home/HomeBanner.vue'
 import SidebarContainer from '@/components/Section/SidebarContainer.vue'
-import Sidebar from '@/components/Sidebar/Sidebar.vue'
+import CategorySidebar from '@/components/Sidebar/CategorySidebar.vue'
 </script>
 
 <style scoped>

@@ -1,6 +1,11 @@
 <template>
   <div>
     <ArchivesBanner />
+
+    <SidebarContainer>
+      <CategorySidebar />
+    </SidebarContainer>
+
     <div class="panel px-4 lg:px-12">
       <YearArchive :posts="posts" />
     </div>
@@ -11,6 +16,8 @@
 import { ref } from 'vue';
 import YearArchive from '@/views/Archives/components/YearArchive.vue'
 import ArchivesBanner from '@/views/Archives/ArchivesBanner.vue'
+import SidebarContainer from '@/components/Section/SidebarContainer.vue'
+import CategorySidebar from '@/components/Sidebar/CategorySidebar.vue'
 
 const posts = ref([
   {

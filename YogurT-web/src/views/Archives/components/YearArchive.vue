@@ -1,11 +1,11 @@
 <template>
   <div class="pt-2 lg:pt-6 pb-4 lg:pb-12 transition duration-500">
     <div v-for="archive in archiveList" :key="archive.year">
-      <div class="flex flex-row items-center gap-2">
-        <h2 class="text-3xl lg:text-4xl font-bold my-2 lg:my-4">
+      <div class="flex flex-row items-center gap-2 md:gap-4 my-2 lg:my-4">
+        <h2 class="text-3xl lg:text-4xl font-bold">
           {{ archive.year }}
         </h2>
-        <span class="text-3xl">·</span>
+        <span class="size-1 md:size-1.5 rounded-full bg-base-content/70"></span>
         <span class="text-base font-medium">{{ archive.posts.length }} 篇文章</span>
       </div>
 

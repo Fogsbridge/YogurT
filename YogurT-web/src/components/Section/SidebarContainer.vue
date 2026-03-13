@@ -1,7 +1,10 @@
 <template>
   <Teleport defer :to="`[data-role='layout-${side}-sidebar']`">
-    <div v-bind="$attrs" class="w-(--sidebar-width) space-y-4" v-tw:--sidebar-width.spacing="width">
-      <slot />
+    <div v-bind="$attrs" class="w-(--sidebar-width) h-full flex flex-col gap-y-4" v-tw:--sidebar-width.spacing="width">
+      <slot name="default" />
+      <div class="sticky top-19 w-full flex flex-col gap-y-4">
+        <slot name="sticky" />
+      </div>
     </div>
   </Teleport>
 </template>
