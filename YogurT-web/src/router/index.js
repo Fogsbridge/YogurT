@@ -27,8 +27,8 @@ const routes = [
       {
         path: '/categories/:categoryName',
         name: 'CategoryDetail',
-        meta: {},
-        props: { default: true, sidebar: true },
+        meta: { title: '分类' },
+        props: true,
         component: () => import('@/views/Categories/CategoryDetail.vue')
       },
       {

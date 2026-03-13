@@ -1,8 +1,6 @@
 <template>
-  <div class="group relative h-(--card-height) w-(--card-width) panel bg-clip-padding overflow-clip cursor-pointer
+  <div class="group relative panel bg-clip-padding overflow-clip cursor-pointer
           hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-linear-to-br from-(--from-color) to-(--to-color)"
-       v-tw:--card-height.spacing="height"
-       v-tw:--card-width.spacing="width"
        v-tw:--from-color="startColor"
        v-tw:--to-color="endColor"
        @click.stop="$router.push({ name:'CategoryDetail', params: { categoryName: category.name } })"
@@ -37,8 +35,6 @@ import { ref } from 'vue'
 
 const props = defineProps({
   category: { type: Object },
-  width: { type: Number },
-  height: { type: Number }
 })
 
 const startColor = ref('')

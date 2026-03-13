@@ -1,21 +1,21 @@
 <template>
-  <div
-    class="flex w-full h-full panel overflow-clip group hover:border-primary hover:ring-1 hover:ring-primary/60 hover:cursor-pointer transition duration-300"
-    :class="[
-      layout === 'horizontal'
-        ? enableReverse ? 'flex-row-reverse' : 'flex-row'
-        : !enableReverse ? 'flex-col' : 'flex-col-reverse'
-    ]"
-    @click="router.push({ name: 'posts', params: { postId: post.id } })"
+  <div class="flex w-full panel overflow-clip group hover:border-primary hover:ring-1 hover:ring-primary/60 hover:cursor-pointer transition duration-300"
+       :class="[
+         layout === 'horizontal'
+         ? enableReverse ? 'flex-row-reverse' : 'flex-row'
+         : !enableReverse ? 'flex-col' : 'flex-col-reverse'
+       ]"
+       @click="router.push({ name: 'posts', params: { postId: post.id } })"
   >
     <!-- 封面 -->
-    <div :style="{ 'flex-basis': `${coverRatio}%` }" class="min-w-0 min-h-0 ">
+    <div class="min-w-0 min-h-0 basis-(--cover-ratio)"
+         v-tw:--cover-ratio="`${coverRatio}%`"
+    >
       <div v-if="post" class="overflow-clip">
-        <img
-          :src="post.coverUrl"
-          class="w-full h-full object-cover group-hover:scale-115 duration-500 ease-in-out"
-          alt="文章封面"
-          loading="lazy"
+        <img :src="post.coverUrl"
+             class="w-full h-full object-cover group-hover:scale-115 duration-500 ease-in-out"
+             alt="文章封面"
+             loading="lazy"
         />
       </div>
 
@@ -26,7 +26,9 @@
     </div>
 
     <!-- 文章信息 -->
-    <div :style="{ 'flex-basis': `${contentRatio}%` }" class="min-w-0 min-h-0">
+    <div class="min-w-0 min-h-0 basis-(--content-ratio)"
+         v-tw:--content-ratio="`${contentRatio}%`"
+    >
       <div v-if="post" class="w-full h-full py-4 px-6 flex flex-col gap-1 justify-between">
         <div>
           <div class="flex flex-row items-center text-sm gap-2">
@@ -38,24 +40,17 @@
 
           <!-- 文章标题 -->
           <!-- 如果关闭描述，则标题占两行 -->
-          <h3
-            class="text-lg text-base-content/85 dark:text-base-content/95 font-bold mt-1 group-hover:text-primary duration-300"
-            :class="{ 'line-clamp-2': !enableDescription, 'truncate': enableDescription }"
+          <h3 class="text-lg text-base-content/85 dark:text-base-content/95 font-bold mt-1 group-hover:text-primary duration-300"
+              :class="{ 'line-clamp-2': !enableDescription, 'truncate': enableDescription }"
           >
             {{ post.title }}
           </h3>
         </div>
 
         <!-- 文章描述 -->
-        <p
-          class="text-base-content/50 text-sm -mt-3 group-hover:text-primary/80 duration-300"
-          :style="{
-          'overflow': 'hidden',
-          'display': '-webkit-box',
-          '-webkit-box-orient': 'vertical',
-          '-webkit-line-clamp': descriptionLineCount
-          }"
-          v-if="enableDescription"
+        <p class="text-base-content/50 text-sm -mt-3 group-hover:text-primary/80 duration-300 line-clamp-(--description-line-count)"
+           v-tw:--description-line-count="descriptionLineCount"
+           v-if="enableDescription"
         >
           {{ post.description }}
         </p>
@@ -121,8 +116,8 @@
 </template>
 
 <script setup>
-import CategoryButton from '@/components/Base/CategoryButton.vue'
-import TagButton from '@/components/Base/TagButton.vue'
+import CategoryButton from '@/components/Category/CategoryButton.vue'
+import TagButton from '@/components/Tag/TagButton.vue'
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
