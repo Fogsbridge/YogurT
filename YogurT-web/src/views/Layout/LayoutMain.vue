@@ -1,13 +1,20 @@
 <template>
-  <main class="max-w-8xl mx-auto p-2 sm:p-4 lg:p-6 min-h-3/5 flex flex-row gap-4 isolate">
-    <RouterView class="grow" />
+  <main data-role="layout-main" class="max-w-8xl mx-auto space-y-4 p-4 md:px-6 lg:px-8 min-h-3/5">
+    <div data-role="content-banner" class="hidden has-[*]:block"></div>
 
-    <RouterView name="sidebar" class="hidden lg:block w-70" />
+    <div class="flex flex-row gap-4">
+      <LayoutLeftSidebar class="flex-none" />
+
+      <RouterView class="flex-1" />
+
+      <LayoutRightSidebar class="flex-none" />
+    </div>
   </main>
 </template>
 
 <script setup>
-
+import LayoutRightSidebar from '@/views/Layout/LayoutRightSidebar.vue'
+import LayoutLeftSidebar from '@/views/Layout/LayoutLeftSidebar.vue'
 </script>
 
 <style scoped>

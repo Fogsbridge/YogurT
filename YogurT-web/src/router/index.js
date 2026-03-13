@@ -3,48 +3,51 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
+    name: 'Layout',
     component: () => import('@/views/Layout/Layout.vue'),
     children: [
       {
         path: '',
-        components: {
-          default: () => import('@/views/Home/Home.vue'),
-          banner: () => import('@/views/Home/HomeBanner.vue'),
-          sidebar: () => import('@/components/Sidebar/Sidebar.vue')
-        },
-        meta: { title: '首页'}
+        name: 'Home',
+        meta: { title: '首页' },
+        component: () => import('@/views/Home/Home.vue')
       },
       {
         path: '/archives',
-        components: {
-          default: () => import('@/views/Archive/Archive.vue'),
-          banner: () => import('@/views/Archive/ArchiveBanner.vue'),
-          sidebar: () => import('@/components/Sidebar/Sidebar.vue')
-        },
-        meta: { title: '归档'}
+        name: 'Archives',
+        meta: { title: '归档' },
+        component: () => import('@/views/Archives/Archives.vue')
       },
       {
         path: '/categories',
-        component: () => import('@/views/Category/Category.vue'),
-        meta: { title: '分类'}
+        name: 'Categories',
+        meta: { title: '分类' },
+        component: () => import('@/views/Categories/Categories.vue')
+      },
+      {
+        path: '/categories/:categoryName',
+        name: 'CategoryDetail',
+        meta: { title: '分类' },
+        props: true,
+        component: () => import('@/views/Categories/CategoryDetail.vue')
       },
       {
         path: '/tags',
-        component: () => import('@/views/Tag/Tag.vue'),
-        meta: { title: '标签'}
+        name: 'Tags',
+        meta: { title: '标签' },
+        component: () => import('@/views/Tags/Tags.vue')
       },
       {
         path: '/about',
-        components: {
-          default: () => import('@/views/About/About.vue'),
-          banner: () => import('@/views/About/AboutBanner.vue')
-        },
-        meta: { title: '关于我'}
+        name: 'About',
+        meta: { title: '关于我' },
+        component: () => import('@/views/About/About.vue')
       },
       {
         path: ':pathMatch(.*)*',
-        component: () => import('@/views/Errors/NotFound.vue'),
-        meta: { title: '页面迷路了'}
+        name: 'NotFound',
+        meta: { title: '页面未找到' },
+        component: () => import('@/views/Errors/NotFound.vue')
       }
     ]
   }
@@ -52,11 +55,18 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: routes
+  routes: routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    return { top: 0, behavior: 'smooth' }
+  }
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | 云桥雾的Blog`
+  document.title = to.meta.title ? `${to.meta.title} | 云桥雾的Blog` : '云桥雾的Blog'
   next()
 })
 
