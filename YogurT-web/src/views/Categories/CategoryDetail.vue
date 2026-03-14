@@ -10,16 +10,7 @@
              :description="categoryPosts?.length ? `共 ${categoryPosts?.length} 篇文章` : ''"
     />
 
-    <Pagination :items="categoryPosts" v-slot="{ item }" class="grid gap-2 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
-      <PostCard :post="item" class="h-82 lg:h-62"
-                :layout="postCardProps.layout"
-                :coverRatio="postCardProps.coverRatio"
-                :contentRatio="postCardProps.contentRatio"
-                :descriptionLineCount="postCardProps.descriptionLineCount"
-                :enableLikeCount="postCardProps.enableLikeCount"
-                :enableCommentCount="postCardProps.enableCommentCount"
-      />
-    </Pagination>
+    <CategoryPostsGrid :categoryPosts="categoryPosts" />
   </div>
 </template>
 
@@ -27,33 +18,13 @@
 import InfoBar from '@/components/Base/InfoBar.vue'
 import SidebarContainer from '@/components/Layout/components/SidebarContainer.vue'
 import CategoriesSidebar from '@/components/Business/Sidebar/CategoriesSidebar.vue'
-import Pagination from '@/components/Ui/Pagination.vue'
-import PostCard from '@/components/Business/Post/PostCard.vue'
+import CategoryPostsGrid from '@/views/Categories/components/CategoryPostsGrid.vue'
 import { onMounted, ref, toRefs, watch, watchEffect } from 'vue'
-import { useResponsiveProps } from '@/composables/useResponsiveProps.js'
 
 const props = defineProps({
   categoryName: { type: String }
 })
 
-const postCardProps = useResponsiveProps({
-  'xs': {
-    layout: 'vertical',
-    coverRatio: 55,
-    contentRatio: 45,
-    descriptionLineCount: 1,
-    enableLikeCount: false,
-    enableCommentCount: false
-  },
-  'lg': {
-    layout: 'horizontal',
-    coverRatio: 35,
-    contentRatio: 65,
-    descriptionLineCount: 4,
-    enableLikeCount: true,
-    enableCommentCount: true
-  }
-})
 
 const { categoryName } = toRefs(props)
 const categories = ref(null)
