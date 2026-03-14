@@ -2,15 +2,15 @@
   <div class="space-y-2 md:space-y-4">
     <InfoBar title="文章分类" :description="categories ? `共 ${categories.length} 条分类` : ''"/>
 
-    <CardGrid :items="categories" v-slot="{ item }" class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <Pagination :items="categories" v-slot="{ item }" class="grid gap-2 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <CategoryCard :category="item" class="h-70 xl:h-80" />
-    </CardGrid>
+    </Pagination>
   </div>
 </template>
 
 <script setup>
-import CardGrid from '@/components/Base/CardGrid.vue'
-import CategoryCard from '@/components/Category/CategoryCard.vue'
+import Pagination from '@/components/Ui/Pagination.vue'
+import CategoryCard from '@/components/Business/Category/CategoryCard.vue'
 import InfoBar from '@/components/Base/InfoBar.vue'
 import { onMounted, ref } from 'vue'
 

@@ -116,8 +116,8 @@
 </template>
 
 <script setup>
-import CategoryButton from '@/components/Category/CategoryButton.vue'
-import TagButton from '@/components/Tag/TagButton.vue'
+import CategoryButton from '@/components/Business/Category/CategoryButton.vue'
+import TagButton from '@/components/Business/Tag/TagButton.vue'
 import { useRouter } from 'vue-router'
 
 const props = defineProps({

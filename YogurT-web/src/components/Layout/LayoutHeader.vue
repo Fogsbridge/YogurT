@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import LayoutNav from '@/views/Layout/LayoutNav.vue'
+import LayoutNav from '@/components/Layout/LayoutNav.vue'
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <template>
-  <ul class="grid gap-2 md:gap-4">
+  <ul>
     <li v-for="(item, index) in items" :key="index">
       <slot v-bind="{item, index}" />
     </li>

@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import BannerContainer from '@/components/Section/BannerContainer.vue'
+import BannerContainer from '@/components/Layout/components/BannerContainer.vue'
 import Typewriter from '@/components/Base/Typewriter.vue'
 import { ref } from 'vue'
 import { useLayoutScroll } from '@/composables/useLayoutScroll.js'

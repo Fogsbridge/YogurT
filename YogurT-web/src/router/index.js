@@ -4,7 +4,7 @@ const routes = [
   {
     path: '/',
     name: 'Layout',
-    component: () => import('@/views/Layout/Layout.vue'),
+    component: () => import('@/components/Layout/Layout.vue'),
     children: [
       {
         path: '',
@@ -45,9 +45,27 @@ const routes = [
         component: () => import('@/views/Tags/TagDetail.vue')
       },
       {
+        path: '/moments',
+        name: 'Moments',
+        meta: { title: '瞬间' },
+        component: () => import('@/views/Moments/Moments.vue')
+      },
+      {
+        path: '/links',
+        name: 'Links',
+        meta: { title: '友链' },
+        component: () => import('@/views/Links/Links.vue')
+      },
+      {
+        path: '/messages',
+        name: 'Messages',
+        meta: { title: '留言' },
+        component: () => import('@/views/Messages/Messages.vue')
+      },
+      {
         path: '/about',
         name: 'About',
-        meta: { title: '关于我' },
+        meta: { title: '关于' },
         component: () => import('@/views/About/About.vue')
       },
       {

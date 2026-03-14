@@ -10,7 +10,7 @@
              :description="tagPosts?.length ? `共 ${tagPosts?.length} 篇文章` : ''"
     />
 
-    <CardGrid :items="tagPosts" v-slot="{ item }" class="grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
+    <Pagination :items="tagPosts" v-slot="{ item }" class="grid gap-2 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
       <PostCard :post="item" class="h-82 lg:h-62"
                 :layout="postCardProps.layout"
                 :coverRatio="postCardProps.coverRatio"
@@ -19,16 +19,16 @@
                 :enableLikeCount="postCardProps.enableLikeCount"
                 :enableCommentCount="postCardProps.enableCommentCount"
       />
-    </CardGrid>
+    </Pagination>
   </div>
 </template>
 
 <script setup>
-import SidebarContainer from '@/components/Section/SidebarContainer.vue'
-import TagsSidebar from '@/components/Sidebar/TagsSidebar.vue'
+import SidebarContainer from '@/components/Layout/components/SidebarContainer.vue'
+import TagsSidebar from '@/components/Business/Sidebar/TagsSidebar.vue'
 import InfoBar from '@/components/Base/InfoBar.vue'
-import PostCard from '@/components/Post/PostCard.vue'
-import CardGrid from '@/components/Base/CardGrid.vue'
+import PostCard from '@/components/Business/Post/PostCard.vue'
+import Pagination from '@/components/Ui/Pagination.vue'
 import { onMounted, ref, toRefs, watch, watchEffect } from 'vue'
 import { useResponsiveProps } from '@/composables/useResponsiveProps.js'
 

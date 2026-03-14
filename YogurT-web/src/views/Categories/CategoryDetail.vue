@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="space-y-2 md:space-y-4">
     <SidebarContainer>
       <template #sticky>
         <CategoriesSidebar :currentCategory="currentCategory" />
@@ -10,7 +10,7 @@
              :description="categoryPosts?.length ? `共 ${categoryPosts?.length} 篇文章` : ''"
     />
 
-    <CardGrid :items="categoryPosts" v-slot="{ item }" class="mt-2 md:mt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
+    <Pagination :items="categoryPosts" v-slot="{ item }" class="grid gap-2 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
       <PostCard :post="item" class="h-82 lg:h-62"
                 :layout="postCardProps.layout"
                 :coverRatio="postCardProps.coverRatio"
@@ -19,16 +19,16 @@
                 :enableLikeCount="postCardProps.enableLikeCount"
                 :enableCommentCount="postCardProps.enableCommentCount"
       />
-    </CardGrid>
+    </Pagination>
   </div>
 </template>
 
 <script setup>
 import InfoBar from '@/components/Base/InfoBar.vue'
-import SidebarContainer from '@/components/Section/SidebarContainer.vue'
-import CategoriesSidebar from '@/components/Sidebar/CategoriesSidebar.vue'
-import CardGrid from '@/components/Base/CardGrid.vue'
-import PostCard from '@/components/Post/PostCard.vue'
+import SidebarContainer from '@/components/Layout/components/SidebarContainer.vue'
+import CategoriesSidebar from '@/components/Business/Sidebar/CategoriesSidebar.vue'
+import Pagination from '@/components/Ui/Pagination.vue'
+import PostCard from '@/components/Business/Post/PostCard.vue'
 import { onMounted, ref, toRefs, watch, watchEffect } from 'vue'
 import { useResponsiveProps } from '@/composables/useResponsiveProps.js'
 
