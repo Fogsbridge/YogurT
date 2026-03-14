@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div class="space-y-2 md:space-y-4">
     <SidebarContainer>
       <template #sticky>
-        <CategoriesSidebar :currentCategory="currentCategory" />
+        <TagsSidebar :currentTag="currentTag" />
       </template>
     </SidebarContainer>
 
-    <InfoBar :title="currentCategory ? `分类 / ${currentCategory.name}` : ''"
-             :description="categoryPosts?.length ? `共 ${categoryPosts?.length} 篇文章` : ''"
+    <InfoBar :title="currentTag ? `标签 / ${currentTag.name}` : ''"
+             :description="tagPosts?.length ? `共 ${tagPosts?.length} 篇文章` : ''"
     />
 
-    <CardGrid :items="categoryPosts" v-slot="{ item }" class="mt-2 md:mt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
+    <CardGrid :items="tagPosts" v-slot="{ item }" class="grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
       <PostCard :post="item" class="h-82 lg:h-62"
                 :layout="postCardProps.layout"
                 :coverRatio="postCardProps.coverRatio"
@@ -24,16 +24,16 @@
 </template>
 
 <script setup>
-import InfoBar from '@/components/Base/InfoBar.vue'
 import SidebarContainer from '@/components/Section/SidebarContainer.vue'
-import CategoriesSidebar from '@/components/Sidebar/CategoriesSidebar.vue'
-import CardGrid from '@/components/Base/CardGrid.vue'
+import TagsSidebar from '@/components/Sidebar/TagsSidebar.vue'
+import InfoBar from '@/components/Base/InfoBar.vue'
 import PostCard from '@/components/Post/PostCard.vue'
+import CardGrid from '@/components/Base/CardGrid.vue'
 import { onMounted, ref, toRefs, watch, watchEffect } from 'vue'
 import { useResponsiveProps } from '@/composables/useResponsiveProps.js'
 
 const props = defineProps({
-  categoryName: { type: String }
+  tagName: { type: String }
 })
 
 const postCardProps = useResponsiveProps({
@@ -55,42 +55,49 @@ const postCardProps = useResponsiveProps({
   }
 })
 
-const { categoryName } = toRefs(props)
-const categories = ref(null)
-const categoryPosts = ref(null)
-const currentCategory = ref(null)
+const { tagName } = toRefs(props)
+const tags = ref(null)
+const tagPosts = ref(null)
+const currentTag = ref(null)
 
 onMounted(() => {
   setTimeout(() => {
-    categories.value = [
-      { id: '1001', name: '技术', postsCount: 3, coverUrl: '/images/category-cover/cover-1.jpg'},
-      { id: '1002', name: '生活', postsCount: 1, coverUrl: '/images/category-cover/cover-2.jpg'},
-      { id: '1003', name: '学习', postsCount: 2, coverUrl: '/images/category-cover/cover-3.png' },
-      { id: '1004', name: '旅行', postsCount: 1, coverUrl: '/images/category-cover/cover-4.jpg' },
-      { id: '1005', name: '胡说八道', postsCount: 1, coverUrl: '/images/category-cover/cover-5.png'},
-      { id: '1006', name: '开发', postsCount: 3, coverUrl: ''}
+    tags.value = [
+      { id: '1001', name: 'Java', postsCount: 2, color: 'oklch(70.4% 0.191 22.216)' },
+      { id: '1002', name: 'Python', postsCount: 14, color: 'oklch(75% 0.18 145)' },
+      { id: '1003', name: 'JavaScript', postsCount: 10, color: 'oklch(80% 0.15 85)' },
+      { id: '1004', name: '旅行摄影', postsCount: 7, color: 'oklch(72% 0.12 240)' },
+      { id: '1005', name: '美食探店', postsCount: 8, color: 'oklch(78% 0.2 40)' },
+      { id: '1006', name: '学习笔记', postsCount: 3, color: 'oklch(68% 0.14 200)' },
+      { id: '1007', name: '健身', postsCount: 1, color: 'oklch(73% 0.17 120)' },
+      { id: '1008', name: '阅读', postsCount: 21, color: 'oklch(76% 0.13 280)' },
+      { id: '1009', name: '科技', postsCount: 22, color: 'oklch(69% 0.16 300)' },
+      { id: '1010', name: '心情', postsCount: 6, color: 'oklch(82% 0.1 30)' },
+      { id: '1012', name: 'Vue', postsCount: 9, color: 'oklch(79.2% 0.209 151.711 / .8)' },
+      { id: '1013', name: '植发', postsCount: 12, color: 'oklch(70.7% 0.165 254.624 / .8)' },
+      { id: '1014', name: 'Spring', postsCount: 5, color: 'oklch(79.2% 0.209 151.711 / .8)' }
     ]
   }, 500)
 })
 
 watchEffect(() => {
-  if (categories.value === null)
+  if (tags.value === null)
     return
 
-  const foundCategory = categories.value.find(item => item.name === categoryName.value);
-  currentCategory.value = foundCategory || {}; // 未找到时设为空对象
+  const foundTag = tags.value.find(item => item.name === tagName.value);
+  currentTag.value = foundTag || {}; // 未找到时设为空对象
 })
 
 // 当前分类变化时，获取此分类下的文章数据
-watch(currentCategory, (newCategory) => {
-  categoryPosts.value = null
-  if (newCategory === null)
+watch(currentTag, (newTag) => {
+  tagPosts.value = null
+  if (newTag === null)
     return
 
   setTimeout(() => {
-    switch (newCategory.name) {
-      case '技术':
-        categoryPosts.value = [
+    switch (newTag.name) {
+      case 'Java':
+        tagPosts.value = [
           {
             id: '1001',
             title: '喝杯 Java',
@@ -122,6 +129,25 @@ watch(currentCategory, (newCategory) => {
             readTime: 8
           },
           {
+            id: 4001,
+            title: 'Java 从入门到放弃',
+            description: '',
+            category: '开发',
+            tags: [
+              { name: 'Java', color: 'oklch(70.4% 0.191 22.216 / .8)' }
+            ],
+            coverUrl: '/images/post-cover/cover-4.jpg',
+            date: '2025-03-01',
+            readCount: 123,
+            likeCount: 31,
+            commentCount: 5,
+            readTime: 8
+          }
+        ]
+        break
+      case 'Vue':
+        tagPosts.value = [
+          {
             id: '1003',
             title: 'Vue 从入门到放弃Vue 从入门到放弃Vue 从入门到放弃Vue从入门到放弃Vue 从入门到放弃',
             description: '这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉',
@@ -139,8 +165,43 @@ watch(currentCategory, (newCategory) => {
           }
         ]
         break
-      case '生活':
-        categoryPosts.value = [
+      case 'JavaScript':
+        tagPosts.value = [
+          {
+            id: '1003',
+            title: 'Vue 从入门到放弃Vue 从入门到放弃Vue 从入门到放弃Vue从入门到放弃Vue 从入门到放弃',
+            description: '这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉这是一段描述巴拉巴拉',
+            category: '技术',
+            tags: [
+              { name: 'Vue', color: 'oklch(79.2% 0.209 151.711 / .8)' },
+              { name: 'JavaScript', color: 'oklch(70.2% 0.183 293.541 / .8)' }
+            ],
+            coverUrl: '/images/post-cover/cover-2.png',
+            date: '2022-02-28',
+            readCount: 645,
+            likeCount: 43,
+            commentCount: 6,
+            readTime: 12
+          },
+          {
+            id: 4003,
+            title: 'JavaScript 从入门到放弃',
+            description: '这是一段描述巴拉巴拉',
+            category: '开发',
+            tags: [
+              { name: 'JavaScript', color: 'oklch(70.2% 0.183 293.541 / .8)' }
+            ],
+            coverUrl: '/images/post-cover/cover-6.png',
+            date: '2024-05-28',
+            readCount: 643,
+            likeCount: 123,
+            commentCount: 0,
+            readTime: 22
+          }
+        ]
+        break
+      case '健身':
+        tagPosts.value = [
           {
             id: '1004',
             title: '我的健身日常',
@@ -153,11 +214,11 @@ watch(currentCategory, (newCategory) => {
             likeCount: 156,
             commentCount: 34,
             readTime: 5
-          },
+          }
         ]
         break
-      case '学习':
-        categoryPosts.value = [
+      case '学习笔记':
+        tagPosts.value = [
           {
             id: '1005',
             title: '如何高效记笔记',
@@ -186,8 +247,8 @@ watch(currentCategory, (newCategory) => {
           }
         ]
         break
-      case '旅行':
-        categoryPosts.value = [
+      case '旅行摄影':
+        tagPosts.value = [
           {
             id: '1007',
             title: '云南旅行攻略',
@@ -203,8 +264,8 @@ watch(currentCategory, (newCategory) => {
           }
         ]
         break
-      case '胡说八道':
-        categoryPosts.value = [
+      case '植发':
+        tagPosts.value = [
           {
             id: 3001,
             title: '关于我头发掉光了这档子事',
@@ -220,23 +281,8 @@ watch(currentCategory, (newCategory) => {
           }
         ]
         break
-      case '开发':
-        categoryPosts.value = [
-          {
-            id: 4001,
-            title: 'Java 从入门到放弃',
-            description: '',
-            category: '开发',
-            tags: [
-              { name: 'Java', color: 'oklch(70.4% 0.191 22.216 / .8)' }
-            ],
-            coverUrl: '/images/post-cover/cover-4.jpg',
-            date: '2025-03-01',
-            readCount: 123,
-            likeCount: 31,
-            commentCount: 5,
-            readTime: 8
-          },
+      case 'Spring':
+        tagPosts.value = [
           {
             id: 4002,
             title: 'Spring 从入门到放弃',
@@ -252,30 +298,16 @@ watch(currentCategory, (newCategory) => {
             likeCount: 22,
             commentCount: 8,
             readTime: 12
-          },
-          {
-            id: 4003,
-            title: 'JavaScript 从入门到放弃',
-            description: '这是一段描述巴拉巴拉',
-            category: '开发',
-            tags: [
-              { name: 'JavaScript', color: 'oklch(70.2% 0.183 293.541 / .8)' }
-            ],
-            coverUrl: '/images/post-cover/cover-6.png',
-            date: '2024-05-28',
-            readCount: 643,
-            likeCount: 123,
-            commentCount: 0,
-            readTime: 22
           }
         ]
         break
       default:
-        categoryPosts.value = []
+        tagPosts.value = []
     }
-  }, 1000)
+  }, 500)
 }, { immediate: true })
 </script>
+
 
 <style scoped>
 
