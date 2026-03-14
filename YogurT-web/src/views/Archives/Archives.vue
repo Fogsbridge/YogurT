@@ -3,7 +3,8 @@
     <ArchivesBanner />
 
     <SidebarContainer>
-      <CategorySidebar />
+      <CategoriesSidebar />
+      <TagsSidebar />
     </SidebarContainer>
 
     <div class="panel px-4 lg:px-12">
@@ -17,7 +18,8 @@ import { ref } from 'vue';
 import YearArchive from '@/views/Archives/components/YearArchive.vue'
 import ArchivesBanner from '@/views/Archives/ArchivesBanner.vue'
 import SidebarContainer from '@/components/Section/SidebarContainer.vue'
-import CategorySidebar from '@/components/Sidebar/CategorySidebar.vue'
+import CategoriesSidebar from '@/components/Sidebar/CategoriesSidebar.vue'
+import TagsSidebar from '@/components/Sidebar/TagsSidebar.vue'
 
 const posts = ref([
   {
