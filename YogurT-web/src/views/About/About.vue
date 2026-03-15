@@ -74,7 +74,7 @@
               <div class="card relative">
                 <h2 class="text-lg mb-4">MBTI</h2>
                 <p class="text-4xl md:text-5xl">INTP <span class="text-primary font-bold">逻辑学家</span></p>
-                <img class="h-50" src="/YogurT/images/about/16personalities/desktop-intp.svg" alt="intp"/>
+                <img class="h-50" :src="`${import.meta.env.BASE_URL}images/about/16personalities/desktop-intp.svg`" alt="intp"/>
               </div>
               <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
             </div>
@@ -83,7 +83,7 @@
             <div class="hover-3d w-full h-full">
               <div class="card relative">
                 <h2 class="text-lg mb-4">MBTI<span class="mx-2 font-bold">·</span><span class="font-bold text-primary">INTP</span></h2>
-                <img class="absolute -bottom-8 -right-6 h-40 md:h-60 -z-1" src="/YogurT/images/about/16personalities/svg/intp.svg" alt="intp"/>
+                <img class="absolute -bottom-8 -right-6 h-40 md:h-60 -z-1" :src="`${import.meta.env.BASE_URL}images/about/16personalities/svg/intp.svg`" alt="intp"/>
                 <p class="text-xl">这是一段文本 巴拉巴拉~</p>
               </div>
               <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
