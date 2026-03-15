@@ -76,7 +76,7 @@ watch(currentTag, (newTag) => {
             tags: [
               { name: 'Java', color: 'oklch(70.4% 0.191 22.216 / .8)' }
             ],
-            coverUrl: '/images/post-cover/cover-1.png',
+            coverUrl: '/YogurT/images/post-cover/cover-1.png',
             date: '2024-03-22',
             readCount: 434,
             likeCount: 34,
@@ -91,7 +91,7 @@ watch(currentTag, (newTag) => {
             tags: [
               { name: 'Java', color: 'oklch(70.4% 0.191 22.216 / .8)' }
             ],
-            coverUrl: '/images/post-cover/cover-1.png',
+            coverUrl: '/YogurT/images/post-cover/cover-1.png',
             date: '2024-03-22',
             readCount: 1234,
             likeCount: 89,
@@ -106,7 +106,7 @@ watch(currentTag, (newTag) => {
             tags: [
               { name: 'Java', color: 'oklch(70.4% 0.191 22.216 / .8)' }
             ],
-            coverUrl: '/images/post-cover/cover-4.jpg',
+            coverUrl: '/YogurT/images/post-cover/cover-4.jpg',
             date: '2025-03-01',
             readCount: 123,
             likeCount: 31,
@@ -126,7 +126,7 @@ watch(currentTag, (newTag) => {
               { name: 'Vue', color: 'oklch(79.2% 0.209 151.711 / .8)' },
               { name: 'JavaScript', color: 'oklch(70.2% 0.183 293.541 / .8)' }
             ],
-            coverUrl: '/images/post-cover/cover-2.png',
+            coverUrl: '/YogurT/images/post-cover/cover-2.png',
             date: '2022-02-28',
             readCount: 645,
             likeCount: 43,
@@ -146,7 +146,7 @@ watch(currentTag, (newTag) => {
               { name: 'Vue', color: 'oklch(79.2% 0.209 151.711 / .8)' },
               { name: 'JavaScript', color: 'oklch(70.2% 0.183 293.541 / .8)' }
             ],
-            coverUrl: '/images/post-cover/cover-2.png',
+            coverUrl: '/YogurT/images/post-cover/cover-2.png',
             date: '2022-02-28',
             readCount: 645,
             likeCount: 43,
@@ -161,7 +161,7 @@ watch(currentTag, (newTag) => {
             tags: [
               { name: 'JavaScript', color: 'oklch(70.2% 0.183 293.541 / .8)' }
             ],
-            coverUrl: '/images/post-cover/cover-6.png',
+            coverUrl: '/YogurT/images/post-cover/cover-6.png',
             date: '2024-05-28',
             readCount: 643,
             likeCount: 123,
@@ -178,7 +178,7 @@ watch(currentTag, (newTag) => {
             description: '坚持健身100天，身体变化惊人',
             category: '生活',
             tags: [{ name: '健身', color: 'oklch(73% 0.17 120)' }],
-            coverUrl: '/images/post-cover/cover-4.jpg',
+            coverUrl: '/YogurT/images/post-cover/cover-4.jpg',
             date: '2025-03-01',
             readCount: 2100,
             likeCount: 156,
@@ -195,7 +195,7 @@ watch(currentTag, (newTag) => {
             description: '康奈尔笔记法+数字化工具分享',
             category: '学习',
             tags: [{ name: '学习笔记', color: 'oklch(68% 0.14 200)' }],
-            coverUrl: '/images/post-cover/cover-6.png',
+            coverUrl: '/YogurT/images/post-cover/cover-6.png',
             date: '2025-01-15',
             readCount: 1500,
             likeCount: 112,
@@ -208,7 +208,7 @@ watch(currentTag, (newTag) => {
             description: '三个月冲刺985，时间安排与心态调整',
             category: '学习',
             tags: [{ name: '学习笔记', color: 'oklch(68% 0.14 200)' }],
-            coverUrl: '/images/post-cover/cover-4.jpg',
+            coverUrl: '/YogurT/images/post-cover/cover-4.jpg',
             date: '2024-12-20',
             readCount: 3200,
             likeCount: 210,
@@ -225,7 +225,7 @@ watch(currentTag, (newTag) => {
             description: '大理丽江七日游，预算与景点推荐',
             category: '旅行',
             tags: [{ name: '旅行摄影', color: 'oklch(72% 0.12 240)' }],
-            coverUrl: '/images/post-cover/cover-3.jpg',
+            coverUrl: '/YogurT/images/post-cover/cover-3.jpg',
             date: '2025-02-05',
             readCount: 1800,
             likeCount: 134,
@@ -242,7 +242,7 @@ watch(currentTag, (newTag) => {
             description: '不小心把脱毛膏当成洗发水了...',
             category: '胡说八道',
             tags: [{ name: '植发', color: 'oklch(70.7% 0.165 254.624 / .8)' }],
-            coverUrl: '/images/post-cover/cover-3.jpg',
+            coverUrl: '/YogurT/images/post-cover/cover-3.jpg',
             date: '2024-12-04',
             readCount: 444,
             likeCount: 33,
@@ -262,7 +262,7 @@ watch(currentTag, (newTag) => {
               { name: 'Spring', color: 'oklch(79.2% 0.209 151.711 / .8)' },
               { name: 'Java', color: 'oklch(70.4% 0.191 22.216 / .8)' }
             ],
-            coverUrl: '/images/post-cover/cover-5.jpg',
+            coverUrl: '/YogurT/images/post-cover/cover-5.jpg',
             date: '2025-02-28',
             readCount: 441,
             likeCount: 22,

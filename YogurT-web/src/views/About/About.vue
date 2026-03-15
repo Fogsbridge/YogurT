@@ -5,7 +5,7 @@
       <div class="mx-auto grid md:grid-cols-6 gap-2 md:gap-4">
 
         <div class="md:col-span-2">
-          <div class="card h-full bg-[url('/images/about/img-5.jpg')] bg-center bg-cover bg-clip-padding">
+          <div class="card h-full bg-[url('/YogurT/images/about/img-5.jpg')] bg-center bg-cover bg-clip-padding">
             <div class="absolute bg-black/25 h-full top-0 left-0 w-full rounded-2xl"></div>
             <div class="z-1 pb-4">
               <h2 class="text-white text-lg mb-6">技能</h2>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="md:col-span-4">
-          <div class="card h-full text-white font-bold bg-[url('/images/about/img-4.jpg')] bg-center bg-cover">
+          <div class="card h-full text-white font-bold bg-[url('/YogurT/images/about/img-4.jpg')] bg-center bg-cover">
             <div class="absolute bg-black/15 h-full top-0 left-0 w-full rounded-2xl"></div>
             <div class="z-1">
               <h2 class="text-2xl text-center md:text-left md:ml-8 mt-2 mb-8 md:mb-12">站点统计</h2>
@@ -74,7 +74,7 @@
               <div class="card relative">
                 <h2 class="text-lg mb-4">MBTI</h2>
                 <p class="text-4xl md:text-5xl">INTP <span class="text-primary font-bold">逻辑学家</span></p>
-                <img class="h-50" src="/images/about/16personalities/desktop-intp.svg" alt="intp"/>
+                <img class="h-50" src="/YogurT/images/about/16personalities/desktop-intp.svg" alt="intp"/>
               </div>
               <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
             </div>
@@ -83,7 +83,7 @@
             <div class="hover-3d w-full h-full">
               <div class="card relative">
                 <h2 class="text-lg mb-4">MBTI<span class="mx-2 font-bold">·</span><span class="font-bold text-primary">INTP</span></h2>
-                <img class="absolute -bottom-8 -right-6 h-40 md:h-60 -z-1" src="/images/about/16personalities/svg/intp.svg" alt="intp"/>
+                <img class="absolute -bottom-8 -right-6 h-40 md:h-60 -z-1" src="/YogurT/images/about/16personalities/svg/intp.svg" alt="intp"/>
                 <p class="text-xl">这是一段文本 巴拉巴拉~</p>
               </div>
               <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
@@ -94,7 +94,7 @@
         <FlipCard axis="y" class="md:col-span-3 duration-500 h-60 md:h-80">
           <template #front>
             <div class="hover-3d w-full h-full">
-              <div class="card bg-[url('/images/about/yuanshen-1.png')] bg-cover bg-center bg-origin-padding bg-no-repeat">
+              <div class="card bg-[url('/YogurT/images/about/yuanshen-1.png')] bg-cover bg-center bg-origin-padding bg-no-repeat">
                 <div class="absolute bg-black/15 top-0 left-0 w-full h-full -z-1"></div>
                 <h2 class="text-white text-lg mb-4">游戏</h2>
                 <p class="text-white text-5xl md:text-6xl font-bold text-shadow-lg">原神</p>
@@ -104,7 +104,7 @@
           </template>
           <template #back>
             <div class="hover-3d w-full h-full">
-              <div class="card bg-[url('/images/about/yuanshen-2.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
+              <div class="card bg-[url('/YogurT/images/about/yuanshen-2.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
                 <div class="absolute bg-black/15 top-0 left-0 w-full h-full -z-1"></div>
                 <h2 class="text-white text-lg mb-4">游戏</h2>
                 <p class="text-white text-4xl md:text-5xl font-bold text-shadow-lg mb-4">原神</p>
@@ -118,7 +118,7 @@
         <FlipCard axis="y" class="md:col-span-2 duration-500 h-60 md:h-80">
           <template #front>
             <div class="hover-3d w-full h-full">
-              <div class="card bg-[url('/images/about/gta-1.png')] bg-cover bg-center bg-origin-padding bg-no-repeat">
+              <div class="card bg-[url('/YogurT/images/about/gta-1.png')] bg-cover bg-center bg-origin-padding bg-no-repeat">
                 <div class="absolute bg-black/15 top-0 left-0 w-full h-full -z-1"></div>
                 <h2 class="text-white text-lg text-shadow-lg mb-4">游戏</h2>
                 <h2 class="text-white text-5xl text-shadow-lg font-bold">GTA</h2>
@@ -128,7 +128,7 @@
           </template>
           <template #back>
             <div class="hover-3d w-full h-full">
-              <div class="card bg-[url('/images/about/gta-1.png')] bg-cover bg-center bg-origin-padding bg-no-repeat">
+              <div class="card bg-[url('/YogurT/images/about/gta-1.png')] bg-cover bg-center bg-origin-padding bg-no-repeat">
                 <div class="absolute bg-black/15 top-0 left-0 w-full h-full -z-1"></div>
                 <h2 class="text-white text-lg text-shadow-lg mb-4">游戏</h2>
                 <h2 class="text-white text-5xl text-shadow-lg font-bold">道德与法制</h2>
@@ -141,7 +141,7 @@
         <FlipCard axis="y" class="md:col-span-2 duration-500 h-60 md:h-80">
           <template #front>
             <div class="hover-3d w-full h-full">
-              <div class="card bg-[url('/images/about/guangyu-1.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
+              <div class="card bg-[url('/YogurT/images/about/guangyu-1.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
                 <div class="absolute bg-black/15 top-0 left-0 w-full h-full -z-1"></div>
                 <h2 class="text-white text-lg text-shadow-lg mb-4">游戏</h2>
                 <h2 class="text-white text-5xl text-shadow-lg font-bold">光·遇</h2>
@@ -151,7 +151,7 @@
           </template>
           <template #back>
             <div class="hover-3d w-full h-full">
-              <div class="card bg-[url('/images/about/guangyu-1.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
+              <div class="card bg-[url('/YogurT/images/about/guangyu-1.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
                 <div class="absolute bg-black/15 top-0 left-0 w-full h-full -z-1"></div>
                 <h2 class="text-white text-lg text-shadow-lg mb-4">游戏</h2>
                 <h2 class="text-white text-5xl text-shadow-lg font-bold">光遇</h2>
@@ -164,7 +164,7 @@
         <FlipCard axis="y" class="md:col-span-2 duration-500 h-60 md:h-80">
           <template #front>
             <div class="hover-3d w-full h-full">
-              <div class="card bg-[url('/images/about/lol-1.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
+              <div class="card bg-[url('/YogurT/images/about/lol-1.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
                 <div class="absolute bg-black/15 top-0 left-0 w-full h-full -z-1"></div>
                 <h2 class="text-white text-lg text-shadow-lg mb-4">游戏</h2>
                 <h2 class="text-white text-5xl text-shadow-lg font-bold">英雄联盟</h2>
@@ -174,7 +174,7 @@
           </template>
           <template #back>
             <div class="hover-3d w-full h-full">
-              <div class="card bg-[url('/images/about/lol-1.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
+              <div class="card bg-[url('/YogurT/images/about/lol-1.jpg')] bg-cover bg-center bg-origin-padding bg-no-repeat">
                 <div class="absolute bg-black/15 top-0 left-0 w-full h-full -z-1"></div>
                 <h2 class="text-white text-lg text-shadow-lg mb-4">游戏</h2>
                 <h2 class="text-white text-5xl text-shadow-lg font-bold mb-2">锐雯</h2>
@@ -186,7 +186,7 @@
         </FlipCard>
 
         <div class="md:col-span-2 md:row-span-2 h-80">
-          <div class="h-full card bg-[url('/images/about/music-1.jpg')]  bg-cover bg-center bg-origin-padding bg-no-repeat">
+          <div class="h-full card bg-[url('/YogurT/images/about/music-1.jpg')]  bg-cover bg-center bg-origin-padding bg-no-repeat">
             <div class="absolute bg-black/25 h-full top-0 left-0 w-full rounded-2xl"></div>
             <div class="z-1">
               <h2 class="text-lg text-white mb-2">音乐</h2>

@@ -1,13 +1,13 @@
 <template>
   <BannerContainer mode="immersive">
-    <div class="w-full h-full bg-center bg-cover bg-[url(/images/banner/banner-2.jpg)]">
+    <div class="w-full h-full bg-center bg-cover bg-[url(/YogurT/images/banner/banner-2.jpg)]">
       <!-- 点阵遮罩 -->
       <div class="absolute inset-0 dot-mask backdrop-brightness-80 dark:backdrop-brightness-70 transition duration-500" ></div>
       <div class="absolute inset-0 dot-mask transition duration-500" ></div>
 
       <div class="min-h-screen h-full flex flex-col items-center">
         <div class="h-full flex flex-col justify-center items-center select-none text-white/95 dark:text-white/85 text-shadow-black/50 text-shadow-lg transition-all duration-500">
-          <img src="/images/avatar-1.jpg" alt="avatar" class="z-10 size-28 mb-8 rounded-full ring-base-100/20 ring-6 opacity-90 shadow-black/80 shadow-2xl" />
+          <img src="/YogurT/images/avatar-1.jpg" alt="avatar" class="z-10 size-28 mb-8 rounded-full ring-base-100/20 ring-6 opacity-90 shadow-black/80 shadow-2xl" />
           <span class="z-10 text-3xl md:text-4xl lg:text-5xl mb-6 font-bold">云桥雾的Blog</span>
           <div class="z-10 h-5 md:h-6 lg:h-7.5 text-xl md:text-2xl lg:text-3xl mb-10">
             <Typewriter :text="titleArr" cursorTwClass="bg-blue-400 pl-0.5 ml-0.5" deletingDelay="40" preDeleteDelay="4000" preNextTextDelay="500" />
