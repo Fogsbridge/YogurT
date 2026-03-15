@@ -50,18 +50,18 @@ const routes = [
         meta: { title: '瞬间' },
         component: () => import('@/views/Moments/Moments.vue')
       },
-      {
-        path: '/links',
-        name: 'Links',
-        meta: { title: '友链' },
-        component: () => import('@/views/Links/Links.vue')
-      },
-      {
-        path: '/messages',
-        name: 'Messages',
-        meta: { title: '留言' },
-        component: () => import('@/views/Messages/Messages.vue')
-      },
+      // {
+      //   path: '/links',
+      //   name: 'Links',
+      //   meta: { title: '友链' },
+      //   component: () => import('@/views/Links/Links.vue')
+      // },
+      // {
+      //   path: '/messages',
+      //   name: 'Messages',
+      //   meta: { title: '留言' },
+      //   component: () => import('@/views/Messages/Messages.vue')
+      // },
       {
         path: '/about',
         name: 'About',
@@ -79,7 +79,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/YogurT/'),
   routes: routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
