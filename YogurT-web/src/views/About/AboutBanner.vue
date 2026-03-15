@@ -40,6 +40,8 @@
 
 <script setup>
 import BannerContainer from '@/components/Layout/components/BannerContainer.vue'
+const baseUrl = import.meta.env.BASE_URL
+
 </script>
 
 <style scoped>

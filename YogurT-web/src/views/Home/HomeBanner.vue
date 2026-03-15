@@ -29,6 +29,8 @@ import BannerContainer from '@/components/Layout/components/BannerContainer.vue'
 import Typewriter from '@/components/Base/Typewriter.vue'
 import { ref } from 'vue'
 import { useLayoutScroll } from '@/composables/useLayoutScroll.js'
+const baseUrl = import.meta.env.BASE_URL
+
 
 const { scrollToMain } = useLayoutScroll()
 
