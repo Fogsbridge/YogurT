@@ -6,7 +6,7 @@
         <div class="flex flex-col md:flex-row items-center gap-5 md:gap-16 px-0 md:px-10">
 
           <div class="relative size-40 md:size-50 rounded-full duration-400 group hover:scale-110 hover:bg-primary/70">
-            <img src="/YogurT/images/avatar-1.jpg" alt="云桥雾" class="border-8 border-black/20 rounded-full" />
+            <img :src="baseUrl + 'images/avatar-1.jpg'" alt="云桥雾" class="border-8 border-black/20 rounded-full" />
             <div class="group-hover:opacity-0 duration-300 absolute z-1 w-1/7 h-1/7 bg-green-400 rounded-full bottom-1/10 right-1/10 ring-white/90 ring-5"></div>
           </div>
 
