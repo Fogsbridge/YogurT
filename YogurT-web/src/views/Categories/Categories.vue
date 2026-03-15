@@ -2,16 +2,13 @@
   <div class="space-y-2 md:space-y-4">
     <InfoBar title="文章分类" :description="categories ? `共 ${categories.length} 条分类` : ''"/>
 
-    <CardGrid :items="categories" v-slot="{ item }" class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <CategoryCard :category="item" class="h-70 xl:h-80" />
-    </CardGrid>
+    <CategoriesGrid :categories="categories" />
   </div>
 </template>
 
 <script setup>
-import CardGrid from '@/components/Base/CardGrid.vue'
-import CategoryCard from '@/components/Category/CategoryCard.vue'
 import InfoBar from '@/components/Base/InfoBar.vue'
+import CategoriesGrid from '@/views/Categories/components/CategoriesGrid.vue'
 import { onMounted, ref } from 'vue'
 
 const categories = ref(null)

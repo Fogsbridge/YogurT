@@ -61,8 +61,8 @@
 <script setup>
 import { computed, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
-import CategoryButton from '@/components/Category/CategoryButton.vue'
-import TagButton from '@/components/Tag/TagButton.vue'
+import CategoryButton from '@/components/Business/Category/CategoryButton.vue'
+import TagButton from '@/components/Business/Tag/TagButton.vue'
 
 const props = defineProps({
   posts: { type: Array, default: [] }

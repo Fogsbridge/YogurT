@@ -13,8 +13,8 @@
 </template>
 
 <script setup>
-import LayoutRightSidebar from '@/views/Layout/LayoutRightSidebar.vue'
-import LayoutLeftSidebar from '@/views/Layout/LayoutLeftSidebar.vue'
+import LayoutRightSidebar from '@/components/Layout/LayoutRightSidebar.vue'
+import LayoutLeftSidebar from '@/components/Layout/LayoutLeftSidebar.vue'
 </script>
 
 <style scoped>

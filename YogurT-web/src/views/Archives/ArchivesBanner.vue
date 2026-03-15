@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import BannerContainer from '@/components/Section/BannerContainer.vue'
+import BannerContainer from '@/components/Layout/components/BannerContainer.vue'
 </script>
 
 <style scoped>
