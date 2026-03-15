@@ -6,3 +6,7 @@
 - [YogurT-web](https://github.com/Fogsbridge/YogurT/tree/main/YogurT-web) 访客前台
 - [YogurT-admin](https://github.com/Fogsbridge/YogurT/tree/main/YogurT-admin) 管理后台
 - [YogurT-server](https://github.com/Fogsbridge/YogurT/tree/main/YogurT-server) 后端接口
+
+## 演示站点
+- 访客端: https://fogsbridge.github.io/YogurT/
+- 管理端：开发中，暂无。
