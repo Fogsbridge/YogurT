@@ -13,12 +13,13 @@
             </div>
             <div tabindex="-1" class="dropdown-content">
               <ul class="menu menu-lg bg-base-100/95 text-base-content backdrop-blur-md text-shadow-sm w-26 mt-5 items-center rounded-box z-100 shadow-2xl ">
-                <li><a>归档</a></li>
-                <li><a>分类</a></li>
-                <li><a>标签</a></li>
-                <li><a>动态</a></li>
-                <li><a>友人帐</a></li>
-                <li><a>关于我</a></li>
+                <li><RouterLink to="/archives">归档</RouterLink></li>
+                <li><RouterLink to="/categories">分类</RouterLink></li>
+                <li><RouterLink to="/tags">标签</RouterLink></li>
+                <li><RouterLink to="/moments">动态</RouterLink></li>
+                <li><RouterLink to="/links">友链</RouterLink></li>
+                <li><RouterLink to="/messages">留言</RouterLink></li>
+                <li><RouterLink to="/about">关于</RouterLink></li>
               </ul>
             </div>
           </div>
