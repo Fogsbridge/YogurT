@@ -82,7 +82,7 @@ onMounted(() => {
         content: '今天重构了一段三年前写的代码，看到那些糟糕的命名和冗长的函数，忍不住笑了。那时候刚学编程，总想证明自己，结果写出来的东西只有机器能看懂，而且机器可能也不太想看懂。现在回头看，编程和写作很像，都是把思想转化为文字，只不过编程的语言更严谨。好的代码就像好的文章，清晰、简洁、有逻辑，别人能一眼看懂，自己几个月后还能维护。其实人生也是一样，年轻的时候总想搞个大新闻，后来才发现，踏踏实实把每一行代码写好，把每一天过好，才是最重要的。不用追求完美，但求无愧于心。',
         pinned: false,
         media: [
-          { type: 'image', url: '/images/moment-media/image/image-6.jpg' }
+          { type: 'image', url: '/images/moment-media/image/image-9.jpg' }
         ],
         likeCount: 456,
         commentCount: 98
