@@ -35,11 +35,17 @@
              v-tw:--media-item-height.spacing="moment?.media.length > 1 ? 30 : 60"
              v-tw:--media-item-height-xl.spacing="moment?.media.length > 1 ? 40 : 80"
         >
-          <img v-if="item.type === 'image'" :src="item.url"  alt="配图" class="size-full object-cover object-center" />
+          <img v-if="item.type === 'image'"
+               :src="item.url"  alt="配图"
+               class="size-full object-cover object-center"
+               @click.stop="openLightbox(item.url)"
+          />
           <video v-if="item.type === 'video'" controls class="size-full object-cover object-center">
             <source :src="item.url" />
           </video>
         </div>
+
+        <Lightbox v-model:show="showLightbox" :url="imgUrl" />
       </div>
     </div>
 
@@ -68,9 +74,20 @@
 </template>
 
 <script setup>
+import Lightbox from '@/components/Base/Lightbox.vue'
+import { ref } from 'vue'
+
 const props = defineProps({
   moment: { type: Object }
 })
+
+const showLightbox = ref(false)
+const imgUrl = ref('')
+
+const openLightbox = (url) => {
+  showLightbox .value = true
+  imgUrl.value = url
+}
 </script>
 
 <style scoped>
