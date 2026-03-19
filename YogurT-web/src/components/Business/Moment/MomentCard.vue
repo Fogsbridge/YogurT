@@ -1,7 +1,7 @@
 <template>
   <div class="panel px-8 py-6 grid grid-cols-[auto_1fr_auto] items-center gap-x-4 gap-y-2">
-    <div>
-      <img class="size-14 rounded-full border-3 border-base-content/10 dark:border-base-content/20"
+    <div class="size-14">
+      <img class="size-full rounded-full border-3 border-base-content/10 dark:border-base-content/20"
            :src="moment?.author.avatar"  alt="作者头像"
       />
     </div>
