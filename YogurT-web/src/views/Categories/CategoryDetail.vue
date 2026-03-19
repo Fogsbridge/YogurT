@@ -2,7 +2,7 @@
   <div class="space-y-2 md:space-y-4">
     <SidebarContainer>
       <template #sticky>
-        <CategoriesSidebar :currentCategory="currentCategory" />
+        <CategoriesSidebar :currentCategory="currentCategory" :maxItems="99" />
       </template>
     </SidebarContainer>
 
