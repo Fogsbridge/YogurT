@@ -3,7 +3,7 @@
     <svg class="opacity-0 group-hover:opacity-100 size-5 absolute top-3  right-3 stroke-primary duration-500" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
     </svg>
-    <img :src="avatarUrl" class="size-16 ring-offset-2 ring-2 ring-primary/70 rounded-full" :alt="name" />
+    <img :src="avatarUrl" class="size-16 ring-offset-2 ring-offset-base-100 ring-2 ring-primary/70 group-hover:ring-primary rounded-full duration-300" :alt="name" />
     <div class="flex flex-col w-full">
       <div class="flex gap-3 items-center">
         <span class="text-xl font-bold group-hover:text-primary">{{ name }}</span>
