@@ -145,8 +145,9 @@
 <script setup>
 import Typewriter from '@/components/Base/Typewriter.vue'
 import { computed, onMounted, ref, watch } from 'vue'
-import { useEventListener, usePreferredColorScheme } from '@vueuse/core'
+import { usePreferredColorScheme } from '@vueuse/core'
 import { useNavbarFloat } from '@/composables/useNavbarFloat.js'
+import { useGlobalScrollStore } from '@/stores/globalScroll.js'
 
 // 主题切换逻辑
 const themes = ['system', 'light', 'dark']
@@ -179,12 +180,8 @@ const toggleTheme = (theme) => {
   })
 }
 
-const isScrolled = ref(false)
-
-useEventListener(window, 'scroll', () => {
-  isScrolled.value = window.scrollY > 0
-})
-
+const globalScrollStore = useGlobalScrollStore()
+const isScrolled = computed(() => globalScrollStore.scrollTop > 0)
 const { isNavbarFloat } = useNavbarFloat()
 
 // 计算导航栏样式
