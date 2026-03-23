@@ -28,9 +28,9 @@
 import BannerContainer from '@/components/Layout/components/BannerContainer.vue'
 import Typewriter from '@/components/Base/Typewriter.vue'
 import { ref } from 'vue'
-import { useLayoutScroll } from '@/composables/useLayoutScroll.js'
+import { useGlobalScrollStore } from '@/stores/globalScroll.js'
 
-const { scrollToMain } = useLayoutScroll()
+const { scrollToMain } = useGlobalScrollStore()
 
 const titleArr = ref([
   'title标题1',

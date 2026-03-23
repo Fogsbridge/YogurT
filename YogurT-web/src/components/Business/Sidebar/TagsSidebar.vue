@@ -10,12 +10,12 @@
 
     <div v-else-if="tags.length" class="relative bg-linear-to-t from-base-100 to-transparent ">
       <ul class="flex flex-wrap flex-row gap-2"
-          :class="pinnedTags.length > maxItems ? 'after:absolute after:bottom-10.5 after:h-40 after:bg-linear-to-t after:from-base-100 after:to-transparent after:w-full after:pointer-events-none' : ''"
+          :class="tags.length > maxItems ? 'after:absolute after:bottom-10.5 after:h-40 after:bg-linear-to-t after:from-base-100 after:to-transparent after:w-full after:pointer-events-none' : ''"
       >
-        <li class="group hover:scale-110 hover:border-(--tag-color) rounded-lg text-base-content/75 hover:bg-(--tag-color) hover:text-white px-2 py-0.5 cursor-pointer border border-base-content/5 dark:border-base-content/10 transition duration-200"
-            v-for="tag in pinnedTags.slice(0, maxItems)"
+        <li class="group hover:scale-110 rounded-lg text-base-content/75 hover:bg-(--tag-color) hover:text-white px-2.5 py-1 cursor-pointer transition duration-200"
+            v-for="tag in tags.slice(0, maxItems)"
             :key="tag.id"
-            :class="{ 'bg-(--tag-color) text-white': isActive(tag) }"
+            :class="[{ 'bg-(--tag-color) text-white': isActive(tag) }, isActive(tag) ? 'bg-(--tag-color)' : 'bg-base-200/80']"
             v-tw:--tag-color="tag.color"
             @click="$router.push({ name: 'TagDetail', params: { tagName: tag.name } })"
         >
@@ -26,7 +26,7 @@
 
       <div>
         <div class="mt-4 text-center font-bold py-1.5 rounded-xl border border-base-content/20 text-base-content/60 hover:bg-primary hover:text-white duration-300 cursor-pointer"
-             :class="pinnedTags.length <= maxItems ? 'hidden' : ''"
+             :class="tags.length <= maxItems ? 'hidden' : ''"
              @click.stop="$router.push({ name:'Tags' })"
         >
           更多标签
@@ -52,20 +52,6 @@ const props = defineProps({
 
 const { currentTag, maxItems } = toRefs(props)
 const tags = ref(null)
-
-// 当前标签置顶后的数组
-const pinnedTags = computed(() => {
-  const index = tags.value?.findIndex(item => item.id === currentTag.value?.id);
-  if (index <= 0) {
-    return tags.value.slice();
-  }
-
-  return [
-    currentTag.value,
-    ...tags.value.slice(0, index),
-    ...tags.value.slice(index + 1)
-  ]
-})
 
 onMounted(() => {
   setTimeout(() => {

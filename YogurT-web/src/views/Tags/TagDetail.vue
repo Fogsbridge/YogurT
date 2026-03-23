@@ -2,7 +2,7 @@
   <div class="space-y-2 md:space-y-4">
     <SidebarContainer>
       <template #sticky>
-        <TagsSidebar :currentTag="currentTag" />
+        <TagsSidebar :currentTag="currentTag" :maxItems="999" />
       </template>
     </SidebarContainer>
 
