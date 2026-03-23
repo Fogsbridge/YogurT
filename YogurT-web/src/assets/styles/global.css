@@ -17,8 +17,8 @@ html {
   --os-handle-interactive-area-offset: 4px;
   --os-handle-border-radius: 10px;
   --os-handle-bg: rgba(0, 0, 0, 0.2);
-  --os-handle-bg-hover: rgba(0, 0, 0, 0.35);
-  --os-handle-bg-active: rgba(0, 0, 0, 0.5);
+  --os-handle-bg-hover: rgba(148, 109, 239, 0.6);
+  --os-handle-bg-active: rgba(148, 109, 239, 0.8);
 }
 
 [data-theme='dark'] .os-theme-custom {
@@ -31,6 +31,6 @@ html {
   --os-handle-interactive-area-offset: 4px;
   --os-handle-border-radius: 10px;
   --os-handle-bg: rgba(255, 255, 255, 0.2);
-  --os-handle-bg-hover: rgba(255, 255, 255, 0.35);
-  --os-handle-bg-active: rgba(255, 255, 255, 0.5);
+  --os-handle-bg-hover: rgba(148, 109, 239, 0.7);
+  --os-handle-bg-active: rgba(148, 109, 239, 0.9);
 }
