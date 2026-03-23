@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useGlobalScrollStore } from '@/stores/globalScroll.js'
 
 const routes = [
   {
@@ -50,12 +51,12 @@ const routes = [
         meta: { title: '瞬间' },
         component: () => import('@/views/Moments/Moments.vue')
       },
-      // {
-      //   path: '/links',
-      //   name: 'Links',
-      //   meta: { title: '友链' },
-      //   component: () => import('@/views/Links/Links.vue')
-      // },
+      {
+        path: '/links',
+        name: 'Links',
+        meta: { title: '友链' },
+        component: () => import('@/views/Links/Links.vue')
+      },
       // {
       //   path: '/messages',
       //   name: 'Messages',
@@ -82,11 +83,18 @@ const router = createRouter({
   history: createWebHistory(),
   routes: routes,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
+    const { scrollTo, scrollToTop } = useGlobalScrollStore()
 
-    return { top: 0, behavior: 'smooth' }
+    if (savedPosition) {
+      scrollTo({
+        top: savedPosition.top,
+        behavior: 'smooth'
+      })
+      return false
+    } else {
+      scrollToTop()
+      return false
+    }
   }
 })
 
