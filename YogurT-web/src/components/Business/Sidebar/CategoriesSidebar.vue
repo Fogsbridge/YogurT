@@ -81,7 +81,7 @@ const isActive = (category) => currentCategory.value?.id === category.id
 .active {
   @apply bg-primary text-primary-content font-bold pr-8;
   & > div:last-child {
-    @apply w-fit scale-130 font-bold text-white
+    @apply w-fit scale-130 font-bold text-white bg-transparent;
   }
 }
 </style>
