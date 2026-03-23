@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-2 md:space-y-4">
-    <InfoBar title="文章分类" :description="categories ? `共 ${categories.length} 条分类` : ''"/>
+    <InfoBar title="文章分类" :description="categories ? `共 ${categories.length} 个分类` : ''"/>
 
     <CategoriesGrid :categories="categories" />
   </div>
