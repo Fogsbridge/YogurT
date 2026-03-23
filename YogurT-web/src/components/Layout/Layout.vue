@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-base-200 transition duration-500">
+  <div v-overlay-scroll.global class="h-full min-h-screen bg-base-200 transition duration-500">
     <LayoutHeader />
 
     <LayoutMain />

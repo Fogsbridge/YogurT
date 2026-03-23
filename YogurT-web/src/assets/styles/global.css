@@ -1,12 +1,36 @@
 html {
-  @apply bg-base-100 transition duration-500
-  scrollbar-hover:cursor-pointer scrollbar scrollbar-w-2.5 overflow-x-clip
-  scrollbar-thumb-primary/30 scrollbar-hover:scrollbar-thumb-primary/70
-  dark:scrollbar-thumb-primary/70 dark:scrollbar-hover:scrollbar-thumb-primary;
-
   @apply font-medium;
 
   &::selection {
     @apply bg-primary/80 text-white;
   }
+}
+
+/* overlayscrollbars 滚动条自定义样式 */
+.os-theme-custom {
+  cursor: pointer;
+  box-sizing: border-box;
+  --os-size: 10px;
+  --os-padding-perpendicular: 2px;
+  --os-padding-axis: 2px;
+  --os-track-border-radius: 10px;
+  --os-handle-interactive-area-offset: 4px;
+  --os-handle-border-radius: 10px;
+  --os-handle-bg: rgba(0, 0, 0, 0.2);
+  --os-handle-bg-hover: rgba(0, 0, 0, 0.35);
+  --os-handle-bg-active: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .os-theme-custom {
+  cursor: pointer;
+  box-sizing: border-box;
+  --os-size: 10px;
+  --os-padding-perpendicular: 2px;
+  --os-padding-axis: 2px;
+  --os-track-border-radius: 10px;
+  --os-handle-interactive-area-offset: 4px;
+  --os-handle-border-radius: 10px;
+  --os-handle-bg: rgba(255, 255, 255, 0.2);
+  --os-handle-bg-hover: rgba(255, 255, 255, 0.35);
+  --os-handle-bg-active: rgba(255, 255, 255, 0.5);
 }
