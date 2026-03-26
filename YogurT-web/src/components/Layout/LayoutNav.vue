@@ -187,7 +187,7 @@ const { isNavbarFloat } = useNavbarFloat()
 // 计算导航栏样式
 // 通过 scrolled 判断是否产生了滚动，在有 banner 且没有产生滚动时的情况下背景应该是透明的，否则是是毛玻璃背景
 const navClass = computed(() => {
-  const classList = ['fixed', 'navbar', 'top-0', 'h-15', 'border-b', 'z-100', 'p-0', 'transition-colors', 'duration-400']
+  const classList = ['fixed', 'navbar', 'top-0', 'h-15', 'border-b', 'z-1000', 'p-0', 'transition-colors', 'duration-400']
 
   if (isNavbarFloat.value) {
     if (isScrolled.value) {

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
-export const useGlobalScrollStore = defineStore('scroll', () => {
+export const useGlobalScrollStore = defineStore('globalScroll', () => {
   const osInstance = ref(null)
   const isInitialized = computed(() => osInstance.value !== null)
   const viewport = computed(() => osInstance.value ? osInstance.value.elements().viewport : null)

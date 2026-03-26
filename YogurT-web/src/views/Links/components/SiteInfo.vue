@@ -1,6 +1,6 @@
 <template>
   <div class="panel flex-none px-6 py-4 flex flex-col">
-    <h1 class="font-bold text-base-content/90">本站信息</h1>
+    <h2 class="font-bold border-l-4 border-primary pl-3 flex-none">本站信息</h2>
     <div class="flex flex-col md:flex-row gap-y-4 md:gap-x-14 xl:gap-x-18 md:mx-10 xl:mx-14 mb-6">
       <div class="flex flex-col items-center gap-6 md:gap-8 flex-none self-center mt-4 md:mt-0">
         <img src="/images/avatar-1.jpg" alt="云桥雾" class="size-26 rounded-full ring-offset-2 ring-offset-base-100 ring-3 ring-primary duration-300" />

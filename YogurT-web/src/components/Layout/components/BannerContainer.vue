@@ -1,9 +1,19 @@
 <template>
   <Teleport defer :to="teleportTarget">
-    <div class="relative" :class="mode === 'content' ? 'panel overflow-clip' : ''"
+    <div class="relative"
+         :class="mode === 'content' ? 'panel overflow-clip bg-transparent' : ''"
          v-bind="$attrs"
     >
-      <slot />
+      <img
+        :src="imgUrl"
+        :alt="imgAlt"
+        class="absolute -z-100 inset-0 w-full h-full object-cover object-center"
+        v-if="imgUrl"
+      />
+      <div v-if="showOverlay" class="absolute -z-99 inset-0 dot-mask backdrop-brightness-75 dark:backdrop-brightness-65 transition duration-500"></div>
+      <div :class="contentClass">
+        <slot />
+      </div>
     </div>
   </Teleport>
 </template>
@@ -17,10 +27,13 @@ defineOptions({
 })
 
 const props = defineProps({
-  mode: { type: String, required: true, validator: v => ['immersive', 'content'].includes(v) }
+  mode: { type: String, required: true, validator: v => ['immersive', 'content'].includes(v) },
+  imgUrl: { type: String },
+  imgAlt: { type: String, default: '' },
+  showOverlay: { type: Boolean, default: true }
 })
 
-const { mode } = toRefs(props)
+const { mode, imgUrl, imgAlt, showOverlay } = toRefs(props)
 
 const teleportTarget = computed(() => {
   switch (mode.value) {
@@ -29,6 +42,8 @@ const teleportTarget = computed(() => {
     default: return
   }
 })
+
+const contentClass = computed(() => mode.value === 'immersive' ? 'pt-16' : '')
 
 const { setNavbarFloat } = useNavbarFloat()
 
