@@ -5,7 +5,7 @@
          ? enableReverse ? 'flex-row-reverse' : 'flex-row'
          : !enableReverse ? 'flex-col' : 'flex-col-reverse'
        ]"
-       @click="router.push({ name: 'posts', params: { postId: post.id } })"
+       @click="router.push({ name: 'Posts', params: { postId: post.id } })"
   >
     <!-- 封面 -->
     <div class="min-w-0 min-h-0 basis-(--cover-ratio)"
