@@ -1,7 +1,7 @@
 <template>
-  <Teleport defer :to="teleportTarget">
+  <Teleport defer :disabled="placement === 'content'" :to="teleportTarget">
     <div class="relative"
-         :class="mode === 'content' ? 'panel overflow-clip bg-transparent' : ''"
+         :class="bannerClass"
          v-bind="$attrs"
     >
       <img
@@ -11,7 +11,7 @@
         v-if="imgUrl"
       />
       <div v-if="showOverlay" class="absolute -z-99 inset-0 dot-mask backdrop-brightness-75 dark:backdrop-brightness-65 transition duration-500"></div>
-      <div :class="contentClass">
+      <div :class="slotClass">
         <slot />
       </div>
     </div>
@@ -27,28 +27,33 @@ defineOptions({
 })
 
 const props = defineProps({
-  mode: { type: String, required: true, validator: v => ['immersive', 'content'].includes(v) },
+  placement: { type: String, required: true, validator: v => ['header', 'main', 'content'].includes(v) },
   imgUrl: { type: String },
   imgAlt: { type: String, default: '' },
   showOverlay: { type: Boolean, default: true }
 })
 
-const { mode, imgUrl, imgAlt, showOverlay } = toRefs(props)
+const { placement, imgUrl, imgAlt, showOverlay } = toRefs(props)
 
 const teleportTarget = computed(() => {
-  switch (mode.value) {
-    case 'immersive': return '[data-role="immersive-banner"]'
-    case 'content': return '[data-role="content-banner"]'
-    default: return
+  switch (placement.value) {
+    case 'header': return '[data-role="header-banner"]'
+    case 'main': return '[data-role="main-banner"]'
+    default: return null
   }
 })
 
-const contentClass = computed(() => mode.value === 'immersive' ? 'pt-16' : '')
+const bannerClass = computed(() =>
+  placement.value === 'main' || placement.value === 'content'
+    ? 'panel overflow-clip bg-transparent'
+    : ''
+)
+const slotClass = computed(() => placement.value === 'header' ? 'pt-16' : '')
 
 const { setNavbarFloat } = useNavbarFloat()
 
 onMounted(() => {
-  if (mode.value === 'immersive') {
+  if (placement.value === 'header') {
     setNavbarFloat(true)
   }
 })

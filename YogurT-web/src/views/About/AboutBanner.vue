@@ -1,5 +1,5 @@
 <template>
-  <BannerContainer mode="immersive" class="w-full h-110 md:h-100">
+  <BannerContainer placement="header" class="w-full h-110 md:h-100">
     <div class="absolute -z-1 inset-0 bg-primary"></div>
     <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-6 pt-2 md:pt-14">
       <div class="flex flex-col md:flex-row items-center gap-5 md:gap-16 px-0 md:px-10">
