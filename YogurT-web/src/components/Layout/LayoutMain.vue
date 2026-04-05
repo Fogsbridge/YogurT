@@ -5,7 +5,7 @@
     <div class="flex flex-row gap-4">
       <LayoutLeftSidebar class="flex-none" />
 
-      <RouterView class="flex-1" />
+      <RouterView class="flex-1 min-w-0" />
 
       <LayoutRightSidebar class="flex-none" />
     </div>

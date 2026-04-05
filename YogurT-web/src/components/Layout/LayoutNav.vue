@@ -1,5 +1,5 @@
 <template>
-  <nav data-role="layout-nav" :class="{'pt-15': !isNavbarFloat}">
+  <nav data-role="layout-nav" :class="{'pt-16': !isNavbarFloat}">
     <div :class="navClass">
       <div class="max-w-8xl inline-flex grow mx-auto px-6">
 
