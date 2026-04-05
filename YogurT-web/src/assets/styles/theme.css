@@ -1,7 +1,11 @@
 @theme {
-  --font-sans-MaoKenZhuYuanTi: "MaoKenZhuYuanTi", sans-serif;
-  --font-sans-AlimamaFangYuanTiVF-Thin: "AlimamaFangYuanTiVF-Thin", sans-serif;
-  /*--default-font-family: var(--font-sans-MaoKenZhuYuanTi);*/
-  --default-font-family: var(--font-sans-AlimamaFangYuanTiVF-Thin);
+  --font-MaoKenZhuYuanTi: "MaoKenZhuYuanTi";
+  --font-AlimamaFangYuanTiVF-Thin: "AlimamaFangYuanTiVF-Thin";
+
+  --default-font-family: var(--font-AlimamaFangYuanTiVF-Thin), var(--font-sans, initial);
+  --font-mono:
+    "JetBrains Mono", "Fira Code", "Cascadia Code", "Source Code Pro", ui-monospace,
+    SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
   --container-8xl: 88rem;
 }
