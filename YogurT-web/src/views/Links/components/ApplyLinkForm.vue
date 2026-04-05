@@ -27,7 +27,7 @@
         <div>
           <label class="block text-sm text-base-content/70 mb-1.5 ml-2">站点名称</label>
           <input type="text"
-                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-200 outline-none"
+                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary/80 focus:ring focus:ring-primary/80 transition-all duration-200 outline-none caret-primary"
                  :class="inputClass('siteName')"
                  placeholder="站点名称"
                  v-model.trim="formData.siteName"
@@ -39,7 +39,7 @@
         <!-- 站点描述 -->
         <div>
           <label class="block text-sm text-base-content/70 mb-1.5 ml-1">站点描述</label>
-          <textarea class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-200 outline-none resize-none overflow-y-scroll scrollbar scrollbar-w-1.5 scrollbar-thumb-rounded-full scrollbar-corner-rounded-full scrollbar-track-rounded-full scrollbar-hover:cursor-pointer scrollbar-thumb-base-content/10 scrollbar-hover:scrollbar-thumb-base-content/20 dark:scrollbar-thumb-base-content/20 dark:scrollbar-hover:scrollbar-thumb-base-content/30"
+          <textarea class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary/80 focus:ring focus:ring-primary/80 transition-all duration-200 outline-none resize-none caret-primary"
                     :class="inputClass('description')"
                     rows="3"
                     placeholder="写点什么，让别人了解这个站点..."
@@ -54,7 +54,7 @@
         <div>
           <label class="block text-sm text-base-content/70 mb-1.5 ml-1">站点地址</label>
           <input type="url"
-                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-200 outline-none"
+                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary/80 focus:ring focus:ring-primary/80 transition-all duration-200 outline-none caret-primary"
                  :class="inputClass('siteUrl')"
                  placeholder="示例：https://domain.com"
                  v-model.trim="formData.siteUrl"
@@ -67,7 +67,7 @@
         <div>
           <label class="block text-sm text-base-content/70 mb-1.5 ml-1">头像地址</label>
           <input type="url"
-                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-200 outline-none"
+                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary/80 focus:ring focus:ring-primary/80 transition-all duration-200 outline-none caret-primary"
                  :class="inputClass('avatarUrl')"
                  placeholder="示例：https://domain.com/avatar.png"
                  v-model.trim="formData.avatarUrl"
@@ -80,7 +80,7 @@
         <div>
           <label class="block text-sm text-base-content/70 mb-1.5 ml-1">订阅地址 <span class="text-xs text-base-content/50">(可选)</span></label>
           <input type="url"
-                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-200 outline-none"
+                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary/80 focus:ring focus:ring-primary/80 transition-all duration-200 outline-none caret-primary"
                  :class="inputClass('subscribeUrl')"
                  placeholder="示例：https://domain.com/rss.xml"
                  v-model.trim="formData.subscribeUrl"
@@ -93,7 +93,7 @@
         <div>
           <label class="block text-sm text-base-content/70 mb-1.5 ml-1">电子邮箱 <span class="text-xs text-base-content/50">(可选)</span></label>
           <input type="email"
-                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-200 outline-none"
+                 class="w-full px-4 py-2 rounded-lg focus:bg-base-100 focus:border-primary/80 focus:ring focus:ring-primary/80 transition-all duration-200 outline-none caret-primary"
                  :class="inputClass('email')"
                  placeholder="示例：name@domain.com"
                  v-model="formData.email"
