@@ -65,7 +65,7 @@ md.use(markdownItEmoji)
 md.use(markdownItDeflist)
 md.use(markdownItTaskLists, { label: true })
 md.use(markdownItLinkAttributes, {
-  // 如果 a 标签的 href 属性以 # 开头，则给它添加 target: '_blank', rel: 'noopener noreferrer'
+  // 如果 a 标签的 href 属性不以 # 开头，则给它添加 target: '_blank', rel: 'noopener noreferrer'
   matcher: (href) => !href.startsWith('#'),
   attrs: { target: '_blank', rel: 'noopener noreferrer' }
 })
@@ -138,7 +138,7 @@ onBeforeUnmount(destroyAllScrollbars)
 
 /* markdown 样式 */
 .markdown-body {
-  @apply text-sm md:text-base tracking-widest text-base-content;
+  @apply text-sm md:text-base tracking-wider text-base-content;
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold my-4;
@@ -194,7 +194,7 @@ onBeforeUnmount(destroyAllScrollbars)
   }
 
   blockquote, q {
-    @apply border-l-6 border-primary/60 dark:border-primary/75 pl-4 bg-primary/5 dark:bg-primary/15 py-1
+    @apply border-l-6 border-primary/60 dark:border-primary/75 pl-4 bg-primary/5 dark:bg-primary/15 py-0.5
            text-base-content/60;
   }
 
@@ -239,7 +239,7 @@ onBeforeUnmount(destroyAllScrollbars)
   }
 
   pre, code {
-    @apply font-mono;
+    @apply font-mono tracking-wide;
   }
 
   code:not(pre code) {
@@ -313,20 +313,20 @@ onBeforeUnmount(destroyAllScrollbars)
   @apply relative rounded-xl border border-base-content/10 dark:border-base-content/15 shadow-lg shadow-base-content/2;
 
   & > .pre-header {
-    @apply h-8 flex justify-center items-center;
+    @apply h-6 md:h-8.5 flex justify-center items-center;
 
     &:before {
-      @apply content-[''] absolute top-2.5 left-4 size-3.5 rounded-full bg-[#fb2c36]
-             shadow-[1.3rem_0_0_#fd9a00,2.6rem_0_0_#00c951];
+      @apply content-[''] absolute top-1.5 md:top-2.5 left-2.5 md:left-3 size-3 md:size-3.5 rounded-full bg-[#fb2c36]
+             shadow-[1.1rem_0_0_#fd9a00,2.2rem_0_0_#00c951] md:shadow-[1.3rem_0_0_#fd9a00,2.6rem_0_0_#00c951];
     }
 
     & > .pre-title {
-      @apply text-base-content/80 dark:text-base-content/90 text-sm;
+      @apply text-base-content/60 text-2xs md:text-sm;
     }
   }
 
   & > .pre-main {
-    @apply font-mono flex flex-row text-sm md:text-base py-2;
+    @apply font-mono flex flex-row text-xs md:text-base pt-1 pb-2;
 
     & > .pre-line {
       @apply hidden md:block text-right text-base-content/35 dark:text-base-content/45 border-r

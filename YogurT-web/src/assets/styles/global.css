@@ -1,5 +1,5 @@
 html {
-  @apply font-medium;
+  @apply font-medium tracking-wide;
 
   &::selection {
     @apply bg-primary/80 text-white;

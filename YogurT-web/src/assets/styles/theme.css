@@ -8,4 +8,7 @@
     SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --container-8xl: 88rem;
+
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: calc(0.75 / 0.625);
 }
