@@ -1,95 +1,20 @@
 <template>
-  <div ref="mdRef" v-html="sanitizedHtml" class="markdown-body"></div>
+  <article class="panel w-full p-4 md:px-10 md:py-8">
+    <div v-if="contentHtml" ref="mdRef" class="markdown-body" v-html="contentHtml"></div>
+    <slot v-else />
+  </article>
 </template>
 
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
-import MarkdownIt from 'markdown-it'
-import markdownItFootnote from 'markdown-it-footnote'
-import markdownItDeflist from 'markdown-it-deflist'
-import markdownItLinkAttributes from 'markdown-it-link-attributes'
-import markdownItTaskLists from 'markdown-it-task-lists'
-import { full as markdownItEmoji } from 'markdown-it-emoji'
-import hljs from 'highlight.js'
-import DOMPurify from 'dompurify'
+import { nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 import { OverlayScrollbars } from 'overlayscrollbars'
 import 'overlayscrollbars/overlayscrollbars.css'
 
 const props = defineProps({
-  source: { type: String, required: true }
+  contentHtml: { type: String, required: false }
 })
 
 const mdRef = useTemplateRef('mdRef')
-
-const escapeHtml = (str) => {
-  return str.replace(/[&<>]/g, m => {
-    if (m === '&') return '&amp;'
-    if (m === '<') return '&lt;'
-    if (m === '>') return '&gt;'
-    return m
-  })
-}
-
-const md = new MarkdownIt({
-  html: true,
-  linkify: true,
-  typographer: true,
-  breaks: true,
-  highlight: (str, lang) => {
-    let highlightedCode = ''
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        highlightedCode = hljs.highlight(str, { language: lang }).value
-      } catch (__) {
-      }
-    } else {
-      // 如果没有指定语言，则转义，避免被渲染成 html 标签
-      highlightedCode = escapeHtml(str)
-    }
-
-    // 添加行号
-    const lineCount = str.split(/\n/).length
-    let linesHtml = '<div class="pre-line">'
-    for (let i = 0; i < lineCount; i++) {
-      linesHtml += `<span>${i + 1}</span>`
-    }
-    linesHtml += '</div>'
-
-    return `<pre class="pre-container hljs"><div class="pre-header"><span class="pre-title">${lang || 'text'}</span></div><div class="pre-main">${linesHtml}<code class="pre-content">${highlightedCode}</code></div></pre>`
-  }
-})
-
-// md 插件：脚注、Emoji、定义列表、任务列表、链接属性
-md.use(markdownItFootnote)
-md.use(markdownItEmoji)
-md.use(markdownItDeflist)
-md.use(markdownItTaskLists, { label: true })
-md.use(markdownItLinkAttributes, {
-  // 如果 a 标签的 href 属性不以 # 开头，则给它添加 target: '_blank', rel: 'noopener noreferrer'
-  matcher: (href) => !href.startsWith('#'),
-  attrs: { target: '_blank', rel: 'noopener noreferrer' }
-})
-
-const rawHtml = computed(() => md.render(props.source))
-
-// 消毒配置
-const purifyConfig = {
-  ALLOWED_TAGS: [
-    'div', 'p', 'br', 'hr', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-    'ul', 'ol', 'li', 'pre', 'code', 'span', 'a', 'img',
-    'strong', 'em', 'b', 'i', 'table', 'thead', 'tbody',
-    'tr', 'th', 'td', 'blockquote', 'del', 's', 'ins', 'u', 'sub', 'sup',
-    'section', 'dl', 'dt', 'dd', 'label', 'input'
-  ],
-  ALLOWED_ATTR: [
-    'class', 'href', 'src', 'alt', 'title', 'width', 'height', 'id', 'style', 'target', 'rel',
-    'checked', 'disabled', 'type'
-  ],
-  ALLOW_DATA_ATTR: false,
-  KEEP_CONTENT: true,
-}
-
-const sanitizedHtml = computed(() => DOMPurify.sanitize(rawHtml.value, purifyConfig))
 
 // 给围栏代码块自定义滚动条
 const initCodeBlockScrollbars = () => {
@@ -103,7 +28,7 @@ const initCodeBlockScrollbars = () => {
 }
 
 const destroyAllScrollbars = () => {
-  mdRef.value.querySelectorAll('.pre-content').forEach(pre => {
+  mdRef.value.querySelectorAll('.pre-container .pre-content').forEach(pre => {
     if (pre.__osInstance__) {
       pre.__osInstance__.destroy()
       delete pre.__osInstance__
@@ -190,12 +115,12 @@ onBeforeUnmount(destroyAllScrollbars)
 
   a {
     @apply text-[color-mix(in_oklch,var(--color-primary)_90%,white)] underline decoration-2 underline-offset-4
-           decoration-primary/65 dark:decoration-primary/80;
+    decoration-primary/65 dark:decoration-primary/80;
   }
 
   blockquote, q {
     @apply border-l-6 border-primary/60 dark:border-primary/75 pl-4 bg-primary/5 dark:bg-primary/15 py-0.5
-           text-base-content/60;
+    text-base-content/60;
   }
 
   table, pre, dl, blockquote, q, ul, ol, p, img, section {
@@ -244,7 +169,7 @@ onBeforeUnmount(destroyAllScrollbars)
 
   code:not(pre code) {
     @apply bg-primary/5 dark:bg-primary/25 text-[color-mix(in_oklch,var(--color-primary)_90%,white)] text-[0.9rem]
-           px-1.5 py-0.5 rounded-md whitespace-pre-wrap;
+    px-1.5 py-0.5 rounded-md whitespace-pre-wrap;
   }
 
   table {
@@ -291,16 +216,16 @@ onBeforeUnmount(destroyAllScrollbars)
     @apply  relative pl-6;
 
     @apply before:absolute before:left-0 before:top-0 before:size-4 before:border before:border-base-content/15
-           dark:before:border-base-content/25 before:bg-base-100 before:bg-clip-padding before:rounded-xs;
+    dark:before:border-base-content/25 before:bg-base-100 before:bg-clip-padding before:rounded-xs;
 
     @apply has-checked:opacity-85 has-checked:line-through has-checked:decoration-2;
 
     @apply has-checked:before:bg-primary/80 dark:has-checked:before:bg-primary has-checked:before:border-primary/80
-           dark:has-checked:before:border-primary;
+    dark:has-checked:before:border-primary;
 
     @apply has-checked:after:absolute has-checked:after:size-4 has-checked:after:content-['✓']
-           has-checked:after:left-px has-checked:after:-top-px has-checked:after:text-center
-           has-checked:after:font-bold has-checked:after:text-white has-checked:after:text-[0.8rem];
+    has-checked:after:left-px has-checked:after:-top-px has-checked:after:text-center
+    has-checked:after:font-bold has-checked:after:text-white has-checked:after:text-[0.8rem];
   }
 
   .contains-task-list li.task-list-item label .task-list-item-checkbox {
@@ -317,7 +242,7 @@ onBeforeUnmount(destroyAllScrollbars)
 
     &:before {
       @apply content-[''] absolute top-1.5 md:top-2.5 left-2.5 md:left-3 size-3 md:size-3.5 rounded-full bg-[#fb2c36]
-             shadow-[1.1rem_0_0_#fd9a00,2.2rem_0_0_#00c951] md:shadow-[1.3rem_0_0_#fd9a00,2.6rem_0_0_#00c951];
+      shadow-[1.1rem_0_0_#fd9a00,2.2rem_0_0_#00c951] md:shadow-[1.3rem_0_0_#fd9a00,2.6rem_0_0_#00c951];
     }
 
     & > .pre-title {
@@ -330,7 +255,7 @@ onBeforeUnmount(destroyAllScrollbars)
 
     & > .pre-line {
       @apply hidden md:block text-right text-base-content/35 dark:text-base-content/45 border-r
-             border-r-base-content/5 dark:border-r-base-content/10 pointer-events-none select-none;
+      border-r-base-content/5 dark:border-r-base-content/10 pointer-events-none select-none;
 
       & > span {
         @apply block px-3;
