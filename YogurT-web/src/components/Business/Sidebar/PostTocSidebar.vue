@@ -137,7 +137,7 @@ onMounted(() => {
   @apply overflow-hidden;
 
   ol li ol {
-    @apply border-l-3 border-base-content/5 dark:border-base-content/10;
+    @apply border-l-3 border-base-content/3 dark:border-base-content/6;
   }
 
   li ol li {
