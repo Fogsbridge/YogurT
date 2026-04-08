@@ -1,7 +1,6 @@
-@import "./app.css";
-
-/* 字体配置 */
 @import "./fonts.css";
+
+@import "./app.css";
 
 @import "./themes/index.css";
 
