@@ -74,7 +74,7 @@ onBeforeUnmount(destroyAllScrollbars)
   }
 
   h2 {
-    @apply text-[1.3rem] md:text-[1.45rem] border-l-6 border-primary/70 dark:border-primary pl-4;
+    @apply text-[1.3rem] md:text-[1.45rem] border-l-6 border-primary/70 dark:border-primary pl-4 mt-6;
   }
 
   h3 {
