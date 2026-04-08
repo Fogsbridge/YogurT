@@ -70,6 +70,13 @@ const routes = [
         component: () => import('@/views/About/About.vue')
       },
       {
+        path: '/posts/:postId',
+        name: 'Posts',
+        meta: { title: '文章'},
+        props: true,
+        component: () => import('@/views/Posts/Posts.vue')
+      },
+      {
         path: ':pathMatch(.*)*',
         name: 'NotFound',
         meta: { title: '页面未找到' },
