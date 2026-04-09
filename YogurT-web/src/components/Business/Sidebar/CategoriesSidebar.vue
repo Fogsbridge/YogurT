@@ -1,8 +1,11 @@
 <template>
-  <div class="panel h-fit px-6 py-6 min-h-50 w-full space-y-4">
-    <h2 class="text-xl font-bold text-base-content">
-      分类
-    </h2>
+  <div class="panel h-fit px-6 pt-4 pb-6 min-h-50 w-full space-y-4">
+    <div class="text-lg font-bold text-base-content flex flex-row items-center gap-1.5">
+      <svg class="size-5.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M5.566 4.657A4.505 4.505 0 0 1 6.75 4.5h10.5c.41 0 .806.055 1.183.157A3 3 0 0 0 15.75 3h-7.5a3 3 0 0 0-2.684 1.657ZM2.25 12a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3v-6ZM5.25 7.5c-.41 0-.806.055-1.184.157A3 3 0 0 1 6.75 6h10.5a3 3 0 0 1 2.683 1.657A4.505 4.505 0 0 0 18.75 7.5H5.25Z"></path>
+      </svg>
+      <h2>分类</h2>
+    </div>
 
     <ul v-if="isLoading" class="flex flex-col gap-y-1 text-lg">
       <li v-for="i in 3" class="skeleton inline-block rounded-xl w-full h-13 bg-base-300/60"></li>

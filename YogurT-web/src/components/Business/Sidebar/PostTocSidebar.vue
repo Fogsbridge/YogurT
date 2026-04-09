@@ -1,9 +1,13 @@
 <template>
-  <div v-if="show" class="panel px-1 py-6 min-h-50 w-full space-y-4">
-    <h2 class="px-5 text-xl font-bold text-base-content">
-      文章目录
-    </h2>
-    <div ref="tocContainerRef" v-html="tocHtml" class="px-5 max-h-[75lvh]" v-overlay-scroll="tocScrollbarConfig"></div>
+  <div v-if="show" class="panel px-1 pt-4 pb-6 min-h-50 w-full space-y-4">
+    <div class="px-5 text-lg font-bold text-base-content flex flex-row items-center gap-1.5">
+      <svg class="size-5.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z"></path>
+      </svg>
+      <h2>文章目录</h2>
+    </div>
+
+    <div ref="tocContainerRef" v-html="tocHtml" class="px-5.5 max-h-[75lvh]" v-overlay-scroll="tocScrollbarConfig"></div>
   </div>
 </template>
 
