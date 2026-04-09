@@ -1,6 +1,9 @@
 <template>
   <div class="space-y-2 md:space-y-4">
     <SidebarContainer>
+      <template #default>
+        <AuthorInfoSidebar />
+      </template>
       <template #sticky>
         <CategoriesSidebar :currentCategory="currentCategory" :maxItems="99" />
       </template>
@@ -18,6 +21,7 @@
 import InfoBar from '@/components/Base/InfoBar.vue'
 import SidebarContainer from '@/components/Layout/components/SidebarContainer.vue'
 import CategoriesSidebar from '@/components/Business/Sidebar/CategoriesSidebar.vue'
+import AuthorInfoSidebar from '@/components/Business/Sidebar/AuthorInfoSidebar.vue'
 import CategoryPostsGrid from '@/views/Categories/components/CategoryPostsGrid.vue'
 import { onMounted, ref, toRefs, watch, watchEffect } from 'vue'
 

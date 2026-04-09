@@ -8,10 +8,11 @@
 
     <SidebarContainer>
       <template #default>
-        <CategoriesSidebar />
+        <AuthorInfoSidebar />
       </template>
       <template #sticky>
         <PostTocSidebar :tocHtml="tocHtml" />
+        <CategoriesSidebar />
         <TagsSidebar />
       </template>
     </SidebarContainer>
@@ -29,9 +30,10 @@ import CategoriesSidebar from '@/components/Business/Sidebar/CategoriesSidebar.v
 import TagsSidebar from '@/components/Business/Sidebar/TagsSidebar.vue'
 import PostsBanner from '@/views/Posts/PostsBanner.vue'
 import PostContent from '@/components/Business/Post/PostContent.vue'
+import PostTocSidebar from '@/components/Business/Sidebar/PostTocSidebar.vue'
+import AuthorInfoSidebar from '@/components/Business/Sidebar/AuthorInfoSidebar.vue'
 import { ref } from 'vue'
 import { useMarkdownRender } from '@/composables/useMarkdownRender.js'
-import PostTocSidebar from '@/components/Business/Sidebar/PostTocSidebar.vue'
 
 const example = ref({
   postId: '1001',
