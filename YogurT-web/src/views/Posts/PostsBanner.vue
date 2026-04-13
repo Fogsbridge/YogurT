@@ -1,8 +1,8 @@
 <template>
-  <BannerContainer placement="content" :imgUrl="coverUrl" :showOverlay="false" class="h-90 md:h-110">
+  <BannerContainer placement="main" :imgUrl="coverUrl" :showOverlay="false">
     <div class="absolute -z-1 inset-0 bg-linear-to-t from-black/70 to-black/10 via-black/45 dark:from-black/80 dark:via-black/45 dark:to-black/15"></div>
 
-    <div class="p-6 md:px-14 md:py-10 h-full flex flex-col justify-end  gap-3 md:gap-4 text-white transtion">
+    <div class="h-90 md:h-110 max-w-8xl mx-auto p-6 md:px-14 md:py-10 flex flex-col justify-end  gap-3 md:gap-4 text-white transtion">
       <div class="flex flex-col md:flex-row gap-y-1 md:gap-x-3 flex-wrap text-xs md:text-base text-white/90">
         <div class="w-fit font-bold bg-transparent text-white/90 border-2 border-white/90 rounded-lg px-1.5 md:px-2 py-0.5 hover:bg-white hover:text-black hover:border-white cursor-pointer duration-200"
              @click="$router.push({ name: 'CategoryDetail', params: { categoryName: category } })"

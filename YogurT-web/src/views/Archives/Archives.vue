@@ -3,6 +3,7 @@
     <ArchivesBanner />
 
     <SidebarContainer>
+      <AuthorInfoSidebar />
       <CategoriesSidebar />
       <TagsSidebar />
     </SidebarContainer>
@@ -20,6 +21,7 @@ import ArchivesBanner from '@/views/Archives/ArchivesBanner.vue'
 import SidebarContainer from '@/components/Layout/components/SidebarContainer.vue'
 import CategoriesSidebar from '@/components/Business/Sidebar/CategoriesSidebar.vue'
 import TagsSidebar from '@/components/Business/Sidebar/TagsSidebar.vue'
+import AuthorInfoSidebar from '@/components/Business/Sidebar/AuthorInfoSidebar.vue'
 
 const posts = ref([
   {

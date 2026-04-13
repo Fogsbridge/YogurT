@@ -2,6 +2,7 @@
   <div class="panel">
     <HomeBanner />
     <SidebarContainer>
+      <AuthorInfoSidebar />
       <CategoriesSidebar />
       <TagsSidebar />
     </SidebarContainer>
@@ -14,6 +15,7 @@ import HomeBanner from '@/views/Home/HomeBanner.vue'
 import SidebarContainer from '@/components/Layout/components/SidebarContainer.vue'
 import CategoriesSidebar from '@/components/Business/Sidebar/CategoriesSidebar.vue'
 import TagsSidebar from '@/components/Business/Sidebar/TagsSidebar.vue'
+import AuthorInfoSidebar from '@/components/Business/Sidebar/AuthorInfoSidebar.vue'
 </script>
 
 <style scoped>

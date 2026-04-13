@@ -1,6 +1,9 @@
 <template>
   <div class="space-y-2 md:space-y-4">
     <SidebarContainer>
+      <template #default>
+        <AuthorInfoSidebar />
+      </template>
       <template #sticky>
         <TagsSidebar :currentTag="currentTag" :maxItems="999" />
       </template>
@@ -19,6 +22,7 @@ import SidebarContainer from '@/components/Layout/components/SidebarContainer.vu
 import TagsSidebar from '@/components/Business/Sidebar/TagsSidebar.vue'
 import InfoBar from '@/components/Base/InfoBar.vue'
 import TagsPostsGrid from '@/views/Tags/components/TagsPostsGrid.vue'
+import AuthorInfoSidebar from '@/components/Business/Sidebar/AuthorInfoSidebar.vue'
 import { onMounted, ref, toRefs, watch, watchEffect } from 'vue'
 
 const props = defineProps({
