@@ -18,9 +18,8 @@
     </SidebarContainer>
 
     <PostContent :contentHtml="contentHtml" />
-    <div class="panel p-6 min-h-300">
 
-    </div>
+    <PostComment :postId="post.id" />
   </div>
 </template>
 
@@ -32,11 +31,12 @@ import PostsBanner from '@/views/Posts/PostsBanner.vue'
 import PostContent from '@/components/Business/Post/PostContent.vue'
 import PostTocSidebar from '@/components/Business/Sidebar/PostTocSidebar.vue'
 import AuthorInfoSidebar from '@/components/Business/Sidebar/AuthorInfoSidebar.vue'
+import PostComment from '@/views/Posts/components/PostComment.vue'
 import { ref } from 'vue'
 import { useMarkdownRender } from '@/composables/useMarkdownRender.js'
 
-const example = ref({
-  postId: '1001',
+const post = ref({
+  id: '1001',
   title: 'Markdown 完全解析：从入门到精通',
   description: '80 一杯',
   content:
@@ -333,8 +333,8 @@ const example = ref({
   pinned: true,
   allowComments: true
 })
-const post = ref({
-  postId: '1001',
+const post1 = ref({
+  id: '1001',
   title: '极简主义生活指南：从断舍离到身心自由的完整实践手册',
   description: '从断舍离到身心自由的完整实践手册',
   content:

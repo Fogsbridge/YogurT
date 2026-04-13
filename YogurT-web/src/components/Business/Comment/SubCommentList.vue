@@ -1,6 +1,6 @@
 <template>
   <ol class="mt-4 md:mt-6 mb-1 md:mb-2 space-y-4 md:space-y-6 ml-1 border-l-2 border-dashed border-base-content/5 dark:border-base-content/10">
-    <li v-for="c in subComments" :key="c.id" class="px-4 md:px-7" >
+    <li v-for="c in subComments" :key="c.commentId" class="px-4 md:px-7" >
       <div class="flex flex-row items-center gap-2 md:gap-2">
         <img class="size-6 md:size-9 rounded-full ring-1 ring-base-content/40" :src="c.avatarUrl" :alt="c.name" />
 
@@ -52,28 +52,40 @@
         </div>
 
         <div class="self-end flex flex-row items-center gap-5 md:gap-6 text-xs md:text-xs text-base-content/70">
-          <div class="flex flex-row items-center gap-1 text-nowrap group hover:text-red-400 hover:scale-115 duration-200">
+          <button class="flex flex-row items-center gap-1 text-nowrap group hover:text-red-400 hover:scale-115 duration-200">
             <svg class="size-3.5 group-hover:stroke-2" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"></path>
             </svg>
             <span v-if="c.totalLike && c.totalLike !== 0" class="h-3.5 leading-3.5">
               {{ c.totalLike }}
             </span>
-          </div>
+          </button>
 
-          <div class="text-nowrap group hover:text-blue-400 hover:scale-115 duration-200">
+          <button class="text-nowrap group hover:text-blue-400 hover:scale-115 duration-200"
+                  @click.stop="updateActiveCommentId(activeCommentId === c.commentId ? null : c.commentId)"
+          >
             <svg class="size-3.5 group-hover:stroke-2" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"></path>
             </svg>
-          </div>
+          </button>
         </div>
       </div>
+
+      <CommentForm :show="activeCommentId === c.commentId" @close="activeCommentId = null" class="mt-3 md:mt-5" :targetId="c.postId" targetType="post" :parentId="c.parentId" variant="subComment" />
     </li>
   </ol>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import CommentForm from '@/components/Business/Comment/CommentForm.vue'
+import { onMounted, ref, inject } from 'vue'
+
+const props = defineProps({
+  targetType: {type: String, required:true, validator: v => ['post', 'guestbook'].includes(v) },
+  targetId: { type: String, required: true }
+})
+
+const { activeCommentId, updateActiveCommentId } = inject('activeCommentId')
 
 const subComments = ref(null)
 
@@ -82,7 +94,8 @@ const formatDate = (dateStr) => new Date(dateStr).toISOString().split("T")[0]
 onMounted(() => {
   subComments.value = [
     {
-      id: '1001',
+      postId: '1001',
+      commentId: '1011',
       name: '码农阿飞',
       avatarUrl: '/images/avatar-2.jpg',
       content: '关于并发处理的 Actor 模型解释得非常清晰，结合 Rust 的 tokio 讲解就更好了。期待作者更多实践分享！',
@@ -97,7 +110,8 @@ onMounted(() => {
       parentId: null
     },
     {
-      id: '2001',
+      postId: '1001',
+      commentId: '2001',
       name: 'Rustacean',
       avatarUrl: '/images/avatar-2.jpg',
       content: '确实，如果用 tokio 的 example 来对比就更直观了，期待作者续篇。另外请教一下，Actor 模型在游戏服务器中常见吗？',
@@ -112,7 +126,8 @@ onMounted(() => {
       parentId: '1001'
     },
     {
-      id: '2002',
+      postId: '1001',
+      commentId: '2002',
       name: '并发爱好者',
       avatarUrl: '/images/avatar-3.jpg',
       content: 'Actor 模型和 CSP 模型对比分析很到位，受益匪浅！特别是信箱调度那块让我恍然大悟。',
@@ -127,7 +142,8 @@ onMounted(() => {
       parentId: '1001'
     },
     {
-      id: '3001',
+      postId: '1001',
+      commentId: '3001',
       name: 'Gopher',
       avatarUrl: '/images/avatar-4.jpg',
       content: '补充一下，Go 语言中的 goroutine 也是 CSP 风格的，可以对比着学习。两者各有千秋，适合不同场景。',

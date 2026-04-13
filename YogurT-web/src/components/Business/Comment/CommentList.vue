@@ -1,6 +1,6 @@
 <template>
   <ol class="space-y-3 md:space-y-5">
-    <li v-for="c in comments" :key="c.id" class="px-3.5 py-3 md:px-8 md:py-6 border border-base-content/6 dark:border-base-content/12 bg-base-200/40 rounded-xl md:rounded-2xl" >
+    <li v-for="c in comments" :key="c.commentId" class="px-3.5 py-3 md:px-8 md:py-6 border border-base-content/6 dark:border-base-content/12 bg-base-200/40 rounded-xl md:rounded-2xl" >
       <div class="flex flex-row items-center gap-2 md:gap-3">
         <img class="size-9 md:size-11 rounded-full ring-1 ring-base-content/40" :src="c.avatarUrl" :alt="c.name" />
 
@@ -47,34 +47,39 @@
         </div>
 
         <div class="self-end flex flex-row items-center gap-5 md:gap-6 text-xs md:text-sm text-base-content/70">
-          <div class="flex flex-row items-center gap-1 text-nowrap group hover:text-red-400 hover:scale-115 duration-200">
+          <button class="flex flex-row items-center gap-1 text-nowrap group hover:text-red-400 hover:scale-115 duration-200">
             <svg class="size-4.5 group-hover:stroke-2" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"></path>
             </svg>
             <span v-if="c.totalLike && c.totalLike !== 0" class="h-4.5 leading-4.5">
               {{ c.totalLike }}
             </span>
-          </div>
+          </button>
 
-          <div class="flex flex-row items-center gap-1 text-nowrap group hover:text-blue-400 hover:scale-115 duration-200">
+          <button class="flex flex-row items-center gap-1 text-nowrap group hover:text-blue-400 hover:scale-115 duration-200"
+               @click.stop="activeCommentId = activeCommentId === c.commentId ? null : c.commentId"
+          >
             <svg class="size-4.5 group-hover:stroke-2" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"></path>
             </svg>
             <span v-if="c.totalReply && c.totalReply !== 0" class="h-4.5 leading-4.5">
               {{ c.totalReply }}
             </span>
-          </div>
+          </button>
         </div>
       </div>
 
-      <SubCommentList />
+      <CommentForm :show="activeCommentId === c.commentId" @close="activeCommentId = null" class="mt-3 md:mt-5" :targetId="c.postId" targetType="post" :parentId="c.commentId" variant="subComment" />
+
+      <SubCommentList targetType="post" :targetId="c.postId" />
     </li>
   </ol>
 </template>
 
 <script setup>
+import CommentForm from '@/components/Business/Comment/CommentForm.vue'
 import SubCommentList from '@/components/Business/Comment/SubCommentList.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, provide } from 'vue'
 
 const props = defineProps({
   targetType: {type: String, required:true, validator: v => ['post', 'guestbook'].includes(v) },
@@ -82,13 +87,18 @@ const props = defineProps({
 })
 
 const comments = ref(null)
+const activeCommentId = ref(null)
+const updateActiveCommentId = (id) => activeCommentId.value = id
+
+provide('activeCommentId', { activeCommentId, updateActiveCommentId })
 
 const formatDate = (dateStr) => new Date(dateStr).toISOString().split("T")[0]
 
 onMounted(() => {
   comments.value = [
     {
-      id: '1001',
+      postId: '1001',
+      commentId: '1001',
       name: '不吃香菜',
       avatarUrl: '/images/avatar-2.jpg',
       content: '这篇文章写得太好了！尤其是关于并发处理的部分，让我豁然开朗。',
@@ -103,7 +113,8 @@ onMounted(() => {
       parentId: null
     },
     {
-      id: '1002',
+      postId: '1001',
+      commentId: '1002',
       name: '摸鱼办主任',
       avatarUrl: '/images/avatar-2.jpg',
       content: '确实，作者对锁的讲解也很透彻，学习了！',
@@ -118,7 +129,8 @@ onMounted(() => {
       parentId: '1001'
     },
     {
-      id: '1003',
+      postId: '1001',
+      commentId: '1003',
       name: '尊嘟假嘟',
       avatarUrl: '/images/avatar-3.jpg',
       content: '有没有推荐的进一步阅读资料呀？',
@@ -133,7 +145,8 @@ onMounted(() => {
       parentId: '1001'
     },
     {
-      id: '1004',
+      postId: '1001',
+      commentId: '1004',
       name: '你算哪块小饼干',
       avatarUrl: '/images/avatar-2.jpg',
       content: '@lily 可以看《Java并发编程实战》第5章，很有帮助',
@@ -148,7 +161,8 @@ onMounted(() => {
       parentId: '1001'
     },
     {
-      id: '1005',
+      postId: '1001',
+      commentId: '1005',
       name: 'coder123',
       avatarUrl: '/images/avatar-3.jpg',
       content: 'markdown 排版真舒服，博主继续加油！',
@@ -163,7 +177,8 @@ onMounted(() => {
       parentId: null
     },
     {
-      id: '1006',
+      postId: '1001',
+      commentId: '1006',
       name: '佛系随缘',
       avatarUrl: '/images/avatar-4.jpg',
       content: '配图很精美，请问是用什么工具画的？',
@@ -178,7 +193,8 @@ onMounted(() => {
       parentId: null
     },
     {
-      id: '1007',
+      postId: '1001',
+      commentId: '1007',
       name: '碳水教父',
       avatarUrl: '/images/avatar-4.jpg',
       content: '用的 draw.io，免费又强大，推荐',
@@ -193,7 +209,8 @@ onMounted(() => {
       parentId: '1006'
     },
     {
-      id: '1008',
+      postId: '1001',
+      commentId: '1008',
       name: 'newbie',
       avatarUrl: '/images/avatar-3.jpg',
       content: '谢谢博主，刚好需要画架构图',
@@ -208,7 +225,8 @@ onMounted(() => {
       parentId: '1006'
     },
     {
-      id: '1009',
+      postId: '1001',
+      commentId: '1009',
       name: '输了一整晚',
       avatarUrl: '/images/avatar-2.jpg',
       content: '部分代码示例不够完整，新手可能看不懂，建议补充完整可运行的 demo。',
@@ -223,7 +241,8 @@ onMounted(() => {
       parentId: null
     },
     {
-      id: '1010',
+      postId: '1001',
+      commentId: '1010',
       name: '废物点心',
       avatarUrl: '/images/avatar-4.jpg',
       content: '感谢反馈！我会尽快补全示例代码，并放到 GitHub 仓库中。',
@@ -238,7 +257,8 @@ onMounted(() => {
       parentId: '1009'
     },
     {
-      id: '1011',
+      postId: '1001',
+      commentId: '1011',
       name: 'roaming_geek',
       avatarUrl: '/images/avatar-4.jpg',
       content: '非常实用的技术文章，已经收藏！期待下一篇关于微服务的。',
