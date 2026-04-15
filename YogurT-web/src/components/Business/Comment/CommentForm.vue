@@ -1,5 +1,5 @@
 <template>
-  <form class="flex flex-col gap-2 md:gap-3" :class="show ? 'block' : 'hidden'">
+  <form class="flex flex-col gap-2 md:gap-3 will-change-transform" :class="show ? 'block' : 'hidden'">
     <div class="rounded-lg md:rounded-xl border border-base-content/6 dark:border-base-content/12
                 hover:border-base-content/25 focus-within:border-primary/80 hover:focus-within:border-primary/80
                 focus-within:ring focus-within:ring-primary/80 duration-200"
