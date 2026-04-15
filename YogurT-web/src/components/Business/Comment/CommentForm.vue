@@ -43,7 +43,7 @@
         >昵称
         </span>
         <input type="text"
-               class="px-2 py-1.5 md:px-3 md:py-2 outline-none"
+               class="px-2 py-1.5 md:px-3 md:py-2 outline-none min-w-0"
                placeholder="必填"
                v-model.trim="formData.name"
         />
@@ -59,7 +59,7 @@
         >邮箱
         </span>
         <input type="email"
-               class="px-2 py-1.5 md:px-3 md:py-2 outline-none"
+               class="px-2 py-1.5 md:px-3 md:py-2 outline-none min-w-0"
                placeholder="选填"
                v-model.trim="formData.email"
         />
@@ -72,9 +72,10 @@
       >
         <span class="px-2 py-1.5 md:px-3 md:py-2 text-nowrap border-r border-r-base-content/6"
               :class="variant === 'comment' ? 'bg-base-100' : 'bg-base-200/40'"
-        >网址</span>
+        >网址
+        </span>
         <input type="url"
-               class="px-2 py-1.5 md:px-3 md:py-2 outline-none"
+               class="px-2 py-1.5 md:px-3 md:py-2 outline-none min-w-0"
                placeholder="选填"
                v-model.trim="formData.siteUrl"
         />
