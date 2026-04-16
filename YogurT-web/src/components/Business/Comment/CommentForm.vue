@@ -3,7 +3,7 @@
     <div class="rounded-lg md:rounded-xl border border-base-content/6 dark:border-base-content/12
                 hover:border-base-content/25 focus-within:border-primary/80 hover:focus-within:border-primary/80
                 focus-within:ring focus-within:ring-primary/80 duration-200"
-         :class="variant === 'comment' ? 'bg-base-200/40' : 'bg-base-100'"
+         :class="variant === 'subtle' ? 'bg-base-200/40' : 'bg-base-100'"
     >
       <div class="relative md:resize-y h-50 md:h-40 min-h-40 max-h-100 overflow-y-auto my-1 ml-2 mr-2 pb-6 md:my-2 md:ml-4 md:mr-2 md:pb-7.5">
         <div class="text-sm md:text-base">
@@ -36,14 +36,14 @@
       <div class="flex-2 focus-within:flex-3 min-w-0 overflow-clip flex flex-row rounded-lg md:rounded-xl border border-base-content/6
                   dark:border-base-content/12 hover:border-base-content/25 focus-within:border-primary/80
                   hover:focus-within:border-primary/80 focus-within:ring focus-within:ring-primary/80 duration-200"
-           :class="variant === 'comment' ? 'bg-base-200/40' : 'bg-base-100'"
+           :class="variant === 'subtle' ? 'bg-base-200/40' : 'bg-base-100'"
       >
         <span class="px-2 py-1.5 md:px-3 md:py-2 text-nowrap border-r border-r-base-content/6"
-              :class="variant === 'comment' ? 'bg-base-100' : 'bg-base-200/40'"
+              :class="variant === 'subtle' ? 'bg-base-100' : 'bg-base-200/40'"
         >昵称
         </span>
         <input type="text"
-               class="px-2 py-1.5 md:px-3 md:py-2 outline-none min-w-0"
+               class="px-2 py-1.5 md:px-3 md:py-2 outline-none flex-1 min-w-0"
                placeholder="必填"
                v-model.trim="formData.name"
         />
@@ -52,14 +52,14 @@
       <div class="flex-2 focus-within:flex-3 min-w-0 overflow-clip flex flex-row rounded-lg md:rounded-xl border border-base-content/6
                   dark:border-base-content/12 hover:border-base-content/25 focus-within:border-primary/80
                   hover:focus-within:border-primary/80 focus-within:ring focus-within:ring-primary/80 duration-200"
-           :class="variant === 'comment' ? 'bg-base-200/40' : 'bg-base-100'"
+           :class="variant === 'subtle' ? 'bg-base-200/40' : 'bg-base-100'"
       >
         <span class="px-2 py-1.5 md:px-3 md:py-2 text-nowrap border-r border-r-base-content/6"
-              :class="variant === 'comment' ? 'bg-base-100' : 'bg-base-200/40'"
+              :class="variant === 'subtle' ? 'bg-base-100' : 'bg-base-200/40'"
         >邮箱
         </span>
         <input type="email"
-               class="px-2 py-1.5 md:px-3 md:py-2 outline-none min-w-0"
+               class="px-2 py-1.5 md:px-3 md:py-2 outline-none flex-1 min-w-0"
                placeholder="选填"
                v-model.trim="formData.email"
         />
@@ -68,14 +68,14 @@
       <div class="flex-2 focus-within:flex-3 min-w-0 overflow-clip flex flex-row rounded-lg md:rounded-xl border border-base-content/6
                   dark:border-base-content/12 hover:border-base-content/25 focus-within:border-primary/80
                   hover:focus-within:border-primary/80 focus-within:ring focus-within:ring-primary/80 duration-200"
-           :class="variant === 'comment' ? 'bg-base-200/40' : 'bg-base-100'"
+           :class="variant === 'subtle' ? 'bg-base-200/40' : 'bg-base-100'"
       >
         <span class="px-2 py-1.5 md:px-3 md:py-2 text-nowrap border-r border-r-base-content/6"
-              :class="variant === 'comment' ? 'bg-base-100' : 'bg-base-200/40'"
+              :class="variant === 'subtle' ? 'bg-base-100' : 'bg-base-200/40'"
         >网址
         </span>
         <input type="url"
-               class="px-2 py-1.5 md:px-3 md:py-2 outline-none min-w-0"
+               class="px-2 py-1.5 md:px-3 md:py-2 outline-none flex-1 min-w-0"
                placeholder="选填"
                v-model.trim="formData.siteUrl"
         />
@@ -84,7 +84,7 @@
       <button type="button"
               class="flex-none text-nowrap px-3 py-1.5 md:px-4 md:py-2 bg-base-100 rounded-lg md:rounded-xl border border-base-content/6
                      dark:border-base-content/12 hover:bg-gray-500 hover:text-white cursor-pointer duration-200"
-              :class="variant === 'subComment' ? 'block' : 'hidden'"
+              :class="targetType === 'comment' ? 'block' : 'hidden'"
               @click.stop="emit('close')"
       >取消
       </button>
@@ -104,10 +104,10 @@
 import { reactive } from 'vue'
 
 const props = defineProps({
-  targetType: { type: String, required: true, validator: v => ['post', 'guestbook'].includes(v) },
-  targetId: { type: String, required: true },
+  targetType: { type: String, required: true, validator: v => ['post', 'guestbook', 'comment'].includes(v) },
+  targetId: { type: String, required: false },
   parentId: { type: String, required: false, default: null },
-  variant: { type: String, default: 'comment', validator: v => ['comment', 'subComment'].includes(v) },
+  variant: { type: String, default: 'default', validator: v => ['default', 'subtle'].includes(v) },
   show: { type: Boolean, default: true }
 })
 

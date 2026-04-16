@@ -57,12 +57,12 @@ const routes = [
         meta: { title: '友链' },
         component: () => import('@/views/Links/Links.vue')
       },
-      // {
-      //   path: '/messages',
-      //   name: 'Messages',
-      //   meta: { title: '留言' },
-      //   component: () => import('@/views/Messages/Messages.vue')
-      // },
+      {
+        path: '/guestbook',
+        name: 'Guestbook',
+        meta: { title: '留言' },
+        component: () => import('@/views/Guestbook/Guestbook.vue')
+      },
       {
         path: '/about',
         name: 'About',

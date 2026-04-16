@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <CommentForm :show="activeCommentId === c.commentId" @close="activeCommentId = null" class="mt-3 md:mt-5" :targetId="c.postId" targetType="post" :parentId="c.parentId" variant="subComment" />
+      <CommentForm :show="activeCommentId === c.commentId" @close="activeCommentId = null" class="mt-3 md:mt-5" :targetId="c.postId" targetType="comment" :parentId="c.parentId" />
     </li>
   </ol>
 </template>
