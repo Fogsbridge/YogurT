@@ -1,5 +1,5 @@
 <template>
-  <BannerContainer placement="header" imgUrl="/images/banner/banner-2.jpg" class="h-screen">
+  <BannerContainer placement="header" imgUrl="/images/banner/banner-12.jpg" class="h-screen">
     <!-- 点阵遮罩 -->
     <div class="absolute -z-1 inset-0 dot-mask transition duration-500"></div>
 

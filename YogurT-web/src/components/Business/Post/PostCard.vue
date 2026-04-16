@@ -11,12 +11,13 @@
     <div class="min-w-0 min-h-0 basis-(--cover-ratio)"
          v-tw:--cover-ratio="`${coverRatio}%`"
     >
-      <div v-if="post" class="overflow-clip">
+      <div v-if="post" class="relative overflow-clip">
         <img :src="post.coverUrl"
              class="w-full h-full object-cover group-hover:scale-115 duration-500 ease-in-out"
              alt="文章封面"
              loading="lazy"
         />
+        <div class="absolute inset-0 dot-mask backdrop-brightness-90 dark:backdrop-brightness-80 transition duration-500"></div>
       </div>
 
       <!-- 封面骨架屏 -->

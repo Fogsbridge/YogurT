@@ -8,7 +8,7 @@
       <span class="text-lg md:text-xl font-bold">发表评论</span>
     </div>
 
-    <CommentForm targetType="post" :targetId="postId" />
+    <CommentForm targetType="post" :targetId="postId" variant="subtle" />
 
     <div class="flex flex-row items-center gap-1.5 md:gap-2 mt-6 md:mt-12">
       <svg class="size-5 md:size-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
