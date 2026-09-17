@@ -6,9 +6,9 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-    "@/*": ["src/*"]
-  },
-  "jsx": "preserve",
+      "@/*": ["src/*"]
+    },
+    "jsx": "preserve",
     "resolveJsonModule": true,
     "isolatedModules": true
 },
