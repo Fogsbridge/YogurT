@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "MaoKenZhuYuanTi";
+  src: url("../fonts/MaoKenZhuYuanTi-MaokenZhuyuanTi-2.ttf") format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AlimamaFangYuanTiVF-Thin";
+  src: url("../fonts/AlimamaFangYuanTiVF-Thin.ttf") format('truetype');
+  font-display: swap;
+}

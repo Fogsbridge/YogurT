@@ -1,5 +1,5 @@
 <template>
-  <RouterView />
+  <p class="text-primary text-7xl text-center">HelloWorld</p>
 </template>
 
 <script setup>
