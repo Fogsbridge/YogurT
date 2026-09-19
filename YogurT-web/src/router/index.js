@@ -105,9 +105,9 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   document.title = to.meta.title ? `${to.meta.title} | 云桥雾的Blog` : '云桥雾的Blog'
-  next()
+  return true
 })
 
 export default router
