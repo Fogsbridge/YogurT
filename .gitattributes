@@ -1,0 +1,89 @@
+# 默认规则
+* text=auto eol=lf
+
+# 图片
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.bmp    binary
+*.tiff   binary
+*.tif    binary
+*.webp   binary
+*.avif   binary
+*.heic   binary
+*.heif   binary
+
+# 矢量图
+*.svg    text eol=lf
+
+# 字体
+*.ttf    binary
+*.otf    binary
+*.eot    binary
+*.woff   binary
+*.woff2  binary
+
+# 音视频
+*.mp3    binary
+*.wav    binary
+*.ogg    binary
+*.flac   binary
+*.aac    binary
+*.m4a    binary
+*.mp4    binary
+*.webm   binary
+*.mov    binary
+*.avi    binary
+*.mkv    binary
+*.flv    binary
+
+# 压缩包
+*.zip    binary
+*.tar    binary
+*.gz     binary
+*.tgz    binary
+*.bz2    binary
+*.7z     binary
+*.rar    binary
+*.xz     binary
+*.zst    binary
+
+# 文档
+*.pdf    binary
+*.doc    binary
+*.docx   binary
+*.xls    binary
+*.xlsx   binary
+*.ppt    binary
+*.pptx   binary
+
+# 可执行 / 编译产物
+*.exe    binary
+*.dll    binary
+*.so     binary
+*.dylib  binary
+*.bin    binary
+*.class  binary
+*.jar    binary
+*.war    binary
+
+# 数据库 / 序列化
+*.sqlite binary
+*.db     binary
+*.pbxproj binary
+
+
+# 特定文本文件：强制 LF
+*.sh     text eol=lf
+*.bash   text eol=lf
+*.zsh    text eol=lf
+*.fish   text eol=lf
+*.py     text eol=lf
+
+
+# 特定文本文件：强制 CRLF（Windows 专用脚本）
+*.bat    text eol=crlf
+*.cmd    text eol=crlf
+*.ps1    text eol=crlf
