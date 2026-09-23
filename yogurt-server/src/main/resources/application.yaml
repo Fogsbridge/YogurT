@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: yogurt-server
+
+  # 暂未配置数据库，先排除数据源的自动装配
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration
