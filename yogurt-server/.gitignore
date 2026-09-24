@@ -1,3 +1,11 @@
+### ENV ###
+.env
+.env.prod
+.env.local
+!.env.example
+!.env.dev
+
+### 构建产物 ###
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar

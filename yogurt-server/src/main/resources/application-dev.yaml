@@ -1,0 +1,11 @@
+spring:
+  config:
+    import:
+      - optional:file:./.env.dev[.properties]
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3307}/${DB_NAME:yogurt_server_dev}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:dev123}
+
+  flyway:
+    clean-disabled: false
