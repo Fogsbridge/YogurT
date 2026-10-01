@@ -16,3 +16,8 @@ spring:
     encoding: utf-8
     validate-on-migrate: true
     clean-disabled: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
