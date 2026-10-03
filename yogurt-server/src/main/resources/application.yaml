@@ -21,3 +21,9 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
+password:
+  encoder:
+    argon2:
+      memory: 19456
+      iterations: 5
