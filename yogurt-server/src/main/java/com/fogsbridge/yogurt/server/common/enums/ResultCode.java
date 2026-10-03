@@ -7,13 +7,16 @@ package com.fogsbridge.yogurt.server.common.enums;
  * @since 1.0.0
  */
 public enum ResultCode {
+    // 通用
     SUCCESS(200,200, "成功"),
-
+    PARAMETER_ERROR(400, 400, "参数错误"),
     SERVER_ERROR(500,500, "服务器内部错误"),
 
-    USERNAME_EXISTS(409,1001, "用户名已被注册"),
-    EMAIL_EXISTS(409,1002, "邮箱已被注册"),
-    REGISTER_CLOSE(403,1003, "关闭注册");
+    // 用户业务错误 (1xxxx)
+    USERNAME_EXISTS(409,10001, "用户名已被注册"),
+    EMAIL_EXISTS(409,10002, "邮箱已被注册"),
+    REGISTER_CLOSE(403,10003, "关闭注册");
+
 
     // http 状态码
     private final int httpCode;
