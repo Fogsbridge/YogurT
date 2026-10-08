@@ -1,0 +1,53 @@
+@theme inline {
+  --color-success: var(--success);
+  --color-success-muted: var(--success-muted);
+  --color-success-muted-foreground: var(--success-muted-foreground);
+
+  --color-info: var(--info);
+  --color-info-muted: var(--info-muted);
+  --color-info-muted-foreground: var(--info-muted-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-muted: var(--warning-muted);
+  --color-warning-muted-foreground: var(--warning-muted-foreground);
+
+  --color-error: var(--error);
+  --color-error-muted: var(--error-muted);
+  --color-error-muted-foreground: var(--error-muted-foreground);
+}
+
+:root {
+  --success: oklch(0.86 0.07 155);
+  --success-muted: oklch(0.985 0.012 155);
+  --success-muted-foreground: oklch(0.58 0.07 155);
+
+  --info: oklch(0.88 0.07 240);
+  --info-muted: oklch(0.985 0.012 240);
+  --info-muted-foreground: oklch(0.58 0.07 240);
+
+  --warning: oklch(0.89 0.07 78);
+  --warning-muted: oklch(0.985 0.012 78);
+  --warning-muted-foreground: oklch(0.6 0.07 78);
+
+  --error: oklch(0.86 0.09 22);
+  --error-muted: oklch(0.985 0.012 22);
+  --error-muted-foreground: oklch(0.58 0.09 22);
+}
+
+.dark {
+  --success: oklch(0.5 0.07 155);
+  --success-muted: oklch(0.29 0.02 155);
+  --success-muted-foreground: oklch(0.96 0.05 155);
+
+  --info: oklch(0.48 0.07 240);
+  --info-muted: oklch(0.29 0.02 240);
+  --info-muted-foreground: oklch(0.97 0.05 240);
+
+  --warning: oklch(0.47 0.07 78);
+  --warning-muted: oklch(0.28 0.02 78);
+  --warning-muted-foreground: oklch(0.98 0.05 78);
+
+  --error: oklch(0.5 0.08 22);
+  --error-muted: oklch(0.3 0.025 22);
+  --error-muted-foreground: oklch(0.96 0.06 22);
+}
