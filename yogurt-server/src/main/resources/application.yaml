@@ -22,8 +22,9 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
-password:
-  encoder:
-    argon2:
-      memory: 19456
-      iterations: 5
+yogurt:
+  password:
+    encoder:
+      argon2:
+        memory: 19456
+        iterations: 5

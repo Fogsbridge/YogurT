@@ -1,4 +1,4 @@
-package com.fogsbridge.yogurt.server.entity;
+package com.fogsbridge.yogurt.server.model.entity;
 
 import java.time.LocalDateTime;
 

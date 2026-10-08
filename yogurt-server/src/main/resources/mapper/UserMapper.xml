@@ -13,7 +13,7 @@
         SELECT EXISTS(SELECT * FROM user WHERE email = #{email})
     </select>
 
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user (username, email, password) VALUES (#{username}, #{email}, #{password})
     </insert>
 </mapper>

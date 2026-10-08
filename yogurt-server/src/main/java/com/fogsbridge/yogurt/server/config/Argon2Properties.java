@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @since 1.0.0
  */
 
-@ConfigurationProperties(prefix = "password.encoder.argon2")
+@ConfigurationProperties(prefix = "yogurt.password.encoder.argon2")
 public class Argon2Properties {
     private int saltLength = 16;
     private int hashLength = 32;
