@@ -1,4 +1,4 @@
-package com.fogsbridge.yogurt.server.dto;
+package com.fogsbridge.yogurt.server.model.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

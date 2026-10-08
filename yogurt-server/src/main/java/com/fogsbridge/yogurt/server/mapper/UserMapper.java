@@ -1,6 +1,6 @@
 package com.fogsbridge.yogurt.server.mapper;
 
-import com.fogsbridge.yogurt.server.entity.User;
+import com.fogsbridge.yogurt.server.model.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

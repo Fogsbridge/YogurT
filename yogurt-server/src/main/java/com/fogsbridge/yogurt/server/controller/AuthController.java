@@ -1,8 +1,9 @@
 package com.fogsbridge.yogurt.server.controller;
 
 import com.fogsbridge.yogurt.server.common.result.Result;
-import com.fogsbridge.yogurt.server.dto.RegisterDTO;
-import com.fogsbridge.yogurt.server.service.UserService;
+import com.fogsbridge.yogurt.server.model.dto.RegisterDTO;
+import com.fogsbridge.yogurt.server.service.AuthService;
+import com.fogsbridge.yogurt.server.model.vo.AuthVO;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,15 +16,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    private final UserService userService;
+    private final AuthService authService;
 
-    public AuthController(UserService userService) {
-        this.userService = userService;
+    public AuthController(AuthService authService) {
+        this.authService = authService;
     }
 
     @PostMapping("/register")
-    public Result<Void> register(@RequestBody @Valid RegisterDTO dto) {
-        userService.register(dto);
-        return Result.success();
+    public Result<AuthVO> register(@RequestBody @Valid RegisterDTO dto) {
+        AuthVO vo = authService.register(dto);
+        return Result.success(vo);
     }
 }
