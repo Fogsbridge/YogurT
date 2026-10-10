@@ -6,7 +6,7 @@
  */
 import { toast } from 'vue-sonner'
 
-export const handleApiError = (error) => {
+export function handleApiError(error) {
   if (error.code === 'ECONNABORTED') {
     toast.error('请求超时')
     return true

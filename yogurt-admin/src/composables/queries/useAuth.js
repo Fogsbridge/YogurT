@@ -9,7 +9,7 @@ import { authApi } from '@/api/auth.js'
 import { handleApiError } from '@/utils/handle-api-error.js'
 import { useDebounceFn } from '@vueuse/core'
 
-export const useRegisterMutation = (options = {}) => {
+export function useRegisterMutation(options = {}) {
   const { onError: errorOption, debounce = 400, ...rest } = options
 
   const mutation = useMutation({
