@@ -22,15 +22,18 @@ import { useRegisterMutation } from '@/composables/queries/useAuth.js'
 import { toast } from 'vue-sonner'
 import { Spinner } from '@/components/ui/spinner/index.js'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth.js'
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 const { debouncedMutate, isPending } = useRegisterMutation({
   onError: (error) => {
     toast.error(error.response?.data?.message)
   },
-  onSuccess: () => {
+  onSuccess: (response) => {
     toast.success('注册成功')
+    authStore.setToken(response.data.data.token)
     router.replace('/')
   },
 })
@@ -42,7 +45,7 @@ const form = useForm({
     onChange: registerSchema,
   },
   onSubmit: ({ value }) => {
-    const { confirmPassword, ...payload } = value
+    const { confirmPassword: _confirmPassword, ...payload } = value
     debouncedMutate(payload)
   },
 })
