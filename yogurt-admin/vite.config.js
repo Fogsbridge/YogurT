@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     proxy: {
       '/api': {
-        target: loadEnv(mode, process.cwd()).VITE_SERVER_API_URL,
+        target: loadEnv(mode, process.cwd()).VITE_DEV_PROXY_TARGET,
         changeOrigin: true,
       },
     },
