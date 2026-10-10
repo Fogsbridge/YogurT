@@ -1,5 +1,6 @@
 import './assets/main.css'
 import './assets/semantic-colors.css'
+import './assets/global.css'
 import 'vue-sonner/style.css'
 
 import { createApp } from 'vue'

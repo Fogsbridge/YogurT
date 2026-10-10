@@ -54,7 +54,7 @@ const isInvalid = (field) => field.state.meta.isTouched && !field.state.meta.isV
 </script>
 
 <template>
-  <div class="flex items-center justify-center min-h-screen min-w-screen p-4">
+  <div class="flex items-center justify-center min-h-screen w-full p-4">
     <main class="flex flex-col gap-4">
       <Card class="w-sm max-w-md mx-auto">
         <CardHeader>
