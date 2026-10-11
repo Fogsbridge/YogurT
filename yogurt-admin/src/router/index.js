@@ -5,7 +5,7 @@ const routes = [
   {
     path: '/register',
     name: ROUTE_NAMES.REGISTER,
-    component: () => import('@/views/register/RegisterPage.vue'),
+    component: () => import('@/views/register/RegisterView.vue'),
   },
 ]
 
