@@ -5,7 +5,7 @@
  * @author fogsbridge
  * @since 1.0.0
  */
-export function createPwaOptions(env, base = '/') {
+export function createPwaOptions(env) {
   return {
     registerType: 'autoUpdate',
     includeAssets: ['favicon.ico', 'favicon.svg', 'apple-touch-icon.png'],
@@ -16,22 +16,22 @@ export function createPwaOptions(env, base = '/') {
       theme_color: '#F8FAFC',
       background_color: '#F8FAFC',
       display: 'standalone',
-      start_url: base,
+      start_url: env.VITE_BASE_URL,
       icons: [
         {
-          src: `${base}pwa-192x192.png`,
+          src: `${env.VITE_BASE_URL}pwa-192x192.png`,
           sizes: '192x192',
           type: 'image/png',
           purpose: 'any',
         },
         {
-          src: `${base}pwa-512x512.png`,
+          src: `${env.VITE_BASE_URL}pwa-512x512.png`,
           sizes: '512x512',
           type: 'image/png',
           purpose: 'any',
         },
         {
-          src: `${base}maskable-512x512.png`,
+          src: `${env.VITE_BASE_URL}maskable-512x512.png`,
           sizes: '512x512',
           type: 'image/png',
           purpose: 'maskable',

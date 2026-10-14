@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
       vue(),
       vueDevTools(),
       tailwindcss(),
-      VitePWA(createPwaOptions(env, env.VITE_BASE_URL)),
+      VitePWA(createPwaOptions(env)),
     ],
     resolve: {
       alias: {
