@@ -1,9 +1,9 @@
 <script setup>
-import { cn } from "@/lib/utils.js";
-import { Separator } from "@/components/ui/separator/index.js";
+import { cn } from '@/lib/utils.js'
+import { Separator } from '@/components/ui/separator/index.js'
 const props = defineProps({
-  class: { type: [Boolean, null, String, Object, Array], required: false, skipCheck: true }
-});
+  class: { type: [Boolean, null, String, Object, Array], required: false, skipCheck: true },
+})
 </script>
 
 <template>

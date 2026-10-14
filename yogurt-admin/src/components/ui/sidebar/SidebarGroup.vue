@@ -1,8 +1,8 @@
 <script setup>
-import { cn } from "@/lib/utils.js";
+import { cn } from '@/lib/utils.js'
 const props = defineProps({
-  class: { type: [Boolean, null, String, Object, Array], required: false, skipCheck: true }
-});
+  class: { type: [Boolean, null, String, Object, Array], required: false, skipCheck: true },
+})
 </script>
 
 <template>

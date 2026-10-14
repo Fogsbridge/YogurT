@@ -1,38 +1,49 @@
 <script setup>
-import { defaultDocument, useEventListener, useMediaQuery, useVModel } from "@vueuse/core";
-import { TooltipProvider } from "reka-ui";
-import { computed, ref } from "vue";
-import { cn } from "@/lib/utils.js";
-import { provideSidebarContext, SIDEBAR_COOKIE_MAX_AGE, SIDEBAR_COOKIE_NAME, SIDEBAR_KEYBOARD_SHORTCUT, SIDEBAR_WIDTH, SIDEBAR_WIDTH_ICON } from "./utils.js";
+import { defaultDocument, useEventListener, useMediaQuery, useVModel } from '@vueuse/core'
+import { TooltipProvider } from 'reka-ui'
+import { computed, ref } from 'vue'
+import { cn } from '@/lib/utils.js'
+import {
+  provideSidebarContext,
+  SIDEBAR_COOKIE_MAX_AGE,
+  SIDEBAR_COOKIE_NAME,
+  SIDEBAR_KEYBOARD_SHORTCUT,
+  SIDEBAR_WIDTH,
+  SIDEBAR_WIDTH_ICON,
+} from './utils.js'
 const props = defineProps({
-  defaultOpen: { type: Boolean, required: false, default: !defaultDocument?.cookie.includes(`${SIDEBAR_COOKIE_NAME}=false`) },
+  defaultOpen: {
+    type: Boolean,
+    required: false,
+    default: !defaultDocument?.cookie.includes(`${SIDEBAR_COOKIE_NAME}=false`),
+  },
   open: { type: Boolean, required: false, default: void 0 },
-  class: { type: [Boolean, null, String, Object, Array], required: false, skipCheck: true }
-});
-const emits = defineEmits(["update:open"]);
-const isMobile = useMediaQuery("(max-width: 768px)");
-const openMobile = ref(false);
-const open = useVModel(props, "open", emits, {
+  class: { type: [Boolean, null, String, Object, Array], required: false, skipCheck: true },
+})
+const emits = defineEmits(['update:open'])
+const isMobile = useMediaQuery('(max-width: 768px)')
+const openMobile = ref(false)
+const open = useVModel(props, 'open', emits, {
   defaultValue: props.defaultOpen ?? false,
-  passive: props.open === void 0
-});
+  passive: props.open === void 0,
+})
 function setOpen(value) {
-  open.value = value;
-  document.cookie = `${SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+  open.value = value
+  document.cookie = `${SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
 }
 function setOpenMobile(value) {
-  openMobile.value = value;
+  openMobile.value = value
 }
 function toggleSidebar() {
-  return isMobile.value ? setOpenMobile(!openMobile.value) : setOpen(!open.value);
+  return isMobile.value ? setOpenMobile(!openMobile.value) : setOpen(!open.value)
 }
-useEventListener("keydown", (event) => {
+useEventListener('keydown', (event) => {
   if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
-    event.preventDefault();
-    toggleSidebar();
+    event.preventDefault()
+    toggleSidebar()
   }
-});
-const state = computed(() => open.value ? "expanded" : "collapsed");
+})
+const state = computed(() => (open.value ? 'expanded' : 'collapsed'))
 provideSidebarContext({
   state,
   open,
@@ -40,8 +51,8 @@ provideSidebarContext({
   isMobile,
   openMobile,
   setOpenMobile,
-  toggleSidebar
-});
+  toggleSidebar,
+})
 </script>
 
 <template>
@@ -49,10 +60,15 @@ provideSidebarContext({
     <div
       data-slot="sidebar-wrapper"
       :style="{
-  '--sidebar-width': SIDEBAR_WIDTH,
-  '--sidebar-width-icon': SIDEBAR_WIDTH_ICON
-}"
-      :class="cn('group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full', props.class)"
+        '--sidebar-width': SIDEBAR_WIDTH,
+        '--sidebar-width-icon': SIDEBAR_WIDTH_ICON,
+      }"
+      :class="
+        cn(
+          'group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full',
+          props.class,
+        )
+      "
       v-bind="$attrs"
     >
       <slot />

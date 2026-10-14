@@ -1,12 +1,12 @@
 <script setup>
-import { PanelLeft } from "@lucide/vue";
-import { cn } from "@/lib/utils.js";
-import { Button } from "@/components/ui/button/index.js";
-import { useSidebar } from "./utils.js";
+import { PanelLeft } from '@lucide/vue'
+import { cn } from '@/lib/utils.js'
+import { Button } from '@/components/ui/button/index.js'
+import { useSidebar } from './utils.js'
 const props = defineProps({
-  class: { type: [Boolean, null, String, Object, Array], required: false, skipCheck: true }
-});
-const { toggleSidebar } = useSidebar();
+  class: { type: [Boolean, null, String, Object, Array], required: false, skipCheck: true },
+})
+const { toggleSidebar } = useSidebar()
 </script>
 
 <template>
