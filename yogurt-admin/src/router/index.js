@@ -1,13 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { ROUTE_NAMES } from '@/constants/routes.js'
-
-const routes = [
-  {
-    path: '/register',
-    name: ROUTE_NAMES.REGISTER,
-    component: () => import('@/views/register/RegisterView.vue'),
-  },
-]
+import { routes } from '@/router/routes.js'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
