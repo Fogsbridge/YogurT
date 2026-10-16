@@ -4,20 +4,17 @@
  * @author fogsbridge
  * @since 1.0.0
  */
-export const ROUTE = {
-  REGISTER: { name: 'register', path: '/register' },
-  INDEX: { name: 'index', path: '/' },
-}
+import { ROUTE_NAME } from '@/constants/route-name.js'
 
 export const routes = [
   {
-    path: ROUTE.INDEX.path,
-    name: ROUTE.INDEX.name,
+    path: '/',
+    name: ROUTE_NAME.INDEX,
     component: () => import('@/layouts/DefaultLayout.vue'),
   },
   {
-    path: ROUTE.REGISTER.path,
-    name: ROUTE.REGISTER.name,
+    path: '/register',
+    name: ROUTE_NAME.REGISTER,
     component: () => import('@/views/register/RegisterView.vue'),
   },
 ]

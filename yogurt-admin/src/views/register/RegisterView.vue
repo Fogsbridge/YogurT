@@ -23,6 +23,7 @@ import { toast } from 'vue-sonner'
 import { Spinner } from '@/components/ui/spinner/index.js'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth.js'
+import { ROUTE_NAME } from '@/constants/route-name.js'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -34,7 +35,7 @@ const { debouncedMutate, isPending } = useRegisterMutation({
   onSuccess: (response) => {
     toast.success('注册成功')
     authStore.setToken(response.data.data.token)
-    router.replace('/')
+    router.replace({ name: ROUTE_NAME.INDEX })
   },
 })
 
