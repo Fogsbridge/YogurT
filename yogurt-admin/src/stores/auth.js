@@ -11,8 +11,8 @@ export const useAuthStore = defineStore(
   () => {
     const token = ref('')
 
-    const setToken = (token) => {
-      token.value = token
+    const setToken = (newToken) => {
+      token.value = newToken
     }
 
     const clearToken = () => {
