@@ -47,6 +47,7 @@ export default defineConfig([
           argsIgnorePattern: '^_',
         },
       ],
+      'vue/multi-word-component-names': 'off',
     },
   },
 ])
