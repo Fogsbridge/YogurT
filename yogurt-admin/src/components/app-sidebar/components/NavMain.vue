@@ -65,8 +65,8 @@ const isCollapsed = (menu) => {
           <NavMenuButton
             :item="menu"
             :tooltip="menu.title"
-            :isActive="isActive(menu)"
-            :isExternal="isExternalUrl(menu.url)"
+            :is-active="isActive(menu)"
+            :is-external="isExternalUrl(menu.url)"
             :sub="false"
           />
         </SidebarMenuItem>
@@ -75,10 +75,10 @@ const isCollapsed = (menu) => {
         <SidebarMenuItem v-else>
           <!-- 在侧边栏展开或者处于移动端时，使用折叠面板展示子项 -->
           <Collapsible
-            as-child
             v-if="state !== 'collapsed' || isMobile"
             class="group/collapsible"
             :default-open="isCollapsed(menu)"
+            as-child
           >
             <SidebarMenuItem>
               <CollapsibleTrigger as-child>
@@ -97,8 +97,8 @@ const isCollapsed = (menu) => {
                     <NavMenuButton
                       :item="subItem"
                       :tooltip="subItem.title"
-                      :isActive="isActive(subItem)"
-                      :isExternal="isExternalUrl(subItem.url)"
+                      :is-active="isActive(subItem)"
+                      :is-external="isExternalUrl(subItem.url)"
                       :sub="true"
                     />
                   </SidebarMenuSubItem>
@@ -110,7 +110,7 @@ const isCollapsed = (menu) => {
           <!-- 在侧边栏折叠并且处于桌面端时，使用下拉菜单展示子项 -->
           <DropdownMenu v-else>
             <DropdownMenuTrigger as-child>
-              <SidebarMenuButton :isActive="isActive(menu)" :tooltip="menu.title">
+              <SidebarMenuButton :is-active="isActive(menu)" :tooltip="menu.title">
                 <Component :is="menu.icon" v-if="menu.icon" />
                 <span>{{ menu.title }}</span>
               </SidebarMenuButton>
@@ -127,8 +127,8 @@ const isCollapsed = (menu) => {
               <DropdownMenuItem v-for="subItem in menu.items" :key="subItem.title" as-child>
                 <NavMenuButton
                   :item="subItem"
-                  :isActive="isActive(subItem)"
-                  :isExternal="isExternalUrl(subItem.url)"
+                  :is-active="isActive(subItem)"
+                  :is-external="isExternalUrl(subItem.url)"
                   :sub="false"
                 />
               </DropdownMenuItem>

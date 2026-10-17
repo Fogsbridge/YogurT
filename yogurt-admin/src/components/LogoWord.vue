@@ -16,6 +16,7 @@ const props = defineProps({
   class: {
     type: [Boolean, null, String, Object, Array],
     required: false,
+    default: undefined,
     skipCheck: true,
   },
 })
@@ -27,5 +28,3 @@ const source = computed(() => (color.value === 'light' ? logoLight : logoDark))
 <template>
   <img :src="source" :class="cn('object-contain', props.class)" alt="" draggable="false" />
 </template>
-
-<style scoped></style>

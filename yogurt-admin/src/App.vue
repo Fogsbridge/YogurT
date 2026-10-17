@@ -2,8 +2,8 @@
   <Toaster
     position="top-center"
     class="flex justify-center"
-    :richColors="true"
-    :toastOptions="{
+    :rich-colors="true"
+    :toast-options="{
       style: {
         '--width': 'auto',
         '--min-width': 'fit-content',

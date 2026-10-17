@@ -12,6 +12,7 @@ const props = defineProps({
   class: {
     type: [Boolean, null, String, Object, Array],
     required: false,
+    default: undefined,
     skipCheck: true,
   },
 })
@@ -36,5 +37,3 @@ const props = defineProps({
     />
   </svg>
 </template>
-
-<style scoped></style>

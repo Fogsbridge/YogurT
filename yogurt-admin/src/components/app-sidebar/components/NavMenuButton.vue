@@ -10,7 +10,7 @@ import { SidebarMenuButton, SidebarMenuSubButton } from '@/components/ui/sidebar
 
 defineProps({
   item: { type: Object, required: true },
-  tooltip: { type: String, required: false },
+  tooltip: { type: String, required: false, default: undefined },
   isActive: { type: Boolean, required: false },
   isExternal: { type: Boolean, required: true },
   sub: { type: Boolean, default: false },
@@ -20,9 +20,9 @@ defineProps({
 <template>
   <component
     :is="sub ? SidebarMenuSubButton : SidebarMenuButton"
-    as-child
     :is-active="isActive"
     :tooltip="tooltip"
+    as-child
   >
     <!-- 站外链接 -->
     <a
