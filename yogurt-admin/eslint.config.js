@@ -32,13 +32,14 @@ export default defineConfig([
   },
 
   js.configs.recommended,
-  ...pluginVue.configs['flat/essential'],
+  ...pluginVue.configs['flat/recommended'],
 
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 
   skipFormatting,
 
   {
+    name: 'app/rules',
     rules: {
       'no-unused-vars': [
         'error',
@@ -48,6 +49,15 @@ export default defineConfig([
         },
       ],
       'vue/multi-word-component-names': 'off',
+      'vue/no-empty-component-block': 'error',
+    },
+  },
+  {
+    name: 'shadcn/overrides',
+    files: ['src/components/ui/**/*.vue'],
+    rules: {
+      'vue/require-default-prop': 'off',
+      'vue/no-empty-component-block': 'off',
     },
   },
 ])
