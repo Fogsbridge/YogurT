@@ -24,7 +24,11 @@ defineProps({
     <SidebarGroupContent>
       <SidebarMenu>
         <SidebarMenuItem v-for="item in items" :key="item.title">
-          <NavMenuButton :isExternal="isExternalUrl(item.url)" :item="item" :tooltip="item.title" />
+          <NavMenuButton
+            :is-external="isExternalUrl(item.url)"
+            :item="item"
+            :tooltip="item.title"
+          />
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroupContent>

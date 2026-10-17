@@ -15,7 +15,7 @@ defineProps({
 <template>
   <SidebarMenu>
     <SidebarMenuItem>
-      <SidebarMenuButton as-child size="lg" tooltip="首页">
+      <SidebarMenuButton size="lg" tooltip="首页" as-child>
         <RouterLink to="/" class="flex items-center gap-2">
           <div
             class="flex items-center justify-center rounded-lg aspect-square size-8 bg-sidebar-primary text-sidebar-primary-foreground"

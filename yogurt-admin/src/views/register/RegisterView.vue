@@ -91,7 +91,7 @@ const fields = [
         <CardTitle class="text-xl">创建账号</CardTitle>
       </CardHeader>
       <CardContent>
-        <form @submit.prevent="form.handleSubmit" novalidate>
+        <form novalidate @submit.prevent="form.handleSubmit">
           <FieldGroup class="flex flex-col gap-4">
             <form.Field v-for="item in fields" :key="item.name" :name="item.name">
               <template #default="{ field }">
