@@ -37,7 +37,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<Result<Void>> handleBusinessException(BusinessException e) {
         ResultCode rc = e.getResultCode();
-        return ResponseEntity.status(rc.getHttpCode()).body(Result.fail(rc));
+        return ResponseEntity.status(rc.getHttpStatus()).body(Result.fail(rc));
     }
 
     /**
@@ -53,7 +53,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .findFirst()
                 .orElse(ResultCode.PARAMETER_ERROR.getMessage());
 
-        return ResponseEntity.status(ResultCode.PARAMETER_ERROR.getHttpCode())
+        return ResponseEntity
+                .status(ResultCode.PARAMETER_ERROR.getHttpStatus())
                 .body(Result.fail(ResultCode.PARAMETER_ERROR.getCode(), msg));
     }
 
@@ -67,7 +68,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Result<Void>> handleException(Exception e) {
-        return ResponseEntity.status(ResultCode.SERVER_ERROR.getHttpCode())
+        return ResponseEntity
+                .status(ResultCode.SERVER_ERROR.getHttpStatus())
                 .body(Result.fail(ResultCode.SERVER_ERROR));
     }
 
@@ -117,7 +119,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         FieldError fieldError = ex.getBindingResult().getFieldError();
         String msg = fieldError != null ? fieldError.getDefaultMessage() : ResultCode.PARAMETER_ERROR.getMessage();
 
-        return ResponseEntity.status(ResultCode.PARAMETER_ERROR.getHttpCode())
+        return ResponseEntity
+                .status(ResultCode.PARAMETER_ERROR.getHttpStatus())
                 .headers(headers)
                 .body(Result.fail(ResultCode.PARAMETER_ERROR.getCode(), msg));
     }
