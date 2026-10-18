@@ -17,7 +17,10 @@ public enum ResultCode {
     // 注册业务错误 (10xxx)
     USERNAME_EXISTS(HttpStatus.CONFLICT, 10001, "用户名已被注册"),
     EMAIL_EXISTS(HttpStatus.CONFLICT, 10002, "邮箱已被注册"),
-    REGISTER_CLOSE(HttpStatus.FORBIDDEN, 10003, "关闭注册");
+    REGISTER_CLOSE(HttpStatus.FORBIDDEN, 10003, "关闭注册"),
+
+    // 登录业务错误（11xxx)
+    LOGIN_FAILED(HttpStatus.UNAUTHORIZED, 11001, "用户名或密码错误");
 
 
     // http 状态

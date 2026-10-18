@@ -1,5 +1,6 @@
 package com.fogsbridge.yogurt.server.service;
 
+import com.fogsbridge.yogurt.server.model.dto.LoginDTO;
 import com.fogsbridge.yogurt.server.model.dto.RegisterDTO;
 import com.fogsbridge.yogurt.server.model.vo.AuthVO;
 
@@ -11,4 +12,6 @@ import com.fogsbridge.yogurt.server.model.vo.AuthVO;
  */
 public interface AuthService {
     AuthVO register(RegisterDTO dto);
+
+    AuthVO login(LoginDTO dto);
 }
