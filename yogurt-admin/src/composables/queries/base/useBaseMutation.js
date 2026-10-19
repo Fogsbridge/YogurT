@@ -8,12 +8,7 @@ import { useMutation } from '@tanstack/vue-query'
 import { handleApiError } from '@/utils/handle-api-error.js'
 
 export function useBaseMutation(mutationFn, options = {}) {
-  const {
-    onSuccess,
-    onError: errorOption,
-    onSettled,
-    ...rest
-  } = options
+  const { onSuccess, onError: errorOption, onSettled, ...rest } = options
 
   return useMutation({
     mutationFn,

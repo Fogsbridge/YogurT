@@ -10,3 +10,7 @@ import { authApi } from '@/api/auth.js'
 export function useRegisterMutation(options = {}) {
   return useBaseMutation(authApi.register, options)
 }
+
+export function useLoginMutation(options = {}) {
+  return useBaseMutation(authApi.login, options)
+}

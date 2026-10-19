@@ -15,6 +15,11 @@ export const routes = [
   {
     path: '/register',
     name: ROUTE_NAME.REGISTER,
-    component: () => import('@/views/register/RegisterView.vue'),
+    component: () => import('@/views/auth/RegisterView.vue'),
+  },
+  {
+    path: '/login',
+    name: ROUTE_NAME.LOGIN,
+    component: () => import('@/views/auth/LoginView.vue'),
   },
 ]

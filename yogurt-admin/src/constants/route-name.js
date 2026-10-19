@@ -2,9 +2,10 @@
  * 路由名称常量
  *
  * @author fogsbridge
- * @since
+ * @since 1.0.0
  */
 export const ROUTE_NAME = {
-  REGISTER: 'register',
   INDEX: 'index',
+  REGISTER: 'register',
+  LOGIN: 'login',
 }
