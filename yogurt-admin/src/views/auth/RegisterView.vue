@@ -87,10 +87,11 @@ const fields = [
 </script>
 
 <template>
-  <main class="flex items-center justify-center min-h-screen w-full p-4">
-    <Card class="w-sm max-w-md mx-auto">
+  <main class="flex flex-col gap-6 items-center justify-center min-h-screen w-full p-4">
+    <AuthTitle />
+    <Card class="w-full max-w-sm mx-auto">
       <CardHeader>
-        <CardTitle class="text-xl">创建账号</CardTitle>
+        <CardTitle class="text-lg">创建账号</CardTitle>
       </CardHeader>
       <CardContent>
         <form novalidate @submit.prevent="form.handleSubmit">
@@ -124,9 +125,9 @@ const fields = [
               <Button :disabled="isPending" type="submit" class="w-full">
                 <template v-if="isPending">
                   <Spinner />
-                  注册中...
+                  注册中
                 </template>
-                <template v-else> 注册 </template>
+                <template v-else>注册</template>
               </Button>
             </Field>
           </FieldGroup>
@@ -135,7 +136,9 @@ const fields = [
       <CardFooter>
         <CardDescription>
           已有账号？
-          <Button variant="link" class="px-0">前去登录</Button>
+          <Button variant="link" class="px-0" as-child>
+            <RouterLink :to="{ name: ROUTE_NAME.LOGIN }">前去登录</RouterLink>
+          </Button>
         </CardDescription>
       </CardFooter>
     </Card>
