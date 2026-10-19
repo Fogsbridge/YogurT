@@ -2,6 +2,7 @@ package com.fogsbridge.yogurt.server.service.impl;
 
 import com.fogsbridge.yogurt.server.common.enums.ResultCode;
 import com.fogsbridge.yogurt.server.common.exception.BusinessException;
+import com.fogsbridge.yogurt.server.model.dto.LoginDTO;
 import com.fogsbridge.yogurt.server.model.dto.RegisterDTO;
 import com.fogsbridge.yogurt.server.model.entity.User;
 import com.fogsbridge.yogurt.server.mapper.UserMapper;
@@ -66,6 +67,26 @@ public class AuthServiceImpl implements AuthService {
             }
             // 其他重复键冲突，抛服务端异常
             throw new BusinessException(ResultCode.SERVER_ERROR);
+        }
+
+        // 生成 token
+        String token = tokenService.generate(user.getId());
+        return new AuthVO(token);
+    }
+
+    @Override
+    public AuthVO login(LoginDTO dto) {
+        // 根据用户名查询用户
+        User user = userMapper.getByUsername(dto.getUsername());
+
+        // 用户不存在抛登录失败
+        if (user == null) {
+            throw new BusinessException(ResultCode.LOGIN_FAILED);
+        }
+
+        // 比对密码，密码不一致抛登录失败
+        if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+            throw new BusinessException(ResultCode.LOGIN_FAILED);
         }
 
         // 生成 token

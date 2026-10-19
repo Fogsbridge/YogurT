@@ -1,5 +1,5 @@
 <!--
- * 登录页视图组件
+ * 注册页视图组件
  *
  * @author fogsbridge
  * @since 1.0.0
@@ -23,18 +23,20 @@ import { toast } from 'vue-sonner'
 import { Spinner } from '@/components/ui/spinner/index.js'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth.js'
+import { ROUTE_NAME } from '@/constants/route-name.js'
+import AuthTitle from '@/views/auth/components/AuthTitle.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
 
-const { debouncedMutate, isPending } = useRegisterMutation({
+const { mutate, isPending } = useRegisterMutation({
   onError: (error) => {
     toast.error(error.response?.data?.message)
   },
   onSuccess: (response) => {
     toast.success('注册成功')
     authStore.setToken(response.data.data.token)
-    router.replace('/')
+    router.replace({ name: ROUTE_NAME.INDEX })
   },
 })
 
@@ -46,7 +48,7 @@ const form = useForm({
   },
   onSubmit: ({ value }) => {
     const { confirmPassword: _confirmPassword, ...payload } = value
-    debouncedMutate(payload)
+    mutate(payload)
   },
 })
 
@@ -85,10 +87,11 @@ const fields = [
 </script>
 
 <template>
-  <main class="flex items-center justify-center min-h-screen w-full p-4">
-    <Card class="w-sm max-w-md mx-auto">
+  <main class="flex flex-col gap-6 items-center justify-center min-h-screen w-full p-4">
+    <AuthTitle />
+    <Card class="w-full max-w-sm mx-auto">
       <CardHeader>
-        <CardTitle class="text-xl">创建账号</CardTitle>
+        <CardTitle class="text-lg">创建账号</CardTitle>
       </CardHeader>
       <CardContent>
         <form novalidate @submit.prevent="form.handleSubmit">
@@ -122,9 +125,9 @@ const fields = [
               <Button :disabled="isPending" type="submit" class="w-full">
                 <template v-if="isPending">
                   <Spinner />
-                  注册中...
+                  注册中
                 </template>
-                <template v-else> 注册 </template>
+                <template v-else>注册</template>
               </Button>
             </Field>
           </FieldGroup>
@@ -133,7 +136,9 @@ const fields = [
       <CardFooter>
         <CardDescription>
           已有账号？
-          <Button variant="link" class="px-0">前去登录</Button>
+          <Button variant="link" class="px-0" as-child>
+            <RouterLink :to="{ name: ROUTE_NAME.LOGIN }">前去登录</RouterLink>
+          </Button>
         </CardDescription>
       </CardFooter>
     </Card>

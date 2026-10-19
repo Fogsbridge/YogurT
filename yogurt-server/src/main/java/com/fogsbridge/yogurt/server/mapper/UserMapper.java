@@ -19,4 +19,6 @@ public interface UserMapper {
     Boolean existsByEmail(@Param("email") String email);
 
     void insert(User user);
+
+    User getByUsername(@Param("username") String username);
 }
