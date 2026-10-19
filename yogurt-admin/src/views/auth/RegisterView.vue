@@ -1,5 +1,5 @@
 <!--
- * 登录页视图组件
+ * 注册页视图组件
  *
  * @author fogsbridge
  * @since 1.0.0
@@ -24,11 +24,12 @@ import { Spinner } from '@/components/ui/spinner/index.js'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth.js'
 import { ROUTE_NAME } from '@/constants/route-name.js'
+import AuthTitle from '@/views/auth/components/AuthTitle.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
 
-const { debouncedMutate, isPending } = useRegisterMutation({
+const { mutate, isPending } = useRegisterMutation({
   onError: (error) => {
     toast.error(error.response?.data?.message)
   },
@@ -47,7 +48,7 @@ const form = useForm({
   },
   onSubmit: ({ value }) => {
     const { confirmPassword: _confirmPassword, ...payload } = value
-    debouncedMutate(payload)
+    mutate(payload)
   },
 })
 
