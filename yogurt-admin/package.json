@@ -13,6 +13,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@bprogress/core": "^1.3.4",
     "@lucide/vue": "^1.57.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/vue-form": "^1.33.5",

@@ -1,3 +1,7 @@
+<script setup>
+import { Toaster } from '@/components/ui/sonner'
+</script>
+
 <template>
   <Toaster
     position="top-center"
@@ -30,7 +34,3 @@
   />
   <RouterView />
 </template>
-
-<script setup>
-import { Toaster } from '@/components/ui/sonner'
-</script>
