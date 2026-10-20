@@ -5,7 +5,7 @@
  * @since 1.0.0
  */
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export const useAuthStore = defineStore(
   'auth',
@@ -20,7 +20,9 @@ export const useAuthStore = defineStore(
       token.value = ''
     }
 
-    return { token, setToken, clearToken }
+    const isAuthenticated = computed(() => !!token.value)
+
+    return { token, setToken, clearToken, isAuthenticated }
   },
   {
     persist: true,
