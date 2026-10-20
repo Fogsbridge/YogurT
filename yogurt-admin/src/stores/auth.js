@@ -1,4 +1,5 @@
 /**
+ * 认证 store
  *
  * @author fogsbridge
  * @since 1.0.0
@@ -22,10 +23,6 @@ export const useAuthStore = defineStore(
     return { token, setToken, clearToken }
   },
   {
-    persist: {
-      key: 'auth',
-      storage: localStorage,
-      pick: ['token'],
-    },
+    persist: true,
   },
 )

@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
-import { createPwaOptions } from './src/config/pwa-config.js'
+import { createPwaOptions } from './src/config/pwa.js'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {

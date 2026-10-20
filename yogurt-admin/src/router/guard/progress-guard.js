@@ -7,12 +7,6 @@
 import { BProgress } from '@bprogress/core'
 
 export function setupProgressGuard(router) {
-  BProgress.configure({
-    indeterminate: false,
-    showSpinner: false,
-    speed: 300,
-  })
-
   router.beforeEach(() => {
     BProgress.start()
   })
