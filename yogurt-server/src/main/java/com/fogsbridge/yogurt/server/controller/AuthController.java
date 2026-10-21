@@ -38,4 +38,18 @@ public class AuthController {
         AuthVO vo = authService.login(dto);
         return Result.success(vo);
     }
+
+    @PostMapping("/logout")
+    @NoAuthRequired
+    public Result<Void> logout(@RequestHeader(name = HttpHeaders.AUTHORIZATION, required = false) String header) {
+        // 无论是否携带有效 token 都返回成功
+        final String PREFIX = "Bearer ";
+        String token = null;
+        if (header != null && header.startsWith(PREFIX)) {
+            token = header.substring(PREFIX.length()).trim();
+        }
+
+        authService.logout(token);
+        return Result.success();
+    }
 }

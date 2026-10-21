@@ -14,4 +14,6 @@ public interface AuthService {
     AuthVO register(RegisterDTO dto);
 
     AuthVO login(LoginDTO dto);
+
+    void logout(String token);
 }

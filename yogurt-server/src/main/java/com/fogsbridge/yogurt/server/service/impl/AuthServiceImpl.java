@@ -93,4 +93,9 @@ public class AuthServiceImpl implements AuthService {
         String token = tokenService.generate(user.getId());
         return new AuthVO(token);
     }
+
+    @Override
+    public void logout(String token) {
+        tokenService.revoke(token);
+    }
 }

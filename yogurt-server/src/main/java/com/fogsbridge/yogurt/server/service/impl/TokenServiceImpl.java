@@ -56,6 +56,10 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public void revoke(String token) {
-        redisTemplate.delete(token);
+        // 不处理，静默返回
+        if (token == null || token.isBlank()) {
+            return;
+        }
+        redisTemplate.delete(TOKEN_PREFIX + token);
     }
 }
