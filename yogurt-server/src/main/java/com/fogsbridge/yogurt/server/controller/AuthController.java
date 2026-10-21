@@ -1,11 +1,13 @@
 package com.fogsbridge.yogurt.server.controller;
 
+import com.fogsbridge.yogurt.server.common.annotation.NoAuthRequired;
 import com.fogsbridge.yogurt.server.common.result.Result;
 import com.fogsbridge.yogurt.server.model.dto.LoginDTO;
 import com.fogsbridge.yogurt.server.model.dto.RegisterDTO;
 import com.fogsbridge.yogurt.server.service.AuthService;
 import com.fogsbridge.yogurt.server.model.vo.AuthVO;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -24,12 +26,14 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    @NoAuthRequired
     public Result<AuthVO> register(@RequestBody @Valid RegisterDTO dto) {
         AuthVO vo = authService.register(dto);
         return Result.success(vo);
     }
 
     @PostMapping("/login")
+    @NoAuthRequired
     public Result<AuthVO> login(@RequestBody @Valid LoginDTO dto) {
         AuthVO vo = authService.login(dto);
         return Result.success(vo);
