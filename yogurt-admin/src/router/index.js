@@ -11,4 +11,4 @@ const router = createRouter({
 setupProgressGuard(router)
 setupAuthGuard(router)
 
-export default router
+export { router }

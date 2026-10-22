@@ -23,10 +23,11 @@ import { loginDefaults, loginSchema } from '@/validators/auth/login.js'
 import { ROUTE_NAME } from '@/constants/route-name.js'
 import AuthTitle from '@/views/auth/components/AuthTitle.vue'
 import { useLoginMutation } from '@/composables/queries/useAuth.js'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth.js'
 
 const router = useRouter()
+const route = useRoute()
 const authStore = useAuthStore()
 
 const { mutate, isPending } = useLoginMutation({
@@ -36,7 +37,8 @@ const { mutate, isPending } = useLoginMutation({
   onSuccess: (response) => {
     toast.success('登录成功')
     authStore.setToken(response.data.data.token)
-    router.replace({ name: ROUTE_NAME.INDEX })
+    const target = route.query.redirect ? route.query.redirect : { name: ROUTE_NAME.INDEX }
+    router.replace(target)
   },
 })
 
