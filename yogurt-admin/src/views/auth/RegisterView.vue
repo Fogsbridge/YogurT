@@ -29,16 +29,7 @@ import AuthTitle from '@/views/auth/components/AuthTitle.vue'
 const router = useRouter()
 const authStore = useAuthStore()
 
-const { mutate, isPending } = useRegisterMutation({
-  onError: (error) => {
-    toast.error(error.response?.data?.message)
-  },
-  onSuccess: (response) => {
-    toast.success('注册成功')
-    authStore.setToken(response.data.data.token)
-    router.replace({ name: ROUTE_NAME.INDEX })
-  },
-})
+const { mutateAsync, isPending } = useRegisterMutation()
 
 const form = useForm({
   defaultValues: registerDefaults,
@@ -46,9 +37,16 @@ const form = useForm({
     onSubmit: registerSchema,
     onChange: registerSchema,
   },
-  onSubmit: ({ value }) => {
+  onSubmit: async ({ value }) => {
     const { confirmPassword: _confirmPassword, ...payload } = value
-    mutate(payload)
+    try {
+      const response = await mutateAsync(payload)
+      toast.success('注册成功')
+      authStore.setToken(response.data.data.token)
+      router.replace({ name: ROUTE_NAME.INDEX })
+    } catch (error) {
+      toast.error(error.response?.data?.message)
+    }
   },
 })
 

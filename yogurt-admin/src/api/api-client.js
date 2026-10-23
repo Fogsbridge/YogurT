@@ -22,6 +22,27 @@ function isAuthEndpoint(url) {
   return AUTH_ENDPOINTS.some((endpoint) => path.endsWith(endpoint))
 }
 
+// 处理通用错误，业务错误交由上层处理
+function handleError(error) {
+  // 主动取消，不处理
+  if (axios.isCancel(error)) return
+
+  if (error.code === 'ECONNABORTED' || error.code === 'ETIMEDOUT') {
+    toast.error('请求超时')
+    return
+  }
+
+  if (error.code === 'ERR_NETWORK') {
+    toast.error('网络异常')
+    return
+  }
+
+  if (error.response?.data?.message) return
+
+  toast.error('操作失败')
+}
+
+// axios 实例
 export const apiClient = axios.create({
   baseURL: import.meta.env.VITE_SERVER_API_URL,
   timeout: Number(import.meta.env.VITE_SERVER_API_TIMEOUT),
@@ -73,6 +94,8 @@ apiClient.interceptors.response.use(
           authStore.resetExpired()
         })
     }
+
+    handleError(error)
 
     return Promise.reject(error)
   },

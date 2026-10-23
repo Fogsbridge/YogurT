@@ -30,17 +30,7 @@ const router = useRouter()
 const route = useRoute()
 const authStore = useAuthStore()
 
-const { mutate, isPending } = useLoginMutation({
-  onError: (error) => {
-    toast.error(error.response?.data?.message)
-  },
-  onSuccess: (response) => {
-    toast.success('登录成功')
-    authStore.setToken(response.data.data.token)
-    const target = route.query.redirect ? route.query.redirect : { name: ROUTE_NAME.INDEX }
-    router.replace(target)
-  },
-})
+const { mutateAsync, isPending } = useLoginMutation()
 
 const form = useForm({
   defaultValues: loginDefaults,
@@ -48,8 +38,17 @@ const form = useForm({
     onSubmit: loginSchema,
     onChange: loginSchema,
   },
-  onSubmit: ({ value }) => {
-    mutate(value)
+  onSubmit: async ({ value }) => {
+    try {
+      const response = await mutateAsync(value)
+      toast.success('登录成功')
+      authStore.setToken(response.data.data.token)
+      const redirect = route.query.redirect
+      const target = typeof redirect === 'string' ? redirect : { name: ROUTE_NAME.INDEX }
+      router.replace(target)
+    } catch (error) {
+      toast.error(error.response?.data?.message)
+    }
   },
 })
 

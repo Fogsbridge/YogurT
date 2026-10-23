@@ -4,13 +4,17 @@
  * @author fogsbridge
  * @since 1.0.0
  */
-import { useBaseMutation } from '@/composables/queries/base/useBaseMutation.js'
 import { authApi } from '@/api/auth.js'
+import { useMutation } from '@tanstack/vue-query'
 
-export function useRegisterMutation(options = {}) {
-  return useBaseMutation(authApi.register, options)
+export function useRegisterMutation() {
+  return useMutation({
+    mutationFn: authApi.register,
+  })
 }
 
-export function useLoginMutation(options = {}) {
-  return useBaseMutation(authApi.login, options)
+export function useLoginMutation() {
+  return useMutation({
+    mutationFn: authApi.login,
+  })
 }
