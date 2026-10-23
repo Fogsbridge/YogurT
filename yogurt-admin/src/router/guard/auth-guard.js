@@ -21,7 +21,7 @@ export function setupAuthGuard(router) {
 
     // 如果没有认证并且不是前往认证页（登录/注册），则重定向登录页
     if (!isAuthenticated.value && !isToAuthRoute) {
-      return { name: ROUTE_NAME.LOGIN }
+      return { name: ROUTE_NAME.LOGIN, query: { redirect: to.fullPath } }
     }
 
     // 已经认证且前往认证页（登录/注册），则退回原路由
