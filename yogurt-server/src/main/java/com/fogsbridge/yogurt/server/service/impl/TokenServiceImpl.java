@@ -1,5 +1,7 @@
 package com.fogsbridge.yogurt.server.service.impl;
 
+import com.fogsbridge.yogurt.server.common.enums.ResultCode;
+import com.fogsbridge.yogurt.server.common.exception.BusinessException;
 import com.fogsbridge.yogurt.server.service.TokenService;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -9,7 +11,7 @@ import java.time.Duration;
 import java.util.Base64;
 
 /**
- * token
+ * token 管理
  *
  * @author fogsbridge
  * @since 1.0.0
@@ -38,12 +40,26 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public Long resolve(String token) {
+        // token 空值，抛 Token 无效异常
+        if (token == null || token.isBlank()) {
+            throw new BusinessException(ResultCode.INVALID_TOKEN);
+        }
+
+        // 没查询到用户，抛登陆过期异常
         String userId = redisTemplate.opsForValue().get(TOKEN_PREFIX + token);
-        return userId != null ? Long.valueOf(userId) : null;
+        if (userId == null) {
+            throw new BusinessException(ResultCode.LOGIN_EXPIRED);
+        }
+
+        return Long.valueOf(userId);
     }
 
     @Override
     public void revoke(String token) {
-        redisTemplate.delete(token);
+        // 不处理，静默返回
+        if (token == null || token.isBlank()) {
+            return;
+        }
+        redisTemplate.delete(TOKEN_PREFIX + token);
     }
 }

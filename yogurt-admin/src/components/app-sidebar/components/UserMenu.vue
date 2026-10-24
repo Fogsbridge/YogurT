@@ -21,10 +21,28 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
+import { useLogoutMutation } from '@/composables/queries/useAuth.js'
+import { toast } from 'vue-sonner'
+import { useAuthStore } from '@/stores/auth.js'
+import { useRouter } from 'vue-router'
+import { ROUTE_NAME } from '@/constants/route-name.js'
 
 defineProps({
   user: { type: Object, required: true },
 })
+
+const { mutateAsync } = useLogoutMutation()
+const authStore = useAuthStore()
+const router = useRouter()
+
+const logout = async () => {
+  // 此接口幂等，响应始终是 200，通用异常已由响应拦截器处理，此处无需处理异常
+  // await 是确保请求发出后再清 token，让请求能带上 Authorization
+  await mutateAsync()
+  authStore.clearToken()
+  toast.success('已退出登录')
+  router.replace({ name: ROUTE_NAME.LOGIN })
+}
 
 const { isMobile } = useSidebar()
 </script>
@@ -68,7 +86,7 @@ const { isMobile } = useSidebar()
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem variant="destructive">
+          <DropdownMenuItem variant="destructive" @click="logout">
             <LogOutIcon />
             <span>退出登录</span>
           </DropdownMenuItem>

@@ -23,22 +23,14 @@ import { loginDefaults, loginSchema } from '@/validators/auth/login.js'
 import { ROUTE_NAME } from '@/constants/route-name.js'
 import AuthTitle from '@/views/auth/components/AuthTitle.vue'
 import { useLoginMutation } from '@/composables/queries/useAuth.js'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth.js'
 
 const router = useRouter()
+const route = useRoute()
 const authStore = useAuthStore()
 
-const { mutate, isPending } = useLoginMutation({
-  onError: (error) => {
-    toast.error(error.response?.data?.message)
-  },
-  onSuccess: (response) => {
-    toast.success('登录成功')
-    authStore.setToken(response.data.data.token)
-    router.replace({ name: ROUTE_NAME.INDEX })
-  },
-})
+const { mutateAsync, isPending } = useLoginMutation()
 
 const form = useForm({
   defaultValues: loginDefaults,
@@ -46,8 +38,17 @@ const form = useForm({
     onSubmit: loginSchema,
     onChange: loginSchema,
   },
-  onSubmit: ({ value }) => {
-    mutate(value)
+  onSubmit: async ({ value }) => {
+    try {
+      const response = await mutateAsync(value)
+      toast.success('登录成功')
+      authStore.setToken(response.data.data.token)
+      const redirect = route.query.redirect
+      const target = typeof redirect === 'string' ? redirect : { name: ROUTE_NAME.INDEX }
+      router.replace(target)
+    } catch (error) {
+      if (error.response) toast.error(error.response.data?.message)
+    }
   },
 })
 

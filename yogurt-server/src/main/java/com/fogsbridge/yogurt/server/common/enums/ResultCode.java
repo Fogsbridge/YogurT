@@ -20,7 +20,12 @@ public enum ResultCode {
     REGISTER_CLOSE(HttpStatus.FORBIDDEN, 10003, "关闭注册"),
 
     // 登录业务错误（11xxx)
-    LOGIN_FAILED(HttpStatus.UNAUTHORIZED, 11001, "用户名或密码错误");
+    LOGIN_FAILED(HttpStatus.UNAUTHORIZED, 11001, "用户名或密码错误"),
+
+    // 认证业务错误 (12xxx)
+    NOT_LOGGED_IN(HttpStatus.UNAUTHORIZED, 12001, "未登录，请先登录"),
+    INVALID_TOKEN(HttpStatus.UNAUTHORIZED, 12002, "无效的 Token"),
+    LOGIN_EXPIRED(HttpStatus.UNAUTHORIZED, 12003, "登录状态已失效，请重新登录");
 
 
     // http 状态

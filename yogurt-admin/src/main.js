@@ -4,19 +4,10 @@ import './assets/global.css'
 import 'vue-sonner/style.css'
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import { VueQueryPlugin } from '@tanstack/vue-query'
-
 import App from './App.vue'
-import router from './router'
-
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
+import { setupPlugins } from '@/plugins/index.js'
 
 const app = createApp(App)
-app.use(pinia)
-app.use(VueQueryPlugin)
-app.use(router)
+setupPlugins(app)
 
 app.mount('#app')

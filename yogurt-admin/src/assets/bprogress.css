@@ -1,0 +1,103 @@
+@reference './main.css';
+
+:root {
+  --bprogress-color: var(--primary);
+  --bprogress-height: 2px;
+  --bprogress-spinner-size: 20px;
+  --bprogress-spinner-animation-duration: 500ms;
+  --bprogress-spinner-border-size: 4px;
+  --bprogress-box-shadow: 0 0 10px var(--bprogress-color), 0 0 5px var(--bprogress-color);
+  --bprogress-z-index: 99999;
+  --bprogress-spinner-top: 15px;
+  --bprogress-spinner-bottom: auto;
+  --bprogress-spinner-right: 15px;
+  --bprogress-spinner-left: auto;
+}
+
+.bprogress {
+  @apply w-0 h-0 pointer-events-none z-(--bprogress-z-index);
+}
+
+.bprogress .bar {
+  @apply bg-(--bprogress-color) fixed z-(--bprogress-z-index)
+         top-0 left-0 w-full h-(--bprogress-height);
+}
+
+.bprogress .peg {
+  @apply block absolute right-0 w-25 h-full;
+
+  box-shadow: var(--bprogress-box-shadow);
+  opacity: 1;
+  transform: rotate(3deg) translate(0, -4px);
+}
+
+.bprogress .spinner {
+  @apply block fixed z-(--bprogress-z-index) top-(--bprogress-spinner-top)
+         bottom-(--bprogress-spinner-bottom) right-(--bprogress-spinner-right)
+         left-(--bprogress-spinner-left);
+}
+
+.bprogress .spinner-icon {
+  @apply w-(--bprogress-spinner-size) h-(--bprogress-spinner-size) box-border
+         border-solid border-(length:--bprogress-spinner-border-size) border-transparent
+         border-t-(--bprogress-color) border-l-(--bprogress-color) rounded-full;
+
+  animation: bprogress-spinner var(--bprogress-spinner-animation-duration) linear infinite;
+}
+
+.bprogress-custom-parent {
+  @apply relative overflow-hidden;
+}
+
+.bprogress-custom-parent .bprogress .spinner,
+.bprogress-custom-parent .bprogress .bar {
+  @apply absolute;
+}
+
+.bprogress .indeterminate {
+  @apply fixed top-0 left-0 w-full h-(--bprogress-height) overflow-hidden;
+}
+
+.bprogress .indeterminate .inc,
+.bprogress .indeterminate .dec {
+  @apply absolute top-0 h-full bg-(--bprogress-color);
+}
+
+.bprogress .indeterminate .inc {
+  animation: bprogress-indeterminate-increase 2s infinite;
+}
+
+.bprogress .indeterminate .dec {
+  animation: bprogress-indeterminate-decrease 2s 0.5s infinite;
+}
+
+@keyframes bprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bprogress-indeterminate-increase {
+  from {
+    left: -5%;
+    width: 5%;
+  }
+  to {
+    left: 130%;
+    width: 100%;
+  }
+}
+
+@keyframes bprogress-indeterminate-decrease {
+  from {
+    left: -80%;
+    width: 80%;
+  }
+  to {
+    left: 110%;
+    width: 10%;
+  }
+}
