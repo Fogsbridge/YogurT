@@ -45,7 +45,7 @@ const form = useForm({
       authStore.setToken(response.data.data.token)
       router.replace({ name: ROUTE_NAME.INDEX })
     } catch (error) {
-      toast.error(error.response?.data?.message)
+      if (error.response) toast.error(error.response.data?.message)
     }
   },
 })

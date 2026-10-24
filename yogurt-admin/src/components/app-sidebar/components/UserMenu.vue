@@ -36,6 +36,8 @@ const authStore = useAuthStore()
 const router = useRouter()
 
 const logout = async () => {
+  // 此接口幂等，响应始终是 200，通用异常已由响应拦截器处理，此处无需处理异常
+  // await 是确保请求发出后再清 token，让请求能带上 Authorization
   await mutateAsync()
   authStore.clearToken()
   toast.success('已退出登录')

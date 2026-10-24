@@ -47,7 +47,7 @@ const form = useForm({
       const target = typeof redirect === 'string' ? redirect : { name: ROUTE_NAME.INDEX }
       router.replace(target)
     } catch (error) {
-      toast.error(error.response?.data?.message)
+      if (error.response) toast.error(error.response.data?.message)
     }
   },
 })
