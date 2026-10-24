@@ -4,8 +4,16 @@
  * @author fogsbridge
  * @since 1.0.0
  */
-import { VueQueryPlugin } from '@tanstack/vue-query'
+import { QueryClient, VueQueryPlugin } from '@tanstack/vue-query'
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    mutations: {
+      networkMode: 'always',
+    },
+  },
+})
 
 export function setupVueQuery(app) {
-  app.use(VueQueryPlugin)
+  app.use(VueQueryPlugin, { queryClient })
 }
