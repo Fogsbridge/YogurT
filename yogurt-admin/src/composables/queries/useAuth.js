@@ -18,3 +18,9 @@ export function useLoginMutation() {
     mutationFn: authApi.login,
   })
 }
+
+export function useLogoutMutation() {
+  return useMutation({
+    mutationFn: authApi.logout,
+  })
+}

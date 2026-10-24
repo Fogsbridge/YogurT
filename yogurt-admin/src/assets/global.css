@@ -4,6 +4,10 @@
   }
 }
 
+[role='menuitem']:not(:disabled) {
+  cursor: pointer;
+}
+
 .collapsible-content {
   overflow: hidden;
 }
