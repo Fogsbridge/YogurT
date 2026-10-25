@@ -1,6 +1,6 @@
 package com.fogsbridge.yogurt.server.config;
 
-import com.fogsbridge.yogurt.server.common.interceptor.AuthInterceptor;
+import com.fogsbridge.yogurt.server.interceptor.AuthInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.HandlerTypePredicate;
