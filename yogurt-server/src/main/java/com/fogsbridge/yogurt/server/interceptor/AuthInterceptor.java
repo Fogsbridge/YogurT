@@ -1,4 +1,4 @@
-package com.fogsbridge.yogurt.server.common.interceptor;
+package com.fogsbridge.yogurt.server.interceptor;
 
 import com.fogsbridge.yogurt.server.common.annotation.NoAuthRequired;
 import com.fogsbridge.yogurt.server.common.context.AuthContext;

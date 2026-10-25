@@ -1,0 +1,70 @@
+services:
+  mysql:
+    env_file:
+      - .env.prod
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - ./prod/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$$MYSQL_ROOT_PASSWORD mysqladmin ping -h 127.0.0.1 -uroot --silent"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  redis:
+    env_file:
+      - .env.prod
+    environment:
+      REDISCLI_AUTH: ${REDIS_REQUIREPASS}
+    ports:
+      - "${REDIS_PORT}:6379"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--requirepass", "${REDIS_REQUIREPASS}"]
+    volumes:
+      - ./prod/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: "1.0"
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  rustfs:
+    env_file:
+      - .env.prod
+    environment:
+      RUSTFS_VOLUMES: /data
+      RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY}
+      RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY}
+      RUSTFS_ADDRESS: "0.0.0.0:9000"
+      RUSTFS_CONSOLE_ADDRESS: "0.0.0.0:9001"
+      RUSTFS_CONSOLE_ENABLE: "false"
+    ports:
+      - "${RUSTFS_PORT}:9000"
+      # - "${RUSTFS_CONSOLE_PORT}:9001"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:9000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s

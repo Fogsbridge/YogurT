@@ -1,0 +1,40 @@
+name: yogurt
+
+services:
+  mysql:
+    image: mysql:9.7.2
+    container_name: yogurt-mysql
+    restart: unless-stopped
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - net
+
+  redis:
+    image: redis:8.6.2-alpine
+    container_name: yogurt-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - net
+
+  rustfs:
+    image: rustfs/rustfs:1.0.2
+    container_name: yogurt-rustfs
+    restart: unless-stopped
+    security_opt:
+      - "no-new-privileges:true"
+    volumes:
+      - rustfs_data:/data
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:
+  rustfs_data:
