@@ -2,6 +2,7 @@ services:
   mysql:
     env_file:
       - .env.dev
+    container_name: yogurt-mysql-dev
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -21,6 +22,7 @@ services:
   redis:
     env_file:
       - .env.dev
+    container_name: yogurt-redis-dev
     environment:
       REDISCLI_AUTH: ${REDIS_REQUIREPASS}
     ports:
@@ -37,6 +39,7 @@ services:
   rustfs:
     env_file:
       - .env.dev
+    container_name: yogurt-rustfs-dev
     environment:
       RUSTFS_VOLUMES: /data
       RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY}
