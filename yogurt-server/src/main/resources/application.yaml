@@ -18,6 +18,7 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+    default-enum-type-handler: com.fogsbridge.yogurt.server.handler.mybatis.BaseEnumTypeHandler
   type-aliases-package: com.fogsbridge.yogurt.server.model.entity
 
 yogurt:
