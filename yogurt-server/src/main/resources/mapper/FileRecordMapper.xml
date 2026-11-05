@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fogsbridge.yogurt.server.mapper.FileRecordMapper">
+    <resultMap type="FileRecord" id="fileRecordMap">
+        <result column="metadata" property="metadata"
+                typeHandler="com.fogsbridge.yogurt.server.handler.mybatis.JsonTypeHandler"
+                javaType="java.util.Map"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO file_record (policy_id, file_key, public_code, original_name, mime_type, file_variant, parent_id, file_size, file_hash, ref_count, metadata, user_id, visitor_id, status)
+        VALUES (#{policyId}, #{fileKey}, #{publicCode}, #{originalName}, #{mimeType}, #{fileVariant}, #{parentId}, #{fileSize}, #{fileHash}, #{refCount},
+                #{metadata, typeHandler=com.fogsbridge.yogurt.server.handler.mybatis.JsonTypeHandler}, #{userId}, #{visitorId},#{status})
+    </insert>
+
+    <select id="selectById" resultMap="fileRecordMap">
+        SELECT *
+        FROM file_record
+        WHERE id = #{id}
+    </select>
+</mapper>
