@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fogsbridge.yogurt.server.mapper.UploadSceneMapper">
+    <resultMap id="UploadSceneMap" type="UploadScene">
+        <result column="allowed_types" property="allowedTypes"
+                typeHandler="com.fogsbridge.yogurt.server.handler.mybatis.JsonTypeHandler"
+                javaType="java.util.Set"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO upload_scene (source_id, scene_name, scene_type, file_type, base_path, max_size, chunk_size, allowed_types, builtin)
+        VALUES (#{sourceId}, #{sceneName}, #{sceneType}, #{fileType}, #{basePath}, #{maxSize}, #{chunkSize},
+                #{allowedTypes, typeHandler=com.fogsbridge.yogurt.server.handler.mybatis.JsonTypeHandler},
+                #{builtin})
+    </insert>
+
+    <select id="selectById" resultMap="UploadSceneMap">
+        SELECT *
+        FROM upload_scene
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectBySceneNameAndBuiltin" resultMap="UploadSceneMap">
+        SELECT *
+        FROM upload_scene
+        WHERE scene_name = #{sceneName} AND builtin = #{builtin}
+    </select>
+</mapper>

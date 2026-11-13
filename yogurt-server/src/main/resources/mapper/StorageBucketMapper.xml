@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fogsbridge.yogurt.server.mapper.StorageBucketMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO storage_bucket (source_id, bucket_name, access_level, builtin)
+        VALUES (#{sourceId}, #{bucketName}, #{accessLevel}, #{builtin})
+    </insert>
+
+    <select id="selectById" resultType="StorageBucket">
+        SELECT *
+        FROM storage_bucket
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectByBucketNameAndBuiltin" resultType="StorageBucket">
+        SELECT *
+        FROM storage_bucket
+        WHERE bucket_name = #{bucketName} AND builtin = #{builtin}
+    </select>
+</mapper>

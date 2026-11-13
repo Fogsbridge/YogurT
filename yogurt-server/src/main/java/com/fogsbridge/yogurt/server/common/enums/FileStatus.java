@@ -9,9 +9,10 @@ package com.fogsbridge.yogurt.server.common.enums;
  * @since 1.0.0
  */
 public enum FileStatus implements BaseEnum<Integer> {
-    CHECKING(0, "审核中"),
-    PENDING(1, "待审核"),
-    PUBLISHED(2, "已发布");
+    PENDING(1, "待处理"),
+    NORMAL(2, "正常"),
+    DELETED(3, "已删除"),
+    REJECTED(4, "已拒绝");
 
     private final Integer value;
     private final String description;

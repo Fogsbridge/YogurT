@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fogsbridge.yogurt.server.mapper.FileReferenceMapper">
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO file_reference (file_id, target_type, target_id)
-        VALUES (#{fileId}, #{targetType}, #{targetId})
+        INSERT INTO file_reference (file_id, ref_type, ref_id, deleted_at)
+        VALUES (#{fileId}, #{refType}, #{refId}, #{deletedAt})
     </insert>
 
     <select id="selectById" resultType="FileReference">

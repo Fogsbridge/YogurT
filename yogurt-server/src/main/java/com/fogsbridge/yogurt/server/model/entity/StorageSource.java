@@ -5,21 +5,21 @@ import com.fogsbridge.yogurt.server.common.enums.StorageType;
 import java.time.LocalDateTime;
 
 /**
- * storage_config entity
+ * storage_source entity
  *
  * @author fogsbridge
  * @since 1.0.0
  */
-public class StorageConfig {
+public class StorageSource {
     private Long id;
-    private String configName;
+    private String sourceName;
     private StorageType storageType;
     private String endpoint;
     private String accessKey;
     private String secretKey;
-    private String bucketName;
-    private String basePath;
+    private Boolean pathStyle;
     private String region;
+    private Boolean builtin;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -31,12 +31,12 @@ public class StorageConfig {
         this.id = id;
     }
 
-    public String getConfigName() {
-        return configName;
+    public String getSourceName() {
+        return sourceName;
     }
 
-    public void setConfigName(String configName) {
-        this.configName = configName;
+    public void setSourceName(String sourceName) {
+        this.sourceName = sourceName;
     }
 
     public StorageType getStorageType() {
@@ -71,20 +71,12 @@ public class StorageConfig {
         this.secretKey = secretKey;
     }
 
-    public String getBucketName() {
-        return bucketName;
+    public Boolean getPathStyle() {
+        return pathStyle;
     }
 
-    public void setBucketName(String bucketName) {
-        this.bucketName = bucketName;
-    }
-
-    public String getBasePath() {
-        return basePath;
-    }
-
-    public void setBasePath(String basePath) {
-        this.basePath = basePath;
+    public void setPathStyle(Boolean pathStyle) {
+        this.pathStyle = pathStyle;
     }
 
     public String getRegion() {
@@ -93,6 +85,14 @@ public class StorageConfig {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public Boolean getBuiltin() {
+        return builtin;
+    }
+
+    public void setBuiltin(Boolean builtin) {
+        this.builtin = builtin;
     }
 
     public LocalDateTime getCreatedAt() {

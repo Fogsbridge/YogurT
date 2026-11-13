@@ -1,6 +1,6 @@
 package com.fogsbridge.yogurt.server.model.entity;
 
-import com.fogsbridge.yogurt.server.common.enums.TargetType;
+import com.fogsbridge.yogurt.server.common.enums.RefType;
 
 import java.time.LocalDateTime;
 
@@ -13,8 +13,9 @@ import java.time.LocalDateTime;
 public class FileReference {
     private Long id;
     private Long fileId;
-    private TargetType targetType;
-    private Long targetId;
+    private RefType refType;
+    private Long refId;
+    private LocalDateTime deletedAt;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -34,20 +35,28 @@ public class FileReference {
         this.fileId = fileId;
     }
 
-    public TargetType getTargetType() {
-        return targetType;
+    public RefType getRefType() {
+        return refType;
     }
 
-    public void setTargetType(TargetType targetType) {
-        this.targetType = targetType;
+    public void setRefType(RefType refType) {
+        this.refType = refType;
     }
 
-    public Long getTargetId() {
-        return targetId;
+    public Long getRefId() {
+        return refId;
     }
 
-    public void setTargetId(Long targetId) {
-        this.targetId = targetId;
+    public void setRefId(Long refId) {
+        this.refId = refId;
+    }
+
+    public LocalDateTime getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(LocalDateTime deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
     public LocalDateTime getCreatedAt() {

@@ -1,26 +1,28 @@
 package com.fogsbridge.yogurt.server.model.entity;
 
 import com.fogsbridge.yogurt.server.common.enums.FileType;
+import com.fogsbridge.yogurt.server.common.enums.SceneType;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
- * storage_policy entity
+ * upload_scene entity
  *
  * @author fogsbridge
  * @since 1.0.0
  */
-public class StoragePolicy {
+public class UploadScene {
     private Long id;
-    private Long configId;
-    private String policyName;
+    private Long sourceId;
+    private String sceneName;
+    private SceneType sceneType;
     private FileType fileType;
     private String basePath;
-    private Boolean privateFlag;
     private Long maxSize;
     private Long chunkSize;
     private Set<String> allowedTypes;
+    private Boolean builtin;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -32,20 +34,28 @@ public class StoragePolicy {
         this.id = id;
     }
 
-    public Long getConfigId() {
-        return configId;
+    public Long getSourceId() {
+        return sourceId;
     }
 
-    public void setConfigId(Long configId) {
-        this.configId = configId;
+    public void setSourceId(Long sourceId) {
+        this.sourceId = sourceId;
     }
 
-    public String getPolicyName() {
-        return policyName;
+    public String getSceneName() {
+        return sceneName;
     }
 
-    public void setPolicyName(String policyName) {
-        this.policyName = policyName;
+    public void setSceneName(String sceneName) {
+        this.sceneName = sceneName;
+    }
+
+    public SceneType getSceneType() {
+        return sceneType;
+    }
+
+    public void setSceneType(SceneType sceneType) {
+        this.sceneType = sceneType;
     }
 
     public FileType getFileType() {
@@ -62,14 +72,6 @@ public class StoragePolicy {
 
     public void setBasePath(String basePath) {
         this.basePath = basePath;
-    }
-
-    public Boolean getPrivateFlag() {
-        return privateFlag;
-    }
-
-    public void setPrivateFlag(Boolean privateFlag) {
-        this.privateFlag = privateFlag;
     }
 
     public Long getMaxSize() {
@@ -92,8 +94,16 @@ public class StoragePolicy {
         return allowedTypes;
     }
 
-    public void setAllowedTypes(Set<String> allowed_types) {
-        this.allowedTypes = allowed_types;
+    public void setAllowedTypes(Set<String> allowedTypes) {
+        this.allowedTypes = allowedTypes;
+    }
+
+    public Boolean getBuiltin() {
+        return builtin;
+    }
+
+    public void setBuiltin(Boolean builtin) {
+        this.builtin = builtin;
     }
 
     public LocalDateTime getCreatedAt() {

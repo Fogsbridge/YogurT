@@ -3,7 +3,7 @@ package com.fogsbridge.yogurt.server.common.enums;
 /**
  * 文件类型枚举类
  * <p>
- * 对应表 {@code storage_policy} 字段 {@code file_type}
+ * 对应表 {@code upload_scene} 字段 {@code file_type}
  *
  * @author fogsbridge
  * @since 1.0.0

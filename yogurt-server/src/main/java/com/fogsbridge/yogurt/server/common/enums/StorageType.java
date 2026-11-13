@@ -10,7 +10,7 @@ package com.fogsbridge.yogurt.server.common.enums;
  */
 public enum StorageType implements BaseEnum<String> {
     LOCAL("Local", "本地存储"),
-    RUSTFS("RustFS", "RustFS");
+    S3("S3", "S3协议存储");
 
     private final String value;
     private final String description;

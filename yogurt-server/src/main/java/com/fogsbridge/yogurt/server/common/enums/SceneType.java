@@ -1,21 +1,20 @@
 package com.fogsbridge.yogurt.server.common.enums;
 
 /**
- * 关联目标类型枚举类
+ * 场景类型枚举
  * <p>
- * 对应表 {@code file_reference} 字段 {@code target_type}
+ * 对应表 {@code upload_scene} 字段 {@code scene_type}
  *
  * @author fogsbridge
  * @since 1.0.0
  */
-public enum TargetType implements BaseEnum<String> {
-    POST("post", "文章"),
-    COMMENT("comment", "评论");
+public enum SceneType implements BaseEnum<String> {
+    AVATAR("avatar", "头像");
 
     private final String value;
     private final String description;
 
-    TargetType(String value, String description) {
+    SceneType(String value, String description) {
         this.value = value;
         this.description = description;
     }

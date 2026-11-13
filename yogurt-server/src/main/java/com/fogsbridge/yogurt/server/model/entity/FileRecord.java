@@ -2,6 +2,7 @@ package com.fogsbridge.yogurt.server.model.entity;
 
 import com.fogsbridge.yogurt.server.common.enums.FileStatus;
 import com.fogsbridge.yogurt.server.common.enums.FileVariant;
+import com.fogsbridge.yogurt.server.common.enums.RejectReason;
 
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -14,7 +15,8 @@ import java.util.Map;
  */
 public class FileRecord {
     private Long id;
-    private Long policyId;
+    private Long sceneId;
+    private Long bucketId;
     private String fileKey;
     private String publicCode;
     private String originalName;
@@ -28,6 +30,8 @@ public class FileRecord {
     private Long userId;
     private Long visitorId;
     private FileStatus status;
+    private RejectReason rejectReason;
+    private LocalDateTime deletedAt;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -39,12 +43,20 @@ public class FileRecord {
         this.id = id;
     }
 
-    public Long getPolicyId() {
-        return policyId;
+    public Long getSceneId() {
+        return sceneId;
     }
 
-    public void setPolicyId(Long policyId) {
-        this.policyId = policyId;
+    public void setSceneId(Long sceneId) {
+        this.sceneId = sceneId;
+    }
+
+    public Long getBucketId() {
+        return bucketId;
+    }
+
+    public void setBucketId(Long bucketId) {
+        this.bucketId = bucketId;
     }
 
     public String getFileKey() {
@@ -149,6 +161,22 @@ public class FileRecord {
 
     public void setStatus(FileStatus status) {
         this.status = status;
+    }
+
+    public RejectReason getRejectReason() {
+        return rejectReason;
+    }
+
+    public void setRejectReason(RejectReason rejectReason) {
+        this.rejectReason = rejectReason;
+    }
+
+    public LocalDateTime getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(LocalDateTime deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
     public LocalDateTime getCreatedAt() {
