@@ -5,6 +5,9 @@
 !.env.example
 !.env.dev
 
+# 开发环境本地存储目录
+/yogurt/
+
 ### 构建产物 ###
 HELP.md
 target/

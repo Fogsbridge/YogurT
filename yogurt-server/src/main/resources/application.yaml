@@ -27,3 +27,7 @@ yogurt:
       argon2:
         memory: 19456
         iterations: 5
+
+  storage:
+    local:
+      root-path: ${YOGURT_STORAGE_LOCAL_ROOT_PATH}
