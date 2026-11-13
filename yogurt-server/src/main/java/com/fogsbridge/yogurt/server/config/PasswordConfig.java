@@ -1,5 +1,6 @@
 package com.fogsbridge.yogurt.server.config;
 
+import com.fogsbridge.yogurt.server.config.properties.Argon2Properties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

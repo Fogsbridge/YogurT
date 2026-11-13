@@ -22,8 +22,8 @@ mybatis:
   type-aliases-package: com.fogsbridge.yogurt.server.model.entity
 
 yogurt:
-  password:
-    encoder:
+  security:
+    password-encoder:
       argon2:
         memory: 19456
         iterations: 5

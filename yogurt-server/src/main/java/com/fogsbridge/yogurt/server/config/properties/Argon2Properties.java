@@ -1,15 +1,15 @@
-package com.fogsbridge.yogurt.server.config;
+package com.fogsbridge.yogurt.server.config.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Argon2 密码哈希配置外部化
+ * Argon2 配置属性
  *
  * @author fogsbridge
  * @since 1.0.0
  */
 
-@ConfigurationProperties(prefix = "yogurt.password.encoder.argon2")
+@ConfigurationProperties(prefix = "yogurt.security.password-encoder.argon2")
 public class Argon2Properties {
     private int saltLength = 16;
     private int hashLength = 32;
